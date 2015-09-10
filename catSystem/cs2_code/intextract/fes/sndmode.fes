@@ -1,0 +1,603 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+sndmode
+snd_vol
+snd_scrl
+snd_ttl
+#DEFINE
+CPLANE topmask
+CIMAGE bg_white
+IMAGE bg
+BUTTON sys[8]
+BUTTON song[8]
+SNDTABLE bgm
+SCROLL scrl
+IMAGE title
+SLIDER vol
+BUTTON sysbtn[4]
+IMAGE sysnotbtn
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00000000 20000 800,600 1
+#OBJECT COLOR SIZE PRI DISP PL
+bg_white 0xffffffff 800,600 1000 0 pl[1]
+#OBJECT FILE ID.0 PRI
+bg sndmode 0 10
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI TYPE
+sys[0] sndmode 100 100 200 300 20 1
+sys[1] sndmode 101 101 201 301 21 1
+sys[2] sndmode 102 102 202 302 22 1
+sys[3] sndmode 103 103 203 303 23 1
+sys[4] sndmode 104 104 204 304 24 1
+sys[5] sndmode 105 105 205 305 25 1
+sys[6] sndmode 106 106 206 306 26 1
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI
+sysbtn[0] cgmode 100 200 300 400 50
+sysbtn[1] cgmode 101 201 301 401 51
+sysbtn[2] cgmode 103 203 303 403 53
+sysbtn[3] cgmode 104 204 304 404 54
+#OBJECT FILE ID.0 PRI
+sysnotbtn cgmode 202 59
+#OBJECT FILE ID.0 POS2 SIZE PRI
+song[0] snd_ttl 0 sndmode:10 600,24 30
+song[1] snd_ttl 1 sndmode:11 600,24 31
+song[2] snd_ttl 2 sndmode:12 600,24 32
+song[3] snd_ttl 3 sndmode:13 600,24 33
+song[4] snd_ttl 4 sndmode:14 600,24 34
+song[5] snd_ttl 5 sndmode:15 600,24 35
+song[6] snd_ttl 6 sndmode:16 600,24 36
+song[7] snd_ttl 7 sndmode:17 600,24 37
+#OBJECT FILE POS2 VRAM PRI PRI_P DISP
+scrl snd_scrl sndmode:1000 1984,0 500 10000 0
+#OBJECT FILE ID.N POS2 PRI
+title snd_ttl 0 sndmode:50 40
+#OBJECT FILE POS2 PRI
+vol snd_vol sndmode:60 70
+#OBJECT PL DISP
+bg pl[1] 1
+sys pl[1] 1
+song pl[1] 1
+title pl[1] 0
+vol pl[1] 1
+sysbtn pl[1] 1
+sysnotbtn pl[1] 1
+#OBJECT BLEND DISP
+pl 0 1
+#OBJECT CHANNEL STYPE SIZE TYPE
+bgm 0 0 36 1
+#KEYBLOCK 4
+0 4,1 -1,2,-1,1
+1 1,3 -1,2,0,-1
+2 1,8 0,3,-1,-1
+3 1,1 2,-1,-1,-1
+#OBJECT KEYBLOCK
+sys[0] 0,0,0
+sys[1] 0,1,0
+sys[2] 0,2,0
+sys[3] 0,3,0
+sys[4] 1,0,0
+sys[5] 1,0,1
+sys[6] 1,0,2
+song[0] 2,0,0
+song[1] 2,0,1
+song[2] 2,0,2
+song[3] 2,0,3
+song[4] 2,0,4
+song[5] 2,0,5
+song[6] 2,0,6
+song[7] 2,0,7
+sysbtn[0] 3,0,0
+sysbtn[1] 3,1,0
+sysbtn[2] 3,2,0
+sysbtn[3] 3,3,0
+#START
+$550 = 0
+$552 = 0
+$553 = 0
+$554 = 0
+$569 = 0
+sys[1] noact
+song attach scrl
+config 559 vol_bgm
+next SET_TEST
+#SET_TEST
+$600 = 1
+$601 = 1
+$602 = 1
+$603 = 1
+$604 = 1
+$605 = 1
+$606 = 1
+$607 = 1
+$608 = 1
+$609 = 1
+$610 = 1
+$611 = 1
+$612 = 1
+$613 = 1
+$614 = 1
+$615 = 1
+$616 = 1
+$617 = 1
+$618 = 1
+$619 = 1
+$620 = 1
+$621 = 1
+$622 = 1
+$623 = 1
+$624 = 1
+next SET_TABLE
+#SET_TABLE
+bgm sndtbl 00 bgm50 $600
+bgm sndtbl 01 bgm01 $601
+bgm sndtbl 02 bgm02 $602
+bgm sndtbl 03 bgm03 $603
+bgm sndtbl 04 bgm04 $604
+bgm sndtbl 05 bgm05 $605
+bgm sndtbl 06 bgm06 $606
+bgm sndtbl 07 bgm07 $607
+bgm sndtbl 08 bgm08 $608
+bgm sndtbl 09 bgm09 $609
+bgm sndtbl 10 bgm10 $610
+bgm sndtbl 11 bgm11 $611
+bgm sndtbl 12 bgm12 $612
+bgm sndtbl 13 bgm13 $613
+bgm sndtbl 14 bgm14 $614
+bgm sndtbl 15 bgm15 $615
+bgm sndtbl 16 bgm16 $616
+bgm sndtbl 17 bgm17 $617
+bgm sndtbl 18 bgm18 $618
+bgm sndtbl 19 bgm19 $619
+bgm sndtbl 20 bgm20 $620
+bgm sndtbl 21 bgm21 $621
+bgm sndtbl 22 bgm22 $622
+bgm sndtbl 23 bgm23 $623
+bgm sndtbl 24 bgm30 $624
+bgm sndtbl 25 bgm31 $625
+bgm sndtbl 26 bgm32 $626
+bgm sndtbl 27 bgm33 $627
+bgm sndtbl 28 bgm34 $628
+bgm sndtbl 29 bgm35 $629
+bgm sndtbl 30 bgm36 $630
+bgm sndtbl 31 bgm37 $631
+bgm sndtbl 32 bgm42 $632
+bgm sndtbl 33 bgm41 $633
+bgm sndtbl 34 bgm40 $634
+bgm sndtbl 35 bgm55 $635
+bgm setid 0
+bgm getid 550
+bgm blend $559
+song[$550-$569] setid 3
+scrl page 0 36 8
+vol page 0 100
+vol pos $559
+vol disp 1
+next SET_BUTTON
+#SET_BUTTON
+song[0] settbl 0 $569+0
+song[1] settbl 0 $569+1
+song[2] settbl 0 $569+2
+song[3] settbl 0 $569+3
+song[4] settbl 0 $569+4
+song[5] settbl 0 $569+5
+song[6] settbl 0 $569+6
+song[7] settbl 0 $569+7
+song[0] settbl 2 $569+0+100
+song[1] settbl 2 $569+1+100
+song[2] settbl 2 $569+2+100
+song[3] settbl 2 $569+3+100
+song[4] settbl 2 $569+4+100
+song[5] settbl 2 $569+5+100
+song[6] settbl 2 $569+6+100
+song[7] settbl 2 $569+7+100
+song setid 0
+if ($550>=$569&&$550<=$569+7)
+song[$550-$569] setid 2
+endif
+wait 1
+pl[1] blend 255
+if ($515==0)
+topmask fade 30 255 0
+endif
+if ($515==1)
+topmask blend 0
+endif
+if ($515==2)
+topmask fade 30 255 0
+endif
+$515 = 1
+scrl disp 1
+sys enable 1
+scrl enable 1
+song enable 1
+next SEL_WAIT
+#SEL_WAIT
+if (_CLICK_R_!=0)
+next END
+endif
+if (_CLICK_L_==sys[0])
+call reverse
+endif
+if (_CLICK_L_==sys[1])
+if ($552==0)
+$552 = 1
+call play
+endif
+endif
+if (_CLICK_L_==sys[2])
+if ($552==1)
+$552 = 0
+call play
+endif
+endif
+if (_CLICK_L_==sys[3])
+call next
+endif
+if (_CLICK_L_==sys[4])
+if ($553!=1)
+$553 = 1
+else
+$553 = 0
+endif
+call repeat
+endif
+if (_CLICK_L_==sys[5])
+if ($553!=2)
+$553 = 2
+else
+$553 = 0
+endif
+call repeat
+endif
+if (_CLICK_L_==sys[6])
+if ($554==0)
+$554 = 1
+else
+$554 = 0
+endif
+call shuffle
+endif
+if (_CLICK_L_==sysbtn[0])
+next GO_CG
+endif
+if (_CLICK_L_==sysbtn[1])
+next GO_SCN
+endif
+if (_CLICK_L_==sysbtn[2])
+next END
+endif
+if (_CLICK_L_==sysbtn[3])
+next QUIT
+endif
+if (_SCRL_U_!=0)
+$569--
+scrl pos $569
+wait 1
+scrl getpos 569
+next SET_BUTTON
+endif
+if (_PAGE_U_!=0)
+$569 -= 8
+scrl pos $569
+wait 1
+scrl getpos 569
+next SET_BUTTON
+endif
+if (_SCRL_D_!=0)
+$569++
+scrl pos $569
+wait 1
+scrl getpos 569
+next SET_BUTTON
+endif
+if (_PAGE_D_!=0)
+$569 += 8
+scrl pos $569
+wait 1
+scrl getpos 569
+next SET_BUTTON
+endif
+#END
+call DISABLE_BUTTON
+topmask color 0x00ffffff
+wait 1
+topmask fade 30 0 255
+vol getpos 559
+bgm fade 30 $559 0
+wait
+bgm stop
+bg_white disp 1
+wait
+baseimg bg_white
+exit -2
+next SLEEP
+#SLEEP
+#GO_CG
+cursor disp 0
+scrl disp 0
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit 10
+next SLEEP
+#GO_SCN
+cursor disp 0
+scrl disp 0
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit 11
+next SLEEP
+#reverse
+song[$550-$569] setid 0
+bgm rev
+bgm getid 550
+if ($550-$569<0)
+$569 = $550
+scrl pos $569
+endif
+if ($550-$569>7)
+$569 = $550 - 7
+scrl pos $569
+endif
+song[$550-$569] setid 2
+if ($552==1)
+bgm play 1
+title settbl 0 $550+100
+title setid 0
+title disp 1
+endif
+#play
+if ($552==1)
+debug $550
+debug $569
+song[$550-$569] setid 0
+bgm setid $550
+bgm getid 550
+debug $550
+debug $569
+if ($550-$569<0)
+$569 = $550
+scrl pos $569
+endif
+if ($550-$569>7)
+$569 = $550 - 7
+scrl pos $569
+endif
+song[$550-$569] setid 2
+bgm play 1
+title settbl 0 $550+100
+title setid 0
+title disp 1
+else
+bgm stop
+title disp 0
+sys[1] setid 0
+endif
+#next
+song[$550-$569] setid 0
+bgm next
+bgm getid 550
+if ($550-$569<0)
+$569 = $550
+scrl pos $569
+endif
+if ($550-$569>7)
+$569 = $550 - 7
+scrl pos $569
+endif
+song[$550-$569] setid 2
+if ($552==1)
+bgm play 1
+title settbl 0 $550+100
+title setid 0
+title disp 1
+endif
+#repeat
+if ($553==2)
+bgm repeat 1
+else
+bgm repeat 0
+endif
+#shuffle
+if ($554==1)
+if ($552==1)
+bgm shuffle 1 $550
+else
+bgm shuffle 1 -1
+endif
+else
+bgm shuffle 0 $550
+endif
+#song.FOCUS
+if ($550-$569!=@)
+@ setid 2
+endif
+#song.UNFOCUS
+if ($550-$569!=@)
+@ setid 0
+endif
+#song.PUSH_L
+if ($550-$569!=@)
+song[$550-$569] setid 0
+endif
+$550 = @ + $569
+song[@] setid 2
+if ($554==0)
+bgm setid $550
+endif
+if ($554==1)
+bgm shuffle 1 $550
+bgm setid 0
+endif
+bgm play 1
+title settbl 0 $550+100
+title setid 0
+title disp 1
+sys[1] setid 3
+$552 = 1
+#sys.FOCUS
+if (@==0)
+@ setid 2
+endif
+if (@==1)
+if ($552==0)
+@ setid 2
+endif
+endif
+if (@==2)
+@ setid 2
+endif
+if (@==3)
+@ setid 2
+endif
+if (@==4)
+if ($553!=1)
+@ setid 2
+endif
+endif
+if (@==5)
+if ($553!=2)
+@ setid 2
+endif
+endif
+if (@==6)
+if ($554==0)
+@ setid 2
+endif
+endif
+#sys.UNFOCUS
+if (@==0)
+@ setid 0
+endif
+if (@==1)
+if ($552==0)
+@ setid 0
+endif
+endif
+if (@==2)
+@ setid 0
+endif
+if (@==3)
+@ setid 0
+endif
+if (@==4)
+if ($553!=1)
+@ setid 0
+endif
+endif
+if (@==5)
+if ($553!=2)
+@ setid 0
+endif
+endif
+if (@==6)
+if ($554==0)
+@ setid 0
+endif
+endif
+#sys.PUSH_L
+if (@==0)
+@ setid 3
+endif
+if (@==1)
+if ($552==0)
+@ setid 3
+endif
+endif
+if (@==2)
+@ setid 3
+if ($552==1)
+sys[1] setid 0
+endif
+endif
+if (@==3)
+@ setid 3
+endif
+if (@==4)
+if ($553!=1)
+@ setid 3
+sys[5] setid 0
+else
+@ setid 2
+endif
+endif
+if (@==5)
+if ($553!=2)
+@ setid 3
+sys[4] setid 0
+else
+@ setid 2
+endif
+endif
+if (@==6)
+if ($554==0)
+@ setid 3
+else
+@ setid 2
+endif
+endif
+#bgm.STOP
+if ($553==1)
+bgm play 1
+else
+song[$550-$569] setid 0
+bgm next
+bgm getid 555
+if ($550==$555)
+@ setid 0
+$552 = 0
+title disp 0
+endif
+if ($550!=$555)
+$550 = $555
+song[$550-$569] setid 2
+bgm play 1
+title settbl 0 $550+100
+title setid 0
+title disp 1
+endif
+endif
+#sysbtn.FOCUS
+@ setid 2
+help[@] disp 1
+#sysbtn.UNFOCUS
+@ setid 0
+help[@] disp 0
+#sysbtn.PUSH_L
+@ setid 3
+#scrl.SCRL_P
+scrl getpos 569
+next SET_BUTTON
+#vol.SCRL_P
+vol getpos 559
+bgm blend $559
+#DISABLE_BUTTON
+sys enable 0

@@ -1,0 +1,361 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#DEFINE
+SOUND bgm
+IMAGE ed[3]
+BUTTON button
+IMAGE mask
+#OBJECT SIZE POS PRI DISP ENABLE
+button 1024,768 0,0 10 1 0
+#OBJECT GROUP STYPE
+bgm bgm 0
+#OBJECT PRI
+mask 50
+#OBJECT PRI
+ed[0] 1000
+ed[1] 1001
+ed[2] 1002
+#OBJECT PL DISP
+mask pl[0] 0
+ed[0] pl[0] 0
+ed[1] pl[1] 0
+ed[2] pl[2] 0
+#START
+keyskip off
+wait 1
+bgm load bgm_ed
+bgm play 1
+wait 1
+next IMAGE_DISP
+#IMAGE_DISP
+wait 30
+ed[0] load ed01
+mask load bgi_white
+mask disp 1
+ed[0] disp 1
+pl[0] disp 1
+pl fade 90 0 255
+wait
+wait 80
+ed[0] fade 90 255 0
+wait
+button disp 1
+button enable 1
+ed[1] load ed02a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed02b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed03a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed03b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed04a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed04b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed05a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed05b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed06a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed06b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed07a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed07b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed08a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed08b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed09a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed09b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed10a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed10b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed11a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed11b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed12a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed12b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed13a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed13b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed14a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed14b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed15a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed15b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed16a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed16b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed17a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed17b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed18a
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait
+wait 80
+ed[2] load ed18b
+ed[2] disp 1
+pl[2] disp 1
+pl[2] fade 60 0 255
+wait
+pl[1] disp 0
+wait 80
+pl[2] fade 90 255 0
+wait
+pl[2] disp 0
+ed[1] load ed19
+ed[1] disp 1
+pl[1] disp 1
+pl[1] fade 90 0 255
+wait 120
+pl[1] fade 120 255 0
+wait 150
+pl[1] disp 0
+pl[2] disp 0
+button enable 0
+wait 1
+next ED_END
+#ED_END
+bgm delete
+ed delete
+button delete
+mask delete
+exit 0
+next SLEEP
+#SLEEP
+#button.PUSH_R
+button enable 0
+next ED_END

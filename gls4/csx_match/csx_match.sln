@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "csx_match", "csx_match.vcproj", "{B9877E44-3990-4AC9-98A3-0A5CA8BF7D5E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "conststr_match", "..\conststr_match\conststr_match.vcproj", "{55068DC3-B474-4740-B434-F6B8A3A73C95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9877E44-3990-4AC9-98A3-0A5CA8BF7D5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B9877E44-3990-4AC9-98A3-0A5CA8BF7D5E}.Debug|Win32.Build.0 = Debug|Win32
+		{B9877E44-3990-4AC9-98A3-0A5CA8BF7D5E}.Release|Win32.ActiveCfg = Release|Win32
+		{B9877E44-3990-4AC9-98A3-0A5CA8BF7D5E}.Release|Win32.Build.0 = Release|Win32
+		{55068DC3-B474-4740-B434-F6B8A3A73C95}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55068DC3-B474-4740-B434-F6B8A3A73C95}.Debug|Win32.Build.0 = Debug|Win32
+		{55068DC3-B474-4740-B434-F6B8A3A73C95}.Release|Win32.ActiveCfg = Release|Win32
+		{55068DC3-B474-4740-B434-F6B8A3A73C95}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

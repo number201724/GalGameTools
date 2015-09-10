@@ -1,0 +1,81 @@
+decompress
+
+00449AA0   $  55            push    ebp
+00449AA1   .  8BEC          mov     ebp, esp
+00449AA3   .  83EC 0C       sub     esp, 0xC
+00449AA6   .  53            push    ebx
+00449AA7   .  56            push    esi
+00449AA8   .  57            push    edi
+00449AA9   .  8BF9          mov     edi, ecx
+00449AAB   .  8B1F          mov     ebx, dword ptr [edi]
+00449AAD   .  68 EE0F0000   push    0xFEE
+00449AB2   .  8BF0          mov     esi, eax
+00449AB4   .  6A 00         push    0x0
+00449AB6   .  03DE          add     ebx, esi
+00449AB8   .  68 08A90307   push    0703A908
+00449ABD   .  83C7 04       add     edi, 0x4
+00449AC0   .  895D F8       mov     dword ptr [ebp-0x8], ebx
+00449AC3   .  E8 88A40100   call    00463F50
+00449AC8   .  83C4 0C       add     esp, 0xC
+00449ACB   .  B8 EE0F0000   mov     eax, 0xFEE
+00449AD0   .  33D2          xor     edx, edx
+00449AD2   .  EB 0C         jmp     short 00449AE0
+00449AD4   >  8B55 FC       mov     edx, dword ptr [ebp-0x4]
+00449AD7   .  EB 07         jmp     short 00449AE0
+00449AD9   .  8DA424 000000>lea     esp, dword ptr [esp]
+00449AE0   >  D1EA          shr     edx, 1
+00449AE2   .  8955 FC       mov     dword ptr [ebp-0x4], edx
+00449AE5   .  F7C2 00010000 test    edx, 0x100
+00449AEB   .  75 0D         jnz     short 00449AFA
+00449AED   .  0FB617        movzx   edx, byte ptr [edi]
+00449AF0   .  47            inc     edi
+00449AF1   .  81CA 00FF0000 or      edx, 0xFF00
+00449AF7   .  8955 FC       mov     dword ptr [ebp-0x4], edx
+00449AFA   >  0FB60F        movzx   ecx, byte ptr [edi]
+00449AFD   .  F6C2 01       test    dl, 0x1
+00449B00   .  74 1B         je      short 00449B1D
+00449B02   .  8888 08A90307 mov     byte ptr [eax+0x703A908], cl
+00449B08   .  40            inc     eax
+00449B09   .  880E          mov     byte ptr [esi], cl
+00449B0B   .  46            inc     esi
+00449B0C   .  47            inc     edi
+00449B0D   .  25 FF0F0000   and     eax, 0xFFF
+00449B12   .  3BF3          cmp     esi, ebx
+00449B14   .^ 72 CA         jb      short 00449AE0
+00449B16   >  5F            pop     edi
+00449B17   .  5E            pop     esi
+00449B18   .  5B            pop     ebx
+00449B19   .  8BE5          mov     esp, ebp
+00449B1B   .  5D            pop     ebp
+00449B1C   .  C3            retn
+00449B1D   >  0FB657 01     movzx   edx, byte ptr [edi+0x1]
+00449B21   .  8BDA          mov     ebx, edx
+00449B23   .  81E3 F0000000 and     ebx, 0xF0
+00449B29   .  C1E3 04       shl     ebx, 0x4
+00449B2C   .  0BCB          or      ecx, ebx
+00449B2E   .  83E2 0F       and     edx, 0xF
+00449B31   .  8D5C0A 02     lea     ebx, dword ptr [edx+ecx+0x2]
+00449B35   .  83C7 02       add     edi, 0x2
+00449B38   .  895D F4       mov     dword ptr [ebp-0xC], ebx
+00449B3B   .  3BCB          cmp     ecx, ebx
+00449B3D   .  8B5D F8       mov     ebx, dword ptr [ebp-0x8]
+00449B40   .  8BD1          mov     edx, ecx
+00449B42   .^ 7F 90         jg      short 00449AD4
+00449B44   .  EB 0A         jmp     short 00449B50
+00449B46   .  8DA424 000000>lea     esp, dword ptr [esp]
+00449B4D   .  8D49 00       lea     ecx, dword ptr [ecx]
+00449B50   >  8BCA          mov     ecx, edx
+00449B52   .  81E1 FF0F0000 and     ecx, 0xFFF
+00449B58   .  0FB689 08A903>movzx   ecx, byte ptr [ecx+0x703A908]
+00449B5F   .  8888 08A90307 mov     byte ptr [eax+0x703A908], cl
+00449B65   .  40            inc     eax
+00449B66   .  880E          mov     byte ptr [esi], cl
+00449B68   .  46            inc     esi
+00449B69   .  25 FF0F0000   and     eax, 0xFFF
+00449B6E   .  3BF3          cmp     esi, ebx
+00449B70   .^ 73 A4         jnb     short 00449B16
+00449B72   .  42            inc     edx
+00449B73   .  3B55 F4       cmp     edx, dword ptr [ebp-0xC]
+00449B76   .^ 7E D8         jle     short 00449B50
+00449B78   .^ E9 57FFFFFF   jmp     00449AD4
+

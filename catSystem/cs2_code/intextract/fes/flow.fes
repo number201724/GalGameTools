@@ -1,0 +1,304 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#START
+$850 = 0
+$540 = 0
+next START_TITLE
+#START_TITLE
+endfes
+endkcs
+wait 1
+execfes title_select
+next FES_WAIT
+#FES_WAIT
+if (_EXITCODE_==0)
+next SCENE_SELECT
+endif
+if (_EXITCODE_==1)
+next LOAD
+endif
+if (_EXITCODE_==2)
+next CONFIG
+endif
+if (_EXITCODE_==90)
+next TUTORIAL
+endif
+if (_EXITCODE_==9)
+next QUIT
+endif
+if (_EXITCODE_==10)
+next CGMODE
+endif
+if (_EXITCODE_==25)
+next CGMODE2
+endif
+if (_EXITCODE_==11)
+next SCNMODE
+endif
+if (_EXITCODE_==13)
+next MUSMODE
+endif
+if (_EXITCODE_==1000)
+next START_TITLE
+endif
+#START_GAME
+endfes
+endkcs
+wait 1
+$512 = -1
+$540 = 0
+baseimg
+execkcs sscript
+next GAME_WAIT
+#GAME_WAIT
+if (_EXITCODE_!=-1)
+next START_TITLE
+endif
+#SCENE_SELECT
+endfes
+wait 1
+execfes scene_select
+next SCNSEL_WAIT
+#SCNSEL_WAIT
+if (_EXITCODE_==0)
+endfes
+endkcs
+wait 1
+$512 = -1
+$540 = 0
+baseimg
+execkcs sscript
+next GAME_WAIT
+endif
+if (_EXITCODE_==-2)
+endfes
+wait
+$540 = 1
+next START_TITLE
+endif
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+#LOAD
+endfes
+wait 1
+$800 = 1
+$801 = 0
+$850 = 0
+execfes saveload
+next LOAD_WAIT
+#LOAD_WAIT
+if (_EXITCODE_>=0)
+$512 = _EXITCODE_
+baseimg
+endfes
+wait
+execkcs sscript
+$540 = 0
+next GAME_WAIT
+endif
+if (_EXITCODE_==-2)
+endfes
+wait
+$540 = 1
+next START_TITLE
+endif
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+#TUTORIAL
+endfes
+wait 1
+$512 = -1
+execkcs sscript
+next GAME_WAIT
+#CONFIG
+endfes
+$801 = 0
+execfes config
+next CONF_WAIT
+#CONF_WAIT
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+if (_EXITCODE_==2)
+endfes
+wait
+next LOAD
+endif
+if (_EXITCODE_==3)
+endfes
+wait
+next CONF_SOUND
+endif
+if (_EXITCODE_==4)
+endfes
+wait
+next CONF_TEXT
+endif
+if (_EXITCODE_==5)
+endfes
+wait
+next CONF_DIAG
+endif
+if (_EXITCODE_==6)
+endfes
+wait
+next LOG
+endif
+if (_EXITCODE_==7)
+endfes
+wait
+next SHORTCUT
+endif
+if (_EXITCODE_!=-1)
+$811 = 1
+next START_TITLE
+endif
+#CGMODE
+$521 = 0
+$522 = 0
+$560 = 0
+next CGMODE2
+#CGMODE2
+endfes
+wait 1
+execfes cgmode
+next CG_WAIT
+#CG_WAIT
+if (_EXITCODE_==20)
+baseimg
+endfes
+wait 1
+execfes cgview
+next CGV_WAIT
+endif
+if (_EXITCODE_==11)
+$522 = 0
+$560 = 0
+next SCNMODE2
+endif
+if (_EXITCODE_==13)
+$522 = 0
+$560 = 0
+next MUSMODE
+endif
+if (_EXITCODE_==-2)
+endfes
+wait
+$540 = 2
+next START_TITLE
+endif
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+#CGV_WAIT
+if (_EXITCODE_!=-1)
+next CGMODE2
+endif
+#SCNMODE
+$521 = 0
+$522 = 0
+$560 = 0
+next SCNMODE2
+#SCNMODE2
+endfes
+wait 1
+execfes scnmode
+next SCN_WAIT
+#SCN_WAIT
+if (_EXITCODE_==10)
+$522 = 0
+$560 = 0
+next CGMODE2
+endif
+if (_EXITCODE_==21)
+$512 = -2
+baseimg
+endfes
+wait
+execkcs sscript
+next SCS_WAIT
+endif
+if (_EXITCODE_==13)
+$522 = 0
+$560 = 0
+next MUSMODE
+endif
+if (_EXITCODE_==-2)
+endfes
+wait
+$540 = 2
+next START_TITLE
+endif
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+#SCS_WAIT
+if (_EXITCODE_!=-1)
+endkcs
+$900 = 0
+next SCNMODE2
+endif
+#MUSMODE
+endfes
+wait 1
+execfes sndmode
+next MUS_WAIT
+#MUS_WAIT
+if (_EXITCODE_==10)
+$522 = 0
+$560 = 0
+next CGMODE2
+endif
+if (_EXITCODE_==11)
+$522 = 0
+$560 = 0
+next SCNMODE2
+endif
+if (_EXITCODE_==-2)
+endfes
+wait
+$540 = 2
+next START_TITLE
+endif
+if (_EXITCODE_==-3)
+endfes
+wait
+next QUIT
+endif
+#_SCENE_SELECT_
+endfes
+endkcs
+wait 1
+$512 = -10
+execkcs sscript
+next GAME_WAIT
+#QUIT
+exit 0
+next SLEEP
+#SLEEP

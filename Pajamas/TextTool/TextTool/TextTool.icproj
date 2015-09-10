@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioProject
+	ProjectType="Intel C++ Project"
+	Version="11.1"
+	Name="TextTool"
+	ProjectGUID="{44DCFF80-2373-4E76-A2C8-928437F0B639}"
+	VCNestedProjectGUID="{8F969C16-7A58-463E-82B2-8F9E6ACF8E12}"
+	VCNestedProjectFileName="TextTool.vcproj">
+	<Configurations/>
+	<Files/>
+</VisualStudioProject>

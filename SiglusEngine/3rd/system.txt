@@ -1,0 +1,137 @@
+110 DIALOGEX 0, 0, 337, 259
+STYLE DS_FIXEDSYS | DS_CONTROL | DS_CENTER | WS_CHILD
+CAPTION ""
+LANGUAGE LANG_JAPANESE, 0x1
+FONT 8, "MS Shell Dlg", FW_NORMAL, FALSE, 1
+{
+   CONTROL "Screen Mode", 1115, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 7, 124, 32 
+   CONTROL "Fullscreen", 1166, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 13, 18, 54, 14 
+   CONTROL "Window", 1167, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 71, 18, 54, 14 
+   CONTROL "Window Size", 1124, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 137, 7, 194, 32 
+   CONTROL "50%", 1170, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 144, 18, 29, 14 
+   CONTROL "75%", 1171, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 177, 18, 29, 14 
+   CONTROL "100 %", 1172, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 210, 18, 29, 14 
+   CONTROL "150%", 1173, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 243, 18, 29, 14 
+   CONTROL "200%", 1174, BUTTON, BS_AUTORADIOBUTTON | BS_PUSHLIKE | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 276, 18, 29, 14 
+   CONTROL "Resolution", 1110, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 43, 324, 66 
+   CONTROL "Change Resolution", 1238, BUTTON, BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 60, 56, 73, 10 
+   CONTROL "Change Resolution", 1022, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 156, 52, 79, 14 
+   CONTROL "Info", 1021, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 239, 52, 68, 14 
+   CONTROL "Display: ", 1220, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 12, 70, 45, 12 
+   CONTROL "", 1240, COMBOBOX, CBS_DROPDOWNLIST | CBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_GROUP | WS_TABSTOP, 60, 70, 247, 153 
+   CONTROL "Resolution:", 1221, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 12, 88, 45, 12 
+   CONTROL "", 1239, COMBOBOX, CBS_DROPDOWNLIST | CBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_GROUP | WS_TABSTOP, 60, 88, 247, 153 
+   CONTROL "Advanced Full Screen Settings", 1241, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 7, 113, 324, 143 
+   CONTROL "Display Mode", 1108, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 14, 126, 77, 103 
+   CONTROL "Native Size", 1158, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 18, 141, 51, 10 
+   CONTROL "Full Screen", 1156, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 156, 49, 10 
+   CONTROL "Fit Screen", 1160, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 170, 63, 10 
+   CONTROL "Vertical Stretch", 1159, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 184, 65, 10 
+   CONTROL "Horizontal Stretch", 1157, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 199, 69, 10 
+   CONTROL "Custom Settings", 1155, BUTTON, BS_AUTORADIOBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 18, 213, 63, 10 
+   CONTROL "Custom Settings", 1107, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 92, 126, 236, 103 
+   CONTROL "Vertical scaling: ", 1218, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 103, 140, 55, 14 
+   CONTROL "100", 1019, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 165, 139, 22, 14 
+   CONTROL "Static", 1219, STATIC, SS_CENTER | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 187, 139, 32, 14 , 0x00020000
+   CONTROL "", 1182, "msctls_trackbar32", TBS_HORZ | TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 218, 135, 102, 18 
+   CONTROL "Horizontal Scaling: ", 1216, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 94, 156, 67, 14 
+   CONTROL "100", 1018, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 165, 154, 22, 14 
+   CONTROL "Static", 1217, STATIC, SS_CENTER | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 187, 155, 32, 14 , 0x00020000
+   CONTROL "", 1181, "msctls_trackbar32", TBS_HORZ | TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 218, 154, 102, 18 
+   CONTROL "Lock Scales", 1047, BUTTON, BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 224, 175, 48, 9 
+   CONTROL "Vertical position: ", 1214, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 97, 190, 59, 14 
+   CONTROL "0", 1017, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 166, 189, 22, 14 
+   CONTROL "Static", 1215, STATIC, SS_CENTER | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 189, 189, 32, 14 , 0x00020000
+   CONTROL "", 1180, "msctls_trackbar32", TBS_HORZ | TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 217, 187, 102, 18 
+   CONTROL "Horizontal position: ", 1212, STATIC, SS_RIGHT | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 97, 210, 65, 14 
+   CONTROL "0", 1016, BUTTON, BS_PUSHBUTTON | BS_CENTER | BS_VCENTER | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 166, 209, 22, 14 
+   CONTROL "Static", 1213, STATIC, SS_CENTER | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | WS_GROUP, 189, 209, 32, 14 , 0x00020000
+   CONTROL "", 1179, "msctls_trackbar32", TBS_HORZ | TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 217, 208, 102, 18 
+   CONTROL "Restore Defaults", 1020, BUTTON, BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP, 240, 234, 68, 14 
+}
+
+本製品の 【最適な解像度】 は 『 %d × %d 』 です。
+
+　『 %d × %d 』 の解像度が選択できる場合は、それを選択して下さい。
+　それができない場合は、なるべく 【最適な解像度】 に近い比率のものを選択して下さい。　　
+
+≪液晶モニターについての補足≫
+
+　【最適な解像度】 にしても表示がぼやけたり、粗くなったりするものがあります。　　
+　これはモニターの性能上の問題となりますのでご了承下さい。
+
+　【最適な解像度】 にしても表示が縦もしくは横に間延びしてしまうものがあります。　　
+　これはモニターの仕様に関係する問題です。
+　なるべく 【最適な解像度】 に近い比率のものを選択して下さい。
+
+
+The recommended resolution is "%d × %d."
+
+Choosing "%d × %d" will result in the best viewing experience.
+If that is not an option, select a comparable resolution.
+
+
+<Additional Information>
+
+Blurriness or graininess at the recommended resolution could be the result of a poor resolution choice for your monitor.
+
+Horizontal or vertical stretching at the recommended resolution could be the result of incompatible settings for your monitor.
+In this case, select a resolution similar to the recommended resolution.
+
+
+
+ゲームの描画処理でエラーが発生しました。ゲームを終了します。
+深度システムツールバッファ作成に失敗しました。
+An error has occurred in the game's drawing operation. The game will now exit.
+Failed to create system tool depth buffer.
+
+
+
+設定ファイル Gameexe.dat の解析に失敗しました。
+
+Gameexe.dat が開けませんでした。
+Failed to analyze setup file Gameexe.dat.
+
+Gameexe.dat could not be opened. 
+
+
+
+
+
+Scene.pck が開けませんでした。
+Cannot open Scene.pck.
+
+
+
+
+
+マウスカーソルが見つかりませんでした。
+mn_mw_mcur00
+Cannot find mouse cursor mn_mw_mcur00.
+
+
+
+
+
+
+画像ファイル mn_mw_mw00a00 が見つかりませんでした。
+Cannot find graphics file mn_mw_mw00a00.
+
+
+
+
+
+サウンドファイル BGM005 が見つかりませんでした。
+Cannot find sound file BGM005.
+
+
+
+ムービーオブジェクトの作成に失敗しました。
+ファイルが開けませんでした。
+Failed to create movie object.
+File could not be opened.
+
+
+
+終了してもよろしいですか？　　　
+Are you sure you want to quit?

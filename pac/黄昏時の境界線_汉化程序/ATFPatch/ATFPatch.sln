@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATFPatch", "ATFPatch\ATFPatch.vcxproj", "{5D896203-6408-42C1-93D5-C28A9801D3A2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesystem", "filesystem\filesystem.vcxproj", "{29BC9F5B-86C7-43AF-9024-94073AE94F2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D896203-6408-42C1-93D5-C28A9801D3A2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D896203-6408-42C1-93D5-C28A9801D3A2}.Debug|Win32.Build.0 = Debug|Win32
+		{5D896203-6408-42C1-93D5-C28A9801D3A2}.Release|Win32.ActiveCfg = Release|Win32
+		{5D896203-6408-42C1-93D5-C28A9801D3A2}.Release|Win32.Build.0 = Release|Win32
+		{29BC9F5B-86C7-43AF-9024-94073AE94F2A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29BC9F5B-86C7-43AF-9024-94073AE94F2A}.Debug|Win32.Build.0 = Debug|Win32
+		{29BC9F5B-86C7-43AF-9024-94073AE94F2A}.Release|Win32.ActiveCfg = Release|Win32
+		{29BC9F5B-86C7-43AF-9024-94073AE94F2A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

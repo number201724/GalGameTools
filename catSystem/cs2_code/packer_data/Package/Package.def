@@ -1,0 +1,14 @@
+EXPORTS
+CreatePackage
+SetPackageFileCount
+PutPackageFile
+GetPackageFileData
+GetPackageFileCount
+GetPackageFileName
+PackageFileClose
+SetPackageMode
+FindFileDataByName
+FindImageDataByName
+
+FindFileLengthByName
+FindImageLengthByName

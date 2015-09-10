@@ -1,0 +1,982 @@
+
+10月3日(Sun)  Sunday, October 3
+
+
+10月4日(Mon)  Monday, October 4
+
+
+10月5日(Tue)  Tuesday, October 5
+
+
+10月6日(Wed)  Wednesday, October 6
+
+
+10月7日(Thu)  Thursday, October 7
+
+
+10月8日(Fri)  Friday, October 8
+
+
+10月9日(Sat)  Saturday, October 9
+
+
+10月11日(Mon)  Monday, October 11
+
+
+10月12日(Tue)  Tuesday, October 12
+
+
+10月13日(Wed)  Wednesday, October 13
+
+
+10月3日(Thu)  Thursday, October 14
+
+
+10月3日(Fri)  Friday, October 15
+
+
+操作方法
+マップの移動　・・・　マウスのドラッグ。矢印ボタン。方向キー（↑↓←→）を使用して
+マップを動かして下さい。
+目的地の選択　・・・　アイコンで表示されている目的地を右クリックで選択してください。
+イベント　　・・・　マップ上にはマウスカーソルが通過するとアイコンが現れる
+場所があります。その場所を右クリックすることでイベントが
+発生するばあがあります。
+
+SPEED　　・・・　ドラッグ操作によるマップのスクロール速度を設定します。
+FLICK　　・・・　ドラッグ操作によるマップの慣性スクロールの有無を設定します。
+ARROW　　・・・　矢印ボタンの表示状態を設定します。非表示にするとボタンは押せなくなります。
+KEY　　・・・　方向キー（↑↓←→）を押したときのスクロール方向を設定します。
+AutoSkip　　・・・　シナリオを進めるための重要な目的地で移動的に移動してくれる便利機能です。
+
+User guide
+Map Movement  ...  You can move the map by using the arrow buttons, the cursor keys, 
+or by dragging. 
+Destination Select  ...  Select your destination by clicking on the icons. 
+Events  ...  These may appear at certain locations on the map as you move your cursor 
+over them. The event will begin 
+when you click on the icon.
+
+SPEED  ...  Configures the drag speed. If you change this option, the map's scroll speed will also change.
+FLICK  ...  Configures the inertia for map movement. If you turn this option off, the map will not 'slide' after being dragged.
+ARROW  ...  Configures the display of the arrow buttons. If you turn this option off, the buttons will disappear.
+Keys  ...  Inverses the scroll direction for the cursor keys（↑↓←→）.
+AutoSkip  ...  Automatically moves you to key locations. 
+
+
+
+ドラッグ時のスクロール速度
+慣性スクロールの有効／無効
+矢印ボタンの表示／非表示
+方向キーのスクロールタイプ
+ヘルプを表示します
+目的地に移動する
+
+Drag speed. 
+Keep the inertia ON/OFF
+Display the Arrow buttons ON/OFF
+Cursor keys scroll type.
+Show help
+Move to destination.
+
+
+
+携帯画面の地図部分をドラッグするとマップが移動します
+目的地のアイコンにカーサルをあわせてクリックしてください
+（詳しい操作方法について画面右下のＨＥＬＰ！を参照下さい）
+
+マップ上ではカーソルが通過するとアイコンが出現する場合があります
+出現したアイコンをクリックするとミニイベントが発生します
+（ミニイベントを見なくても物語を進める上で支障はありません）
+
+Map will move, as you drag the map section of your cell phone screen
+Click on the icon of your destination [place]
+(If you need the detailed user guide, click at the HELP! button at the right-lower corner of your terminal screen)
+
+When you move cursor over the map, you can spot the popping out icons. 
+If you click on them, you will see the mini events.
+(This events don't affect the story, so you can move on without viewing them)
+
+
+
+キャンセル Cancel
+
+計測開始 Start the measurements
+
+テキストで表示 Display as text
+
+タイトルに戻る Return to title
+
+ゴーヤのように苦いマシンだ！！ Your PC is as bitter as melon can be!!
+
+明太子のように辛いマシンだ！　うまいぞっ！ Your PC is as hot as chilly pepper! It's hella delicious!
+
+もみじまんじゅうのように甘いマシンだ！ Your PC is as sweet as tart! 
+
+たこ焼きのように熱いマシンだ！　やけどに注意！ Your PC is as hot as takoyaki! Don't get burned!
+
+きしめんのように腰のあるマシンだ！　味噌カツもうまい！Your PC is as spicy as noodles! Beef soup's delicious too!
+
+普通だ！　普通がステキ！！ It's ordinary! And ordinary things are wonderful!
+
+牛タンのように味のあるマシンだ！　伊達じゃない！ Your PC tastes like a cow's tongue! That's stylish for you!
+
+あらぶる海のように激しいマシンだ！　いイカンんじだ ！ Your PC is as wild as stormy sea! That's badass!
+
+バッターのようにこってりしたマシンだ！ Your PC is as think as panda!
+
+うひょう！　どんだけすごいかわっかんなーい ! Whoa! I can't even comprehend this awesomess!
+
+ヒュウ！　北方の大地のように果てしなくクールなマシンだ！ Woah! Your PC is as cool as northern lands!
+
+沖縄 Okinawa
+
+鹿児島 Kagoshima
+
+博多 Hakata
+
+広島 Hiroshima
+
+大阪 Osaka
+
+名古屋 Nagoya
+
+東京 Tokyo
+
+仙台 Sendai
+
+八戸 Hachino
+
+札幌 Sapporo
+
+稚内 Wakkanai
+
+シベリア Siberia
+
+
+
+ちはやが転がった！挑めろ！！
+本作はベンチマークです。
+パソコンの性能が高いほど
+ちはやのローリング速度と
+右上のカウンターの上昇速度があがります。
+
+Chihaya has tumbled! Challenge the trial!!
+This is benchmark.
+The better your PC specs
+the faster Chihaya rolls and
+the faster right corner score runs. [the faster right score counter rises]
+
+
+
+認定 Result
+
+
+
+結果発表
+ランク
+スコア           m
+
+Announcement of results
+Rank
+Score           m
+           →
+
+
+
+認定 Result
+
+
+バキ Whack!
+
+
+ドカ Wham!
+
+
+ゴッ Smash!
+
+
+グシャ Swish!
+
+
+メギャ Uha!
+
+
+ズギャ Wuha!
+
+
+グ Ugh
+
+
+
+
+鋭意製作中
+Windows XP/Vista/7 対応 DVD-ROM
+恋愛アドベンチャー 全年齢対象
+
+In development
+Windows XP/Vista/7 compatible DVD-ROM
+Neoromance adventure game (ESRB "E")
+
+
+
+動作環境
+必要環境　　　　　推奨環境
+対応OS 	Microsoft Windows 日本語版 7/Vista/XP
+CPU 	intel Pentium4 シリーズ 2.0GHz以上 	intel Core 2 Duo 以上
+メモリ 	256MB 	512MB
+HDD容量 	100MB 以上 	未定
+VRAM 	128MB 以上 	256MB 以上
+画面解像度 	1280 x 800 24bit フルカラー以上
+上記解像度以下の場合は、縮小表示
+グラフィック 	DirectX 9.0 に完全対応したビデオカード （ピクセルシェーダー2.0に対応している事）
+サウンド 	Direct Sound
+DirectX 	DirectX 9.0 以上
+その他 	要DVDドライブ、マウス、キーボード
+
+                              System requirements
+  Minimum                                                         Recommended
+            Japanese version of Microsoft Windows 7/Vista/Xp
+  CPU:  Intel Pentium 4 2.0GHz                              Intel Core 2 Duo
+  Memory:      256MB                                            512MB
+  HDD Space:     100MB                                             Pending
+  VRAM:         128MB                                            256MB    
+  Screen Resolution: 1280 x 800 24bit Full Color.
+  Resolutions below the above-mentioned will be scaled.
+  Graphics: DirectX 9.0 compatible video card (pixel shader 2.0 comaptibilty)
+  Sound:    Direct Sound
+  DirectX:   DirectX 9.0 or above
+  The rest: DVD Drive, Mouse, Keyboard
+
+
+
+システム
+システム  System
+システム
+
+
+テキスト
+テキスト  Text
+テキスト
+
+
+サウンド
+サウンド  Sound
+サウンド
+
+
+
+
+画面モード　　　　右クリック動作
+
+日付表示
+
+表示速度　　　　　確認メッセージ
+キャラクター
+背景
+イベントCG
+メッセージウィンドウ
+クイックメニュー　　　　　その他の設定
+シスエムメニュー
+
+メッセージスキップ
+
+
+Screen Mode                      Right click action
+
+Display date
+
+Display speed                    Confirmation messages
+Character
+Background
+Event CG
+Message window
+Quick menu                        Other settings
+System menu
+
+Message skip
+
+
+
+セーブ／ロード  Save/Load
+セーブ／ロード
+
+
+上書きセーブ   Overwrite data
+上書きセーブ
+
+
+
+セーブデータを上書きコピー Copy and overwrite save data
+セーブデータを上書きコピー
+
+
+セーブデータの削除 Delete save data
+セーブデータの削除
+
+
+クイックセーブ／クイックロード  Quick save/Quick load
+クイックセーブ／クイックロード
+
+
+前の選択肢に戻る Return to previous choice
+前の選択肢に戻る
+
+
+タイトルに戻る Return to title
+タイトルに戻る
+
+
+ゲームを終了する Exit game
+ゲームを終了する
+
+
+表示する Display
+表示する
+表示する
+
+
+表示しない Don't display
+表示しない
+表示しない
+
+
+通常 Normal
+通常
+通常
+
+
+高速 Fast
+高速
+高速
+
+
+瞬時 Instant
+瞬時
+瞬時
+
+
+マウスホイールボタンの下回してメッセージを読み進める  Scroll text with mouse wheel
+マウスホイールボタンの下回してメッセージを読み進める
+
+
+本プログラムを遅くして、他のプログラムがスムーズに動作するようにする　Slow down program so other processes run smoother
+本プログラムを遅くして、他のプログラムがスムーズに動作するようにする
+
+
+ムービー設定　Movie settings
+ムービー設定
+ムービー設定
+
+
+クイックメニューA Quick menu A
+クイックメニューA
+クイックメニューA
+
+
+クイックメニューB  Quick menu B
+クイックメニューB
+クイックメニューB
+
+
+ウィンドウ消去 Clear window
+ウィンドウ消去
+ウィンドウ消去
+
+
+セーブ画面 Save screen
+セーブ画面
+セーブ画面
+
+
+ロード画面 Load screen
+ロード画面
+ロード画面
+
+
+コンフィッグ画面 Config screen
+コンフィッグ画面
+コンフィッグ画面
+
+
+ギャラリー画面 Gallery screen
+ギャラリー画面
+ギャラリー画面
+
+
+前回の画面 Previous tab
+前回の画面
+前回の画面
+
+
+標準ウィンドウ Window
+標準ウィンドウ
+標準ウィンドウ
+
+
+フルスクリーン Full screen
+フルスクリーン
+フルスクリーン
+
+
+詳細設定 Advanced settings
+詳細設定
+詳細設定
+
+
+既読文章のみ Already read only
+既読文章のみ
+既読文章のみ
+
+
+未読文章も含む All
+未読文章も含む
+未読文章も含む
+
+
+オートモード機能を使用する Use auto mode
+オートモード機能を使用する
+
+
+
+文字速度　　　　　　　オートモード設定
+
+　　　　　　　　　　　　　　　　　この機能を使用すると、指定の持ち時間が経過する事で自動的に
+　　　　　　　　　　　　　　　　　次の文章に進む事が出来ます。持ち時間は次の式で求められています。
+
+　　　　　　　　　　　　　　持ち時間＝（表示した文字ⅹ文字時間）＋最小時間
+ウィンドウ背景　　　　　　　　　　　　　　　文字時間　　秒
+　　　　　　　　　　　　　　　　　　　　　　　　最小時間　　秒
+　　　　　　　　　　　　　　　　　　　　　　　　１０文字表示した際の持ち時間　　秒
+
+Character speed                     Auto mode settings
+
+                                                    This function will display the next line after a set waiting time.
+                                                    Waiting time is calculated by the following formula.
+
+                                             Waiting time = (displayed letters x letter time) + time minimum 
+                                                     letter time       sec
+Window background                     time minimum       sec
+                                                     Amount of time for 10 displayed letters     sec                                                   
+
+
+
+ノーウェイト No wait
+ノーウェイト
+
+
+
+フォントの設定  Font settings
+フォントの設定
+フォントの設定
+
+
+
+
+音量設定　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　キャラクタ別音声
+
+
+　　　　　　　　　　　　　　　音声を発生した時にBGMの音量を下がる機能です。
+
+
+音声スピード設定
+
+　　　　　　　音声の再生速度を１～３倍速まで調整できます。
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　再生設定
+
+
+
+Sound setting                                                                                         Character voice
+
+
+                               This will lower bgm volume when the voice is being played.
+
+
+Voice speaker settings
+
+             It is possible to raise the voice replay seed in 1～3 times.
+                                                                                                            Playback settings
+
+
+
+その他　男  Other: Male
+その他　女  Other: Female
+
+
+
+神戸 小鳥
+鳳 ちはや  
+千里 朱音
+中津 静流
+此花 ルチア
+吉野 晴彦
+
+
+
+Kanbe Kotori
+Ohtori Chihaya
+Senri Akane
+Nakatsu Shizuru
+Konohana Lucia
+Yoshino Haruhiko
+
+
+
+全てON
+全てON  All ON 
+全てON
+
+
+
+全てOFF
+全てOFF All OFF
+全てOFF
+
+
+
+音声の再生中に次の文章に進んでも再生を続ける Continue playing voice after getting to next line
+音声の再生中に次の文章に進んでも再生を続ける
+
+
+
+全体 Entirely
+全体
+
+
+
+フェード使用 Use fade
+フェード使用
+
+
+
+音声 Voice
+音声
+
+
+
+効果音 Sound effects
+効果音
+
+
+
+システム音 System sounds
+システム音
+
+
+
+再生速度が標準（ⅹ1）の場合、スピード再生を有効にしても効果はありません。 If playback speed is set to default (x1), enabling acceleration won't have any effect.
+再生速度が標準（ⅹ1）の場合、スピード再生を有効にしても効果はありません。 
+
+
+
+音声のスピード再生を有効にする Apply voice playback speed
+音声のスピード再生を有効にする
+
+
+
+次回以降この確認を行わない Don't ask for this again
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+
+
+
+タイトルに戻りますか？ Return to the title?
+ゲームを終了しますか？ Quit the game?
+
+
+
+
+
+初期設定に戻す Return to default settings
+初期設定に戻す
+初期設定に戻す
+
+
+
+次回以降この確認を行わない Don't ask for this again
+次回以降この確認を行わない
+次回以降この確認を行わない
+
+
+
+前の選択肢に戻りますか？
+クイックセーブしますか？
+クイックロードしますか？
+タイトルに戻りますか？
+ゲームを終了しますか？
+メニューに戻りますか？
+
+Return to the previous choice?
+Quick save?
+Quick load?
+Return to the title?
+Are you sure you want to quit?
+Return to the menu?
+
+
+前の選択肢に戻ります 
+バックログを表示します
+音声をリプレイします
+音声のスピード再生をオン／オフします
+オートモード機能をオン／オフします
+メッセージスキップを開始／停止します
+既読メッセージの自動スキップ機能をオン／オフします
+メッセージウィンドウを閉じます
+クイックセーブします
+クイックロードします
+セーブ画面を表示します
+ロード画面を表示します
+タイトルに戻ります
+ゲームを終了します
+コンフィッグ画面を表示します
+
+Return to the previous choice
+Display the backlog
+Replay voice
+Turn the voice playback speed ON/OFF
+Turn auto-mode ON/OFF
+Start/stop message skip
+Auto skip of already read text ON/OFF
+Close message window
+Quick save
+Quick load
+Save screen
+Load screen
+Return to the title
+Quit the game
+Open config windows
+
+オートセーブしました
+クイックセーブしました
+
+Auto-saved 
+Quick-saved
+
+
+次回以降この確認を行わない Don't ask for this again
+次回以降この確認を行わない
+次回以降この確認を行わない
+
+
+
+前の選択肢に戻りますか？
+メニュー位置の固定
+
+Return to the previous choice?
+Set the menu location
+
+
+
+ゲームを終了する Quit the game
+ゲームを終了する
+ゲームを終了する
+
+
+
+
+タイトルに戻る  Return to the title
+タイトルに戻る
+タイトルに戻る
+
+
+
+
+ギャラリー  Gallery
+ギャラリー
+ギャラリー
+
+
+
+
+セーブ  Save
+セーブ
+セーブ
+
+
+
+ロード Load
+ロード
+ロード
+
+
+
+コンフィグ Config
+コンフィグ
+コンフィグ
+
+
+
+戻る Return
+戻る
+戻る
+
+
+
+次回以降この確認を行わない Don't ask for this again
+次回以降この確認を行わない
+次回以降この確認を行わない
+
+
+
+タイトルに戻りますか？
+ゲームを終了しますか？
+セーブしますか？
+上書きセーブしますか？
+上書きコピーしますか？
+削除しますか？
+
+Return to the title?
+Are you sure you want to quit?
+Save the game?
+Overwrite this data?
+Write the copy over this data?
+Delete the data?
+
+
+
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・新しく作成されたセーブデータです。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+(1) Saving the data
+(2) Changing page
+     1～20 ... common save data
+      
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・新しく作成されたセーブデータです。
+　   next! ・・・次回のオートセーブに使用されるセーブエリアです
+　　　　　　 既存のセーブデータは上書きされます。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・クイックセーブによって新しく作成されたセーブデータです。
+　　　　　　 クイックロード時にロードされます。
+　   next! ・・・次回のクイックセーブに使用されるセーブエリアです
+　　　　　　 既存のセーブデータは上書きされます。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+
+Page　　／20　　通常のセーブデータです。
+自由に使用することがでくます。
+オートセーブの履歴です。ゲーム中の日付が変わるときに自動的にセーブデータが作成されます。
+【Exchange】選択した2つのセーブデータの位置を入れ替えます。
+【Copy】最初に選択したセーブデータを次に選択したセーブデータへコピーします。
+【Delete】選択されたセーブデータを削除します。
+
+
+
+セーブ中・・・
+セーブしました
+
+Saving...
+Saved
+
+
+オートセーブ履歴では、すべてのセーブデータをロックすることはできません。
+クイックセーブれ暦では、すべてのセーブデータをロックすることはできません。
+
+
+
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+次回以降この確認を行わない
+
+
+
+タイトルに戻りますか？
+ゲームを終了しますか？
+ロードしますか？
+上書きコピーしますか？
+削除しますか？
+
+
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・新しく作成されたセーブデータです。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・新しく作成されたセーブデータです。
+　   next! ・・・次回のオートセーブに使用されるセーブエリアです
+　　　　　　 既存のセーブデータは上書きされます。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+
+(1)データをセーブします。
+(2)ページを切り替えします
+　　１～２０・・・通常のセーブデータ
+　　A・・・オートセーブ履歴
+　　Q・・・クイックセーブ履歴
+(3)クリックすると度ｎいセーブデータが選択／解除されます。
+　　セーブデータ同士の位置を入れ替えたり、ゴミ箱でセーブデータの削除ができます。
+　　またCopyをクリックするとコピー先を選択することでセーブデータのコピーを行うことできます。
+（ドラッグ操作でも入れ替え・コピー・削除が可能です）
+(4)セーブデータをロックして、上書きセーブ・
+　　上書きコピー・削除ができないようにします。
+(5)クリックするとコメントが入力できるようになるます。
+テキストを入力した後は、Enterキーまたは画面を
+クリックすることでコメントとして保存されます。
+(6) new! ・・・クイックセーブによって新しく作成されたセーブデータです。
+　　　　　　 クイックロード時にロードされます。
+　   next! ・・・次回のクイックセーブに使用されるセーブエリアです
+　　　　　　 既存のセーブデータは上書きされます。
+(7)ヘルプを表示します。
+(8)ゴミ箱です。選択されたセーブデータを削除します。
+
+
+
+
+セーブデータを入れ替えました
+セーブデータをコピーしました
+セーブデータを削除しました
+
+
+
+Page　　／20　　通常のセーブデータです。
+自由に使用することがでくます。
+オートセーブの履歴です。ゲーム中の日付が変わるときに自動的にセーブデータが作成されます。
+【Exchange】選択した2つのセーブデータの位置を入れ替えます。
+【Copy】最初に選択したセーブデータを次に選択したセーブデータへコピーします。
+【Delete】選択されたセーブデータを削除します。
+
+
+
+
+オートセーブ履歴では、すべてのセーブデータをロックすることはできません。
+クイックセーブれ暦では、すべてのセーブデータをロックすることはできません。
+
+
+
+「Rewrite」体験版をプレイしていただき、
+まことにありがとうございます。
+お楽しみいただけましたでしょうか。
+今回の収録分はほんの序盤部分となっており、これから
+物語は大きく動いていくことになります。
+そちらにもぜひご期待ください。
+
+また、製品のクオリティについてですが、今回の体験版はまだまだお詰めの甘い段階となっております。
+演出、音響はもちろん、テキストについても、細かな
+キャラクターのせりふの見直し、すり合わせを行うなど、
+現在修正を随時行っている状態です。
+グラフィックにつきましても、今回は残念ながら収録でき
+なかった箇所があるます。
+製品版では、体験版部分もさらにパワーアップしたものをお届けします。
+
+今回の体験版について、皆様のを教訓、課題とし、
+様々な意見を取り入れ行きたいとも考えております。
+
+それでは製品版まで今しばらくお待ちください。
+ご期待に添えられる、もしくはそれ以上の作品を目指して
+行きたいと思います！
+応援、よろしくお願いします。
+
+
+
+
+開発室からの
+メッセージ
+
+
+
+ベンチマーク
+ちはやローリング
+
+
+
+この作品はフィクシェンです。
+立場する人物・団体・地名・事件および職業などすべて架空のものであり、
+実在のものとは一切関係ありません。
+
+この製品の著作権を含む一切の権利は株式会社ビジュアルアーツが保有しています。
+当社の許諾を得ずに賃貸業に使用すること、私的使用その他法律によって明示的に
+認められる範囲を超えて、複製、改変、ネットワーク上へのアップロード、P2P
+ソフトでの交換・送信・頒布することを禁止します。 
+
+また最近動画サイトなどへ違法アップロード多くなっております。
+デモ動画を除く本ゲーム内の楽曲や画像、プレイ動画などを無断でアップロードすることはご遠慮ください。

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+	<Protection
+		InputFileName=".\LeyLine2_CN.exe"
+		Options="256"
+		CompressionMode="1"
+		>
+		<Messages
+		/>
+		<Folders
+		/>
+		<Procedures
+		/>
+	</Protection>
+	<Script
+	/>
+</Document>

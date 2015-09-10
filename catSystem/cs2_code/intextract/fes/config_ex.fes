@@ -1,0 +1,659 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+SOUND se1
+SOUND se2
+SOUND voice
+#OBJECT GROUP STYPE
+se1 se 1
+se2 se 1
+voice pcm 2
+#SYSVOICE
+sysvoice 813
+debug $813
+if ($814==13)
+se1 load se803
+se1 play 1
+break
+endif
+if ($814==14)
+se2 load se804
+se2 play 1
+break
+endif
+if ($813<0)
+if ($814<=12)
+se2 load se804
+se2 play 1 0
+endif
+break
+endif
+voice blend 100
+if ($814==1)
+if ($813==0)
+voice load Asys_001
+endif
+if ($813==1)
+voice load Bsys_001
+endif
+if ($813==2)
+voice load Csys_001
+endif
+if ($813==3)
+voice load Dsys_001
+endif
+if ($813==4)
+voice load Esys_001
+endif
+voice play 1 0
+break
+endif
+if ($814==2)
+if ($813==0)
+voice load Asys_002
+endif
+if ($813==1)
+voice load Bsys_002
+endif
+if ($813==2)
+voice load Csys_002
+endif
+if ($813==3)
+voice load Dsys_002
+endif
+if ($813==4)
+voice load Esys_002
+endif
+voice play 1 0
+break
+endif
+if ($814==3)
+if ($813==0)
+voice load Asys_003
+endif
+if ($813==1)
+voice load Bsys_003
+endif
+if ($813==2)
+voice load Csys_003
+endif
+if ($813==3)
+voice load Dsys_003
+endif
+if ($813==4)
+voice load Esys_003
+endif
+voice play 1 0
+break
+endif
+if ($814==4)
+if ($813==0)
+voice load Asys_004
+endif
+if ($813==1)
+voice load Bsys_004
+endif
+if ($813==2)
+voice load Csys_004
+endif
+if ($813==3)
+voice load Dsys_004
+endif
+if ($813==4)
+voice load Esys_004
+endif
+voice play 1 0
+break
+endif
+if ($814==5)
+if ($813==0)
+voice load Asys_005
+endif
+if ($813==1)
+voice load Bsys_005
+endif
+if ($813==2)
+voice load Csys_005
+endif
+if ($813==3)
+voice load Dsys_005
+endif
+if ($813==4)
+voice load Esys_005
+endif
+voice play 1 0
+break
+endif
+if ($814==6)
+if ($813==0)
+voice load Asys_006
+endif
+if ($813==1)
+voice load Bsys_006
+endif
+if ($813==2)
+voice load Csys_006
+endif
+if ($813==3)
+voice load Dsys_006
+endif
+if ($813==4)
+voice load Esys_006
+endif
+voice play 1 0
+break
+endif
+if ($814==7)
+if ($813==0)
+voice load Asys_007
+endif
+if ($813==1)
+voice load Bsys_007
+endif
+if ($813==2)
+voice load Csys_007
+endif
+if ($813==3)
+voice load Dsys_007
+endif
+if ($813==4)
+voice load Esys_007
+endif
+voice play 1 0
+break
+endif
+if ($814==8)
+if ($813==0)
+voice load Asys_008
+endif
+if ($813==1)
+voice load Bsys_008
+endif
+if ($813==2)
+voice load Csys_008
+endif
+if ($813==3)
+voice load Dsys_008
+endif
+if ($813==4)
+voice load Esys_008
+endif
+voice play 1 0
+break
+endif
+if ($814==9)
+if ($813==0)
+voice load Asys_009
+endif
+if ($813==1)
+voice load Bsys_009
+endif
+if ($813==2)
+voice load Csys_009
+endif
+if ($813==3)
+voice load Dsys_009
+endif
+if ($813==4)
+voice load Esys_009
+endif
+voice play 1 0
+break
+endif
+if ($814==10)
+if ($813==0)
+voice load Asys_010
+endif
+if ($813==1)
+voice load Bsys_010
+endif
+if ($813==2)
+voice load Csys_010
+endif
+if ($813==3)
+voice load Dsys_010
+endif
+if ($813==4)
+voice load Esys_010
+endif
+voice play 1 0
+break
+endif
+if ($814==11)
+if ($813==0)
+voice load Asys_011
+endif
+if ($813==1)
+voice load Bsys_011
+endif
+if ($813==2)
+voice load Csys_011
+endif
+if ($813==3)
+voice load Dsys_011
+endif
+if ($813==4)
+voice load Esys_011
+endif
+voice play 1 0
+break
+endif
+if ($814==12)
+if ($813==0)
+voice load Asys_012
+endif
+if ($813==1)
+voice load Bsys_012
+endif
+if ($813==2)
+voice load Csys_012
+endif
+if ($813==3)
+voice load Dsys_012
+endif
+if ($813==4)
+voice load Esys_012
+endif
+voice play 1 0
+break
+endif
+if ($814==15)
+if ($813==0)
+voice load ASYSTEM_002
+endif
+if ($813==1)
+voice load BSYSTEM_002
+endif
+if ($813==2)
+voice load CSYSTEM_002
+endif
+if ($813==3)
+voice load DSYSTEM_002
+endif
+if ($813==4)
+voice load ESYSTEM_002
+endif
+voice play 1 0
+break
+endif
+if ($814==16)
+if ($813==0)
+voice load ASYSTEM_001
+endif
+if ($813==1)
+voice load BSYSTEM_001
+endif
+if ($813==2)
+voice load CSYSTEM_001
+endif
+if ($813==3)
+voice load DSYSTEM_001
+endif
+if ($813==4)
+voice load ESYSTEM_001
+endif
+voice play 1 0
+break
+endif
+#PRELOAD
+s_cnf
+#DEFINE
+CPLANE topmask
+CIMAGE bg_white
+PLANE pl
+IMAGE bg[2]
+BUTTON btn[18]
+IMAGE btni3[18]
+BUTTON sbtn[3]
+SLIDER slider[8]
+STRING str
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00ffffff 20000 1024,768 0
+#OBJECT COLOR SIZE PRI DISP PL
+bg_white 0xffffffff 1024,768 1000 0 pl
+#OBJECT POS BASE PRI VRAM SIZE DISP
+pl 0,0 0,0 5000 0,0 1024,768 0
+#OBJECT FILE ID.0 PRI
+bg[0] s_cnf 0 51
+bg[1] s_cnf 2 52
+#OBJECT FILE ID.0 PRI
+btn[0] s_cnf 1400 100
+btn[1] s_cnf 1401 101
+btn[2] s_cnf 1402 102
+btn[3] s_cnf 1403 103
+btn[4] s_cnf 1404 104
+btn[5] s_cnf 1405 105
+btn[6] s_cnf 1406 106
+btn[7] s_cnf 1407 107
+btn[8] s_cnf 1408 108
+btn[9] s_cnf 1409 109
+btn[10] s_cnf 1410 110
+btn[11] s_cnf 1411 111
+btn[12] s_cnf 1412 112
+btn[13] s_cnf 1413 113
+btn[14] s_cnf 1414 114
+btn[15] s_cnf 1415 115
+btn[16] s_cnf 1416 116
+btn[17] s_cnf 1417 117
+#OBJECT FILE ID.0 PRI
+btni3[0] s_cnf 1300 400
+btni3[1] s_cnf 1301 401
+btni3[2] s_cnf 1302 402
+btni3[3] s_cnf 1303 403
+btni3[4] s_cnf 1304 404
+btni3[5] s_cnf 1305 405
+btni3[6] s_cnf 1306 406
+btni3[7] s_cnf 1307 407
+btni3[8] s_cnf 1308 408
+btni3[9] s_cnf 1309 409
+btni3[10] s_cnf 1310 410
+btni3[11] s_cnf 1311 411
+btni3[12] s_cnf 1312 412
+btni3[13] s_cnf 1313 413
+btni3[14] s_cnf 1314 414
+btni3[15] s_cnf 1315 415
+btni3[16] s_cnf 1316 416
+btni3[17] s_cnf 1317 417
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI
+sbtn[0] s_cnf 1200 1201 1202 1203 500
+sbtn[1] s_cnf 1210 1211 1212 1213 501
+sbtn[2] s_cnf 1220 1221 1222 1223 502
+#OBJECT FILE POS2 PRI
+slider[0] s_cnf_gauge s_cnf:2000 700
+slider[1] s_cnf_gauge s_cnf:2001 710
+slider[2] s_cnf_gauge s_cnf:2002 720
+slider[3] s_cnf_gauge s_cnf:2003 730
+slider[4] s_cnf_gauge s_cnf:2004 740
+slider[5] s_cnf_gauge s_cnf:2005 750
+slider[6] s_cnf_gauge s_cnf:2006 760
+slider[7] s_cnf_gauge s_cnf:2007 770
+#OBJECT VRAM POS2 SIZE2 PRI
+str 512,3072 s_cnf:3000 s_cnf:3000 6000
+#OBJECT PL DISP DEFAULT
+bg pl 1
+btn pl 0 btndef
+btni3 pl 0
+sbtn pl 1
+slider pl 1
+#START
+if ($801==0)
+baseimg
+topmask disp 1
+topmask blend 255
+endif
+keyskip off
+call DISABLE_ALL_BUTTON
+wait 1
+sbtn[2] disp 1
+slider[0] page 0 100
+slider[1] page 0 100
+slider[2] page 0 10
+slider[3] page 0 10
+slider[4] page 0 100
+slider[5] page 0 100
+slider[6] page 0 100
+slider[7] page 0 100
+getconf 852 messpd
+getconf 853 autospd
+getconf 854 wndcolor
+$854 >>= 24
+getconf 855 effspd
+getconf 863 effcut
+getconf 850 vol_bgm
+getconf 851 vol_se
+getconf 891 vol_play
+getconf 892 autospd_b
+getconf 893 autospd_c
+call STRLAYOUT
+str str \pc½
+$856 = $670
+$857 = $671
+\100 = $852
+slider[0] pos $850
+slider[1] pos $851
+slider[2] pos 10-$852
+slider[3] pos 10-$853
+slider[4] pos $854
+slider[5] pos $855
+slider[6] pos $856
+slider[7] pos $857
+call SETBUTTON
+smpbg blend $854*255/100
+$890 = -1
+wait 1
+if ($801==0)
+pl disp 1
+topmask fade 30 255 0
+else
+pl disp 1
+pl fade 30 0 255
+$814 = 13
+call SYSVOICE
+endif
+wait
+str disp 1
+btn enable 1
+slider enable 1
+sbtn enable 1
+next WAIT
+#WAIT
+if (_CLICK_R_!=0)
+next EXIT
+endif
+#EXIT
+$814 = 107
+call SYSVOICE
+call DISABLE_ALL_BTN
+str disp 0
+if ($801==0)
+baseimg bg_white
+topmask fade 30 0 255
+else
+pl fade 30 255 0
+endif
+wait
+exit -2
+next SLEEP
+#SLEEP
+#btn.PUSH_L
+if ($(870+@))
+call CHANGECHECKBOX
+call SETBUTTON
+call CHANGECONFIG
+$814 = 105
+call SYSVOICE
+endif
+if (@==6||@==7)
+call STRLAYOUT
+endif
+#sbtn.FOCUS
+@ setid 2
+$890 = @
+#sbtn.UNFOCUS
+@ setid 0
+$890 = -1
+#sbtn.PUSH_L
+if ($890!=-1)
+@ setid 3
+if (@==0)
+next CONFRESET
+endif
+if (@==1)
+next EXIT
+endif
+if (@==2)
+next GO_VCONF
+endif
+endif
+#slider.SCRL_P
+$814 = 108
+call SYSVOICE
+if (@==0)
+slider[@] getpos $850
+call CALCNUM
+setconf $850 vol_bgm
+if ($891>$850)
+$891 = $850 - 40
+if ($891<=0)
+$891 = 0
+endif
+setconf $891 vol_play
+endif
+endif
+if (@==1)
+slider[@] getpos 851
+call CALCNUM
+setconf $851 vol_se
+endif
+if (@==2)
+slider[@] getpos 852
+call CALCNUM
+$852 = 10 - $852
+setconf $852 messpd
+\100 = $852
+endif
+if (@==3)
+slider[@] getpos 853
+call CALCNUM
+$853 = 10 - $853
+setconf $853 autospd
+getconf 892 autospd_b
+getconf 893 autospd_c
+endif
+if (@==4)
+slider[@] getpos 854
+call CALCNUM
+setconf $854<<24 wndcolor
+smpbg blend $854*255/100
+endif
+if (@==5)
+slider[@] getpos 855
+call CALCNUM
+setconf $855 effspd
+endif
+if (@==6)
+slider[@] getpos 856
+call CALCNUM
+$670 = $856
+endif
+if (@==7)
+slider[@] getpos 857
+call CALCNUM
+$671 = $857
+endif
+if ($863)
+btni3[6] disp 1
+btni3[7] disp 0
+$876 = 0
+else
+btni3[6] disp 0
+btni3[7] disp 1
+$877 = 0
+endif
+if ($864)
+btni3[8] disp 1
+btni3[9] disp 0
+$878 = 0
+else
+btni3[8] disp 0
+btni3[9] disp 1
+$879 = 0
+endif
+if ($865)
+btni3[10] disp 1
+btni3[11] disp 0
+$880 = 0
+else
+btni3[10] disp 0
+btni3[11] disp 1
+$881 = 0
+endif
+if ($866)
+btni3[12] disp 1
+btni3[13] disp 0
+$882 = 0
+else
+btni3[12] disp 0
+btni3[13] disp 1
+$883 = 0
+endif
+if ($867)
+btni3[14] disp 1
+btni3[15] disp 0
+$884 = 0
+else
+btni3[14] disp 0
+btni3[15] disp 1
+$885 = 0
+endif
+if ($868)
+btni3[16] disp 1
+btni3[17] disp 0
+$886 = 0
+else
+btni3[16] disp 0
+btni3[17] disp 1
+$887 = 0
+endif
+smpbg blend $854*255/100
+#CHANGECONFIG
+setconf $855 effspd
+setconf $863 effcut
+#STRLAYOUT
+str reset
+str layout vdraw 1
+str layout size 16
+str layout margin 0 2 0 0
+str layout frame $852
+#RESET
+$852 = 4
+$853 = 4
+$854 = 90
+$855 = 0
+$863 = 0
+$850 = 70
+$851 = 90
+$891 = 55
+setconf $852 messpd
+setconf $853 autospd
+setconf $854<<24 wndcolor
+setconf $855 effspd
+setconf $863 effcut
+setconf $850 vol_bgm
+setconf $851 vol_se
+setconf $891 vol_play
+call SETBUTTON
+call STRLAYOUT
+\100 = $852
+$814 = 106
+call SYSVOICE
+#GO_VCONF
+$814 = 105
+call SYSVOICE
+call DISABLE_ALL_BTN
+execfes config_v
+wait 1
+next VCONF_WAIT
+#VCONF_WAIT
+if (_EXITCODE_!=-1)
+endfes
+sbtn[2] setid 0
+btn enable 1
+slider enable 1
+sbtn enable 1
+next WAIT
+endif

@@ -1,0 +1,7 @@
+ATField.DAT 使用TextTool里面的text_packet.exe包装,文本根据sens.txt生成
+
+目前汉化需要使用的文件只有4个..(图片以后再说……)
+LeyLine_CN.exe   -> 修正过的程序
+ATField.ini      -> 可修改字体文件
+ATField.dll      -> 汉化修正程序
+ATField.DAT      -> 汉化的文本

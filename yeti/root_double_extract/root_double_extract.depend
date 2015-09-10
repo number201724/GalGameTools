@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1374405323 source:c:\users\administrator\desktop\root_double_extract\root_double_extract\main.cpp
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1379900886 source:h:\yeti\root_double_extract\main.cpp
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<windows.h>
+

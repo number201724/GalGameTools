@@ -1,0 +1,366 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+cgmode
+cg_scroll
+cg_r0
+cg_r1
+cg_r2
+#DEFINE
+CPLANE topmask
+CIMAGE bg_white
+IMAGE bg
+BUTTON thumb_btn[12]
+IMAGE thumbnail[12]
+IMAGE cursor
+BUTTON sysbtn[2]
+IMAGE help[4]
+IMAGE sysnotbtn
+BUTTON page[2]
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00000000 20000 1024,768 1
+#OBJECT COLOR PRI SIZE DISP PL
+bg_white 0xffffffff 1000 1024,768 0 pl[1]
+#OBJECT FILE ID.0 PRI
+bg cgmode 1 10
+#OBJECT FILE ID.0 ID.1 PRI
+sysbtn[0] cgmode 100 110 51
+sysbtn[1] cgmode 102 112 52
+#OBJECT FILE ID.0 ID.1 ID.2 PRI
+page[0] cgmode 200 210 220 60
+page[1] cgmode 201 211 221 61
+#OBJECT FILE ID.0 POS2 PRI
+thumb_btn[0] cg_r0 1000 cgmode:2000 200
+thumb_btn[1] cg_r0 1000 cgmode:2001 201
+thumb_btn[2] cg_r0 1000 cgmode:2002 202
+thumb_btn[3] cg_r0 1000 cgmode:2003 203
+thumb_btn[4] cg_r0 1000 cgmode:2004 204
+thumb_btn[5] cg_r0 1000 cgmode:2005 205
+thumb_btn[6] cg_r0 1000 cgmode:2006 206
+thumb_btn[7] cg_r0 1000 cgmode:2007 207
+thumb_btn[8] cg_r0 1000 cgmode:2008 208
+thumb_btn[9] cg_r0 1000 cgmode:2009 209
+thumb_btn[10] cg_r0 1000 cgmode:2010 210
+thumb_btn[11] cg_r0 1000 cgmode:2011 211
+#OBJECT FILE ID.0 POS2 PRI
+thumbnail[0] cg_r0 10000 cgmode:2000 250
+thumbnail[1] cg_r0 10000 cgmode:2001 251
+thumbnail[2] cg_r0 10000 cgmode:2002 252
+thumbnail[3] cg_r0 10000 cgmode:2003 253
+thumbnail[4] cg_r0 10000 cgmode:2004 254
+thumbnail[5] cg_r0 10000 cgmode:2005 255
+thumbnail[6] cg_r0 10000 cgmode:2006 256
+thumbnail[7] cg_r0 10000 cgmode:2007 257
+thumbnail[8] cg_r0 10000 cgmode:2008 258
+thumbnail[9] cg_r0 10000 cgmode:2009 259
+thumbnail[10] cg_r0 10000 cgmode:2010 260
+thumbnail[11] cg_r0 10000 cgmode:2011 261
+#OBJECT FILE ID.0 POS2 PRI
+cursor cg_r0 10001 cgmode:2000 300
+#OBJECT PL DISP TYPE
+bg pl[1] 1
+sysbtn pl[1] 1 1
+help pl[1] 0
+sysnotbtn pl[1] 1
+thumb_btn pl[1] 0 0
+thumbnail pl[1] 1
+cursor pl[2] 0
+page pl[1] 1 0
+#OBJECT BLEND DISP
+pl 0 1
+#KEYBLOCK 3
+0 2,1 -1,2,-1,1
+1 3,3 -1,2,0,-1
+2 3,1 1,-1,0,-1
+#OBJECT KEYBLOCK
+page[0] 0,0,0
+page[1] 0,1,0
+thumb_btn[0] 1,0,0
+thumb_btn[1] 1,1,0
+thumb_btn[2] 1,2,0
+thumb_btn[3] 1,0,1
+thumb_btn[4] 1,1,1
+thumb_btn[5] 1,2,1
+thumb_btn[6] 1,0,2
+thumb_btn[7] 1,1,2
+thumb_btn[8] 1,2,2
+sysbtn[0] 2,0,0
+sysbtn[1] 2,1,0
+sysbtn[2] 2,2,0
+sysbtn[3] 2,3,0
+#START
+call DISABLE_BUTTON
+\190 = 710
+$(\190) = 1
+\100 = 1
+\101 = 4
+\102 = 3
+\103 = \101 * \102
+\109 = 0
+\111 = 14
+\120 = 0
+\121 = \111
+\122 = 0
+\200 = 0
+\203 = 0
+$560 = 0
+thumbnail[0] getpos 554 555
+cursor pos $554 $555
+\109 = 0
+\108 = 0
+next REGCOUNT
+#REGCOUNT
+if (\109>\100)
+next REGCOUNT_3
+endif
+next REGCOUNT_2
+#REGCOUNT_2
+if (\108<\(110+\109+1))
+if ($(\190+(\109+1)*10+\108+1))
+\122++
+endif
+\108++
+next REGCOUNT_2
+endif
+\108 = 0
+\109++
+next REGCOUNT
+#REGCOUNT_3
+next SET_BUTTON
+#SET_BUTTON
+pl[2] stop
+if ($521==0)
+\110 = 0
+endif
+if ($521==0)
+thumbnail load cg_r0
+\120 = \111
+endif
+\203 = 0
+page enable 1
+page setid 0
+if (\120>\103)
+\203 = 1
+page[$560] setid 1
+page[$560] enable 0
+endif
+next SET_BUTTON2
+#SET_BUTTON2
+thumb_btn enable 0
+thumbnail disp 0
+thumbnail setid 0
+\199 = $560 * \103
+\109 = 0
+next SET_BUTTON3
+#SET_BUTTON3
+if (\109>=\103)
+next SET_BUTTON4
+endif
+$(530+\109) = $(\190+($521+1)+\199+\109+1)
+if ($(710+\109+1)!=0)
+thumbnail[\109] settbl 1 \199+\109
+thumbnail[\109] setid 1
+endif
+if (\199+\109<\120)
+thumbnail[\109] disp 1
+thumb_btn[\109] enable 1
+endif
+\109++
+next SET_BUTTON3
+#SET_BUTTON4
+pl[1] blend 255
+if (\200==0)
+topmask fade 20 255 0
+wait
+baseimg
+endif
+\200 = 1
+wait 1
+page lock 1
+thumb_btn lock 1
+sysbtn lock 1
+sysbtn enable 1
+next SEL_WAIT
+#SEL_WAIT
+if (_CLICK_R_!=0)
+next END
+endif
+if (_CLICK_L_==sysbtn[0])
+next END
+endif
+if (_CLICK_L_==sysbtn[1])
+next GO_CG
+endif
+#END
+call DISABLE_BUTTON
+wait 1
+topmask color 0x00ffffff
+topmask disp 1
+wait 1
+topmask fade 30 0 255
+wait 30
+baseimg bg_white
+exit -2
+next SLEEP
+#QUIT
+$850 = 0
+execfes conf
+next QUIT_WAIT
+#QUIT_WAIT
+if (_EXITCODE_==1)
+call DISABLE_BUTTON
+endfes
+next QUIT2
+endif
+if (_EXITCODE_==0)
+cursor disp 0
+endfes
+next SEL_WAIT
+endif
+#QUIT2
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit -3
+next SLEEP
+#SLEEP
+#GO_SCENE
+cursor disp 0
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit 21
+next SLEEP
+#GO_CG
+cursor disp 0
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit 10
+next SLEEP
+#GO_MUS
+cursor disp 0
+baseimg
+call DISABLE_BUTTON
+wait 1
+pl[1] fade 30 255 0
+wait
+exit 13
+next SLEEP
+#CHANGEPAGE
+$560=\250
+next SET_BUTTON
+#sysbtn.FOCUS
+@ setid 1
+#sysbtn.UNFOCUS
+@ setid 0
+#sysbtn.PUSH_L
+@ setid 1
+#thumb_btn.FOCUS
+if ($(710+@+1))
+thumbnail[@] getpos 554 555
+cursor pos $554 $555
+cursor disp 1
+pl[2] mcfade 60 255 96
+wait 1
+else
+cursor disp 0
+pl[2] stop
+endif
+#thumb_btn.UNFOCUS
+if ($(710+@+1))
+cursor disp 0
+pl[2] stop
+endif
+#thumb_btn.PUSH_L
+if ($(710+@))
+$(\190) = ($521+1)+\199+@
+call RC_DEC
+next GO_SCENE
+endif
+#page.FOCUS
+@ setid 1
+#page.UNFOCUS
+@ setid 0
+#page.PUSH_L
+@ setid 2
+\250 = @
+next CHANGEPAGE
+#DISABLE_BUTTON
+sysbtn enable 0
+thumb_btn enable 0
+pl[2] blend 0
+pl[2] stop
+#RC_DEC
+strvar 200 00_sample_select
+if ($(\190)==1)
+strvar 200 him02
+endif
+if ($(\190)==2)
+strvar 200 him04
+endif
+if ($(\190)==3)
+strvar 200 him05
+endif
+if ($(\190)==4)
+strvar 200 him06
+endif
+if ($(\190)==5)
+strvar 200 him08
+endif
+if ($(\190)==6)
+strvar 200 him09
+endif
+if ($(\190)==7)
+strvar 200 him10
+endif
+if ($(\190)==8)
+strvar 200 hrm02
+endif
+if ($(\190)==9)
+strvar 200 hrm04
+endif
+if ($(\190)==10)
+strvar 200 hrm07
+endif
+if ($(\190)==11)
+strvar 200 hrm10
+endif
+if ($(\190)==12)
+strvar 200 hrm12
+endif
+if ($(\190)==13)
+strvar 200 hrm14
+endif
+if ($(\190)==14)
+strvar 200 hrm15
+endif

@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: NumberFileStream - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPFA.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fr"Debug/" /Fp"Debug/NumberFileStream.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DRACU-RIOT!\PSBReader_Sources\NumberFileStream\NumberFileStreamDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPFA.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPFB.tmp" with contents
+[
+bufferoverflowu.lib /nologo /subsystem:windows /incremental:no /pdb:"Debug/NumberFileStream.pdb" /debug /machine:I386 /nodefaultlib:"msvcrt.lib" /out:"Debug/NumberFileStream.exe" /pdbtype:sept 
+".\Debug\FileStream.obj"
+".\Debug\NumberFileStream.obj"
+".\Debug\NumberFileStreamDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\NumberFileStream.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPFB.tmp"
+<h3>Output Window</h3>
+Compiling...
+NumberFileStreamDlg.cpp
+Linking...
+LINK : warning LNK4075: ignoring /EDITANDCONTINUE due to /INCREMENTAL:NO specification
+LINK : warning LNK4049: locally defined symbol "_malloc" imported
+LINK : warning LNK4049: locally defined symbol "_free" imported
+Creating command line "bscmake.exe /nologo /o"Debug/NumberFileStream.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\FileStream.sbr" ".\Debug\NumberFileStream.sbr" ".\Debug\NumberFileStreamDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+NumberFileStream.exe - 0 error(s), 3 warning(s)
+</pre>
+</body>
+</html>

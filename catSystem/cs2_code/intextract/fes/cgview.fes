@@ -1,0 +1,198 @@
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#PRELOAD
+cg_tool
+cg_tool_f
+#DEFINE
+IMAGE cg
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI
+tool[0] cg_tool 100 101 102 103 101
+tool[1] cg_tool 200 201 202 203 102
+tool[2] cg_tool 300 301 302 303 103
+tool[3] cg_tool 400 401 402 403 104
+tool[4] cg_tool 500 501 502 503 105
+tool[5] cg_tool 0 0 0 0 100
+#OBJECT FILE
+now cg_tool_f
+max cg_tool_f
+#OBJECT ID.0 ID.1 ID.2 ID.3 ID.4 ID.5 ID.6 ID.7 ID.8 ID.9
+now 0 1 2 3 4 5 6 7 8 9
+max 0 1 2 3 4 5 6 7 8 9
+#OBJECT PRI POS2
+now[0] 200 cg_tool:1000
+now[1] 201 cg_tool:1001
+max[0] 202 cg_tool:1002
+max[1] 203 cg_tool:1003
+#OBJECT PRI
+cg 0
+#OBJECT PL DISP
+cg pl[0] 1
+tool pl[1] 1
+now pl[1] 1
+max pl[1] 1
+#OBJECT FILE POS2 VRAM PRI PRI_P
+scrl cg_scroll cgv_slider:1001 1984,0 500 10000
+#OBJECT FILE POS2 PRI
+sld_b cg_slider_base cgv_slider:1002 501
+slid cg_slider cgv_slider:1003 502
+#OBJECT PL DISP
+sld_b pl[1] 0
+slid pl[1] 0
+#START
+cgreg_init savegen.dat 0x50 config.int/cglist.dat
+scrl enable 0
+scrl disp 0
+sld_b disp 0
+slid enable 0
+slid disp 0
+\120 = 0
+\121 = 0
+\200 = 1
+\201 = 0
+\202 = 0
+\203 = 0
+\210 = 45
+\219 = \210
+$561 = 0
+$562 = 0
+$563 = _MOUSE_X_
+$564 = _MOUSE_Y_
+next CHECK_MAX
+#CHECK_MAX
+cgregnum $522 523
+$524 = 1
+next CG_LOAD
+#CG_LOAD
+cg loadlist2 0 $522 $524-1 0
+if ($521==0)
+\120 = 0
+\121 = 0
+endif
+cg pos \120 \121
+if ($522==20)
+cg pos 128 84
+endif
+if ($522==19)
+cg pos 200 60
+endif
+next CG_IN
+#CG_IN
+wait 1
+pl[1] disp 1
+pl[0] disp 1
+if (\200==1)
+pl[0] fade 30 0 255
+endif
+\200 = 0
+now[0] setid $524/10
+now[1] setid $524%10
+max[0] setid $523/10
+max[1] setid $523%10
+wait 1
+\201 = 0
+\202 = 0
+cg getsize 552 553
+if (($553>600)&&($521!=0))
+scrl page 0 $553 600
+\201 = 1
+endif
+if (($552>800)&&($521!=0))
+slid page 0 $552-800
+\202 = 1
+endif
+scrl enable \201
+scrl disp \201
+sld_b disp \202
+slid enable \202
+slid disp \202
+next WAIT
+#WAIT
+if (_CLICK_R_!=0)
+next EXIT
+endif
+if ((_CLICK_L_==-1)&&($524==$523))
+next EXIT
+endif
+if ((_CLICK_L_==-1)&&($524<$523))
+$524++
+\219=\210
+pl[1] stop
+pl[1] blend 255
+next CG_LOAD
+endif
+if ((_PAGE_U_==-1)&&($524>1&&$523>1))
+$524--
+\219=\210
+pl[1] stop
+pl[1] blend 255
+next CG_LOAD
+endif
+if ((_PAGE_D_==-1)&&($524<$523))
+$524++
+\219=\210
+pl[1] stop
+pl[1] blend 255
+next CG_LOAD
+endif
+if (($563!=_MOUSE_X_)||($564!=_MOUSE_Y_))
+next MOVE
+endif
+if (\219>0)
+\219--
+endif
+if (\203==1)
+\219=\210
+endif
+if (\219==0)
+pl[1] fade 16 255 0
+scrl disp 0
+sld_b disp 0
+slid disp 0
+endif
+#MOVE
+$563 = _MOUSE_X_
+$564 = _MOUSE_Y_
+if (\219<=0)
+pl[1] stop
+pl[1] blend 255
+scrl enable \201
+scrl disp \201
+sld_b disp \202
+slid enable \202
+slid disp \202
+endif
+\219 = 210
+next WAIT
+#CG_OUT
+next CG_LOAD
+#EXIT
+scrl disp 0
+pl[1] disp 0
+pl[0] fade 30 255 0
+wait
+exit 25
+next SLEEP
+#SLEEP
