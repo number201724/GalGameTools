@@ -1,0 +1,23 @@
+
+
+
+
+
+
+
+
+
+*B11_01a
+
+AS
+
+BG EC_neko, 2000
+EV.S EC_neko
+WA 2000
+
+
+
+
+
+goto *B11_01b
+

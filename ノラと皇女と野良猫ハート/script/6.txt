@@ -1,0 +1,44 @@
+
+*ER
+string s_BGM_54
+getMode %0:if(((%0&4) && !(%0&16)) || (%0&8)) draw:return
+gosub *FS
+makeSave
+if(%Replay) cal %SaveLoad=1
+else cal %Replay=1,%SaveLoad=0
+
+sd 0,"bgm/BGM_54.ogg",0,0,50,0,1,0
+BG BLACK, 1
+
+cal %250=6000:MV.WA %250,"*END_E"
+
+sp_d 902,0
+sp 902,"sys/ending/staff.tlg",0,0
+sp_gsz 902, %0, %1
+sp_xy 902,320,540
+sp_cxy 902,0,0
+sp_ref 902
+sd_totalTime 0, %2
+cal %100=(%2-10000)/10
+sd_nowTime 0, %3
+sp_ay 902,-%1,%2-%3-1000,0,0x100
+
+cal %250+=%2-%3:MV.WA %250,"*END_E"
+
+*ER4
+
+CG 1,bg/WHITE,2000
+MV.WA %250+2000,"*END_E"
+
+WA 2000
+
+*END_E
+
+sd_stop 0,1000,0
+BG WHITE,1000
+clearSave
+if(%SaveLoad) cal %SaveLoad=0
+else cal %Replay=0
+sp_dx 901,902,0
+return
+

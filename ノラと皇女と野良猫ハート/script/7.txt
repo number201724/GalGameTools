@@ -1,0 +1,11 @@
+
+*embed
+
+
+loadSqu "embed/main.nut"
+
+
+funcSqu saveFunc, 1
+funcSqu configFunc, 1
+
+return
