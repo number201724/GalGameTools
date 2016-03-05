@@ -18,9 +18,9 @@ namespace parse
             }
             string filename = args[0].Substring(args[0].LastIndexOf('\\') + 1);
 
-            Directory.CreateDirectory("C:\\Users\\yuanrui\\Desktop\\deode\\scene");
+            Directory.CreateDirectory("C:\\Users\\yuanrui\\Documents\\GalGameTools\\ノラと皇女と野良猫ハート\\scene");
             string line;
-            using (StreamWriter sw = new StreamWriter(File.Create("C:\\Users\\yuanrui\\Desktop\\deode\\scene/" + filename), Encoding.Unicode))
+            using (StreamWriter sw = new StreamWriter(File.Create("C:\\Users\\yuanrui\\Documents\\GalGameTools\\ノラと皇女と野良猫ハート\\scene/" + filename), Encoding.Unicode))
             {
                 using (StreamReader sr = new StreamReader(File.Open(args[0], FileMode.Open), Encoding.GetEncoding("SHIFT-JIS")))
                 {
@@ -36,9 +36,9 @@ namespace parse
                             {
                                 text = line.Substring(i + 1);
                             }
-                            //sw.WriteLine("//"+line);
-                            sw.WriteLine(text);
-                            //sw.WriteLine("");
+                            sw.WriteLine("//"+line);
+                            sw.WriteLine("☆" + line);
+                            sw.WriteLine("");
                         }
                     }
                 }
