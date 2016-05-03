@@ -1,0 +1,6 @@
+
+*start
+
+
+goto *K1_01a
+

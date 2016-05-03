@@ -1,0 +1,555 @@
+
+
+
+*pos_setting
+
+int strMesM0=80,strMesM1=80	
+int strMes0N0=0,strMes0N1=2	
+int strMes1N0=0,strMes1N1=2
+int strMes0I0=1,strMes0I1=1	
+int strMes1I0=1,strMes1I1=1
+int strMes0WN=25,strMes0HN=3	
+int strMes1WN=25,strMes1HN=3
+int strMes0WH=24,strMes0IW=0,strMes0IH=12	
+int strMes1WH=24,strMes1IW=0,strMes1IH=12
+int strNameX=324,strNameY=394	
+int strMes0X=200,strMes0Y=418	
+int strMes1X=200,strMes1Y=418
+int SelectY=-80,SelectSize=28
+
+int spFaceX=90,spFaceY=540	
+int spFaceW=256,spFaceH=180,spFaceWH=100
+int spName00X=204,spName00Y=365	
+int spName01X=204,spName01Y=365	
+int spName10X=204,spName10Y=365
+int spName11X=204,spName11Y=365
+int spWin00X=0,spWin00Y=378	
+int spWin01X=0,spWin01Y=378	
+int spWin10X=0,spWin10Y=378
+int spWin11X=0,spWin11Y=378
+int spBer1X=494,spBer1Y=511,spBerH=21
+int spBer2X=0,spBer2Y=0
+
+int spCell1=2,spCell2=2
+
+int spBtn00X=451,         spBtn00Y=516
+int spBtn01X=%spBtn00X+23,spBtn01Y=516
+int spBtn02X=%spBtn01X+23,spBtn02Y=516
+int spBtn03X=%spBtn02X+34,spBtn03Y=516
+int spBtn04X=%spBtn03X+34,spBtn04Y=516
+int spBtn05X=%spBtn04X+34,spBtn05Y=516
+int spBtn06X=%spBtn05X+34,spBtn06Y=516
+int spBtn07X=%spBtn06X+34,spBtn07Y=516
+int spBtn08X=%spBtn07X+54,spBtn08Y=516
+int spBtn09X=%spBtn08X+54,spBtn09Y=516
+int spBtn10X=%spBtn09X+54,spBtn10Y=516
+int spBtn11X=%spBtn10X+54,spBtn11Y=516
+int spBtn12X=%spBtn11X+54,spBtn12Y=516
+
+int spIconX=856,spIconY=500,IconMax=3,IconItv=100,IconCell=0x3
+int spModeX=906,spModeY=466
+int spReadX=906,spReadY=491
+
+
+int LogSize=24,LogLineH=123,LogLine=4
+int LogMessX=256,LogMessY=34
+int LogNameX=%LogMessX+18,LogNameY=%LogMessY+%LogSize/2
+int LogJumpX=%LogMessX-48,LogJumpY=%LogMessY+%LogSize*2+12
+int LogVoiceX=%LogJumpX-36,LogVoiceY=%LogJumpY
+int LogLightX=42,LogLightY=24
+int LogBarX=893,LogBarY=62,LogBarM=0
+int LogBackX=893,LogBackY=488
+
+
+int SaveSize=14,SaveSizeM=6,SaveMod=3,SaveMax=9
+int SaveSSW=432,SaveSSH=240,SaveSSWH=100*%Width/%Width2
+int SaveDataX=258,SaveDataY=82,SaveDataW=230,SaveDataH=128
+int SaveNewX=5,SaveNewY=8
+int SaveThmX=5,SaveThmY=4
+int SaveComX=3,SaveComY=71,SaveComM=26,SaveComN=0
+int SaveDelX=190,SaveDelY=6
+int SaveProX=190,SaveProY=96
+int SavePageX=448,SavePageY=500,SavePageW=28,SavePageH=0,SavePageL=1
+int SavePageX2=%SavePageX+%SavePageW*10,SavePageX3=%SavePageX2+%SavePageW
+int SavePrevX=%SavePageX-%SavePageW*2-3,SavePrevY=498
+int SaveNextX=%SavePageX3+%SavePageW,SaveNextY=498
+
+int SaveTimeX=93,SaveTimeY=331,SaveTimeW=18
+int SavePlayX=-160,SavePlayY=540,SavePlayM=1
+
+int SaveSwapX=25,SaveSwapY=390
+int SaveConfigX=136,SaveConfigY=390
+int SaveTitleX=25,SaveTitleY=432
+int SaveExitX=136,SaveExitY=432
+int SaveBackX=860,SaveBackY=498
+
+
+
+
+
+string FontFile2="ÇlÇr ÉSÉVÉbÉN"
+int FontBold2=1
+
+int FontColer21=0xBD2600,FontColer22=0xFFFFFF
+
+
+int ConfigFormatX=25,ConfigFormatY=350
+int ConfigPageX=35,ConfigPageY=100,ConfigPageW=102,ConfigPageH=102,ConfigPageM=2
+int ConfigPageMax=2,ConfigPageVoice=2
+
+cal %ConfigPageMax=3,%ConfigPageVoice=3
+
+
+int ConfigScreenX=460, ConfigScreenY=128, ConfigScreenW=110
+int ConfigAspectX=460, ConfigAspectY=167, ConfigAspectW=110
+int ConfigWallX=460, ConfigWallY=204, ConfigWallW=75
+int ConfigCursorX=460, ConfigCursorY=255, ConfigCursorW=75
+
+
+
+
+
+
+int ConfigEffect0X=460, ConfigEffect0Y=350, ConfigEffect0W=110
+int ConfigEffect1X=460, ConfigEffect1Y=390, ConfigEffect1W=110
+int ConfigEffect2X=460, ConfigEffect2Y=430, ConfigEffect2W=110
+int ConfigConfirmX=750,ConfigConfirmY=123,ConfigConfirmW=205,ConfigConfirmH=28,ConfigConfirmM=12
+
+int ConfigMes0X=333,ConfigMes0Y=142
+int ConfigMes1X=276,ConfigMes1Y=175
+int ConfigMes2X=433,ConfigMes2Y=175
+int ConfigAuto0X=333,ConfigAuto0Y=271
+int ConfigAuto1X=276,ConfigAuto1Y=305
+int ConfigAuto2X=433,ConfigAuto2Y=305
+int ConfigSkip0X=293,ConfigSkip0Y=405,ConfigSkip0W=140
+int ConfigSkip1X=276,ConfigSkip1Y=437
+int ConfigSkip2X=433,ConfigSkip2Y=437
+int FontListBox=8,ConfigFontH=24-4,ConfigFontH2=24+2
+int ConfigFontStrX=8,ConfigFontStr0Y=1
+int ConfigFontX=614,ConfigFontY=153
+int ConfigBoldX=623,ConfigBoldY=270
+int ConfigShadowX=788,ConfigShadowY=270
+int ConfigOutlineX=623,ConfigOutlineY=305
+int ConfigGradationX=788,ConfigGradationY=305
+int ConfigAlphaX=670,ConfigAlphaY=402
+int ConfigSimpleX=623,ConfigSimpleY=436
+
+int ConfigVolume0X=333,ConfigVolume0Y=142,ConfigVolumeW=344,ConfigVolumeH=90,ConfigVolumeM=4
+int ConfigVolume1X=510,ConfigVolume1Y=113
+int ConfigDown0X=618,ConfigDown0Y=379
+int ConfigDown1X=618,ConfigDown1Y=407
+int ConfigCancelX=618,ConfigCancelY=434
+
+int ConfigCharaVolumeM=0,ConfigCharaVolumeL=6
+int ConfigCharaVolume0X=391,ConfigCharaVolume0Y=147
+int ConfigCharaVolumeW=325,ConfigCharaVolumeH=58
+int ConfigCharaVolume1X=535,ConfigCharaVolume1Y=118
+int ConfigCharaVolume2X=506,ConfigCharaVolume2Y=118
+
+
+int ExtraVisible=1|2|4|0|0
+int cgBtnW=5,cgBtnH=4,cgBtnMax=%cgBtnW*%cgBtnH
+int cgDataX=50,cgDataY=95,cgDataW=174,cgDataH=92
+int rpBtnW=5,rpBtnH=4,rpBtnMax=%rpBtnW*%rpBtnH
+int rpDataX=50,rpDataY=95,rpDataW=174,rpDataH=92
+int sdBtnW=2,sdBtnH=8,sdBtnMax=%sdBtnW*%sdBtnH,sdNameW=24
+int sdDataX=50,sdDataY=95,sdDataW=430,sdDataH=46,sdDataX2=%sdDataX+36,sdDataY2=%sdDataY+6
+int ExtraPageX=640,ExtraPageY=55,ExtraPageW=100
+int ExtraBarX=910,ExtraBarY=113,ExtraBarM=-23
+int ExtraBackX=860,ExtraBackY=498
+
+int PlayerX=560,PlayerY=476,PlayBtnX=2, PlayBtnY=46, PlayBtnW=32
+int PlaySeek1X=30,PlaySeek1Y=3,PlaySeek1W=0,PlaySeek2X=150,PlaySeek2Y=16
+int PlayText1X=44,PlayText1Y=14,PlayText1W=12,PlayStyle1=4
+int PlayText2X=18,PlayText2Y=30,PlayText2W=12,PlayStyle2=4
+
+
+int ExtraPerX=430,ExtraPerY=484,ExtraPerW=24
+
+
+
+int diaLog0X=371,diaLog0Y=272
+int diaLog1X=484,diaLog1Y=272
+int diaLog2X=522,diaLog2Y=304
+int diaLogMX=0,diaLogMY=-340
+return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*DAY_load
+
+return
+
+
+
+*logo
+systemEffect 500
+
+
+
+
+systemVo 1,%VoiceChara-2,,,1100
+
+cal $255=$53
+
+
+
+
+sp_ani 997,"sys/title/logo.avi",0,1,1,0,0
+
+systemWait 5000
+sp 996,"sys/title/NOTICE"+$ext,4,0:sp_a 996,0
+draw
+sp_aa 996,255,1000,0,0x100:sp_aa 996,255,2000,0,0x101:sp_aa 996,0,1000,0,0x121
+systemWait 4000,,,0
+sp_dx 995,997,0
+return
+
+
+
+*title
+string title_bgm="BGM_01"
+
+
+
+
+
+
+
+
+int extra=0
+
+existSave 999,1,%Continue
+sp 319,"sys/title/neko"+$ext,14,3
+sp_xy 319,48,38:sp_cxy 319,0,0:sp_a 319,0
+for %0,0,3:sp_al 319,%0,99,0,%0!=0:next
+loadButton 320,"sys/title/continue",14,14,14:sp_a 320,0
+cal %0=14,%1=160,%2=45
+loadButton 321,"sys/title/start",%0,%1,14:sp_a 321,0:cal %1+=%2
+loadButton 322,"sys/title/load",%0,%1,14:sp_a 322,0:cal %1+=%2
+loadButton 323,"sys/title/config",%0,%1,14:sp_a 323,0:cal %1+=%2
+if(!%extra) loadButton 324,"sys/title/extra",%0,%1,14:sp_a 324,0:cal %1+=%2
+loadButton 325,"sys/title/exit",%0,%1,14:sp_a 325,0:cal %1+=%2
+cal %1=160,%2=45
+loadButton 326,"sys/title/cgmode",%0,%1,14:sp_a 326,0:cal %1+=%2
+loadButton 327,"sys/title/rpmode",%0,%1,14:sp_a 327,0:cal %1+=%2
+loadButton 328,"sys/title/sdmode",%0,%1,14:sp_a 328,0:cal %1+=%2
+loadButton 329,"sys/title/back",%0,%1,14:sp_a 329,0:cal %1+=%2
+
+sp 331,"sys/title/title_logo0"+$ext,14,0
+sp_xy 331,14,540:sp_cxy 331,0,2:sp_a 331,0
+if(%trial) sp 332,"sys/title/title_logo1"+$ext,14,0
+if(%trial) sp_xy 332,650,518:sp_a 332,0:sp_wh 332,0,0
+
+
+sp 333,"sys/title/copy"+$ext,14,0:sp_xy 333,730,526:sp_cxy 333,0,0:sp_a 333,0
+sp 334,"sys/title/chara0"+$ext,14,0:sp_xy 334,960+100,540+50:sp_cxy 334,2,2:sp_a 334,0
+sp 335,"sys/title/chara1"+$ext,14,0:sp_xy 335,480-100,540+50:sp_cxy 335,1,2:sp_a 335,0
+sp 336,"sys/title/chara2"+$ext,14,0:sp_xy 336,  0-100,  0   :sp_cxy 336,0,0:sp_a 336,0
+sp 337,"sys/title/chara3"+$ext,14,0:sp_xy 337,960+100,  0   :sp_cxy 337,2,0:sp_a 337,0
+
+sp 339,"sys/title/circle"+$ext,14,0:sp_xy 339,630,110
+
+
+
+
+sp_ani 330,"sys/title/title_logo.avi",0,1,1,0,0
+
+sp_xy 330,14,540:sp_cxy 330,0,2
+
+draw3
+
+cal %t=(%EffectSkip&2)==0
+sp_aa 331,0,2000*%t,0,0x110:sp_aa 331,255,500,0,0x111
+if(%trial) sp_aa 332,0,2500*%t,0,0x110:sp_aa 332,255,250*%t,0,0x111
+if(%trial) sp_awh 332,0,0,2500*%t,0,0x110:sp_awh 332,150,150,125*%t,2,0x111:sp_awh 332,100,100,125*%t,-2,0x111
+sp_aa 333,255,2000*%t,0,0x110
+sp_axy 334,960,540,2000*%t,1,0x110:sp_aa 334,255,2000*%t,0,0x110
+sp_axy 335,480,540,2000*%t,2,0x110:sp_aa 335,255,2000*%t,0,0x110
+sp_axy 336,  0,  0,2000*%t,3,0x110:sp_aa 336,255,2000*%t,0,0x110
+sp_axy 337,960,  0,2000*%t,4,0x110:sp_aa 337,255,2000*%t,0,0x110
+
+cal %0=0
+sp_awh 319,200,200,%0*%t,0,0x110:sp_awh 319,100,100,500*%t,2,0x111
+sp_aa 319,0,%0*%t,0,0x110:sp_aa 319,127+128*%Continue,250*%t,0,0x111
+sp_awh 320,200,200,%0*%t,0,0x110:sp_awh 320,100,100,500*%t,2,0x111
+sp_aa 320,0,%0*%t,0,0x110:sp_aa 320,127+128*%Continue,250*%t,0,0x111:cal %0+=200
+sp_awh 321,200,200,%0*%t,0,0x110:sp_awh 321,100,100,500*%t,2,0x111
+sp_aa 321,0,%0*%t,0,0x110:sp_aa 321,255,250*%t,0,0x111:cal %0+=200
+sp_awh 322,200,200,%0*%t,0,0x110:sp_awh 322,100,100,500*%t,2,0x111
+sp_aa 322,0,%0*%t,0,0x110:sp_aa 322,255,250*%t,0,0x111:cal %0+=200
+sp_awh 323,200,200,%0*%t,0,0x110:sp_awh 323,100,100,500*%t,2,0x111
+sp_aa 323,0,%0*%t,0,0x110:sp_aa 323,255,250*%t,0,0x111:cal %0+=200
+if(%t) sp_arz 339,360,20000,0,0
+if(%extra) goto *titleX
+sp_awh 324,200,200,%0*%t,0,0x110:sp_awh 324,100,100,500*%t,2,0x111
+sp_aa 324,0,%0*%t,0,0x110:sp_aa 324,255,250*%t,0,0x111:cal %0+=200
+*titleX
+sp_aa 325,0,%0*%t,0,0x110:sp_aa 325,255,250*%t,0,0x111
+sp_awh 325,200,200,%0*%t,0,0x110:sp_awh 325,100,100,500*%t,2,0x111
+
+
+
+
+systemVo 2,%VoiceChara-2,$255:cal $255=""
+
+
+sp 338,"sys/title/base"+$ext,14,0:sp_cxy 338,0,0:sp_xy 338,0,0
+BGM $title_bgm
+systemEffect 1000
+
+*title2
+cal %Title=1
+
+if(%Continue) setBtn 1,320,0x1
+setBtn 2,321,0x1
+setBtn 3,322,0x1
+setBtn 4,323,0x1
+if(!%extra) setBtn 5,324,0x1
+setBtn 6,325,0x1
+cal $50="*title_loop",$51="*title2"
+
+*title_loop
+
+
+
+
+eventWait %0,%1,%2
+
+if(%0==0 && %1<2) actionButton %0,%2,*title_enquete
+if(%0==1 && %1<2) actionButton %0,%2,*title_continue
+if(%0==2 && %1<2) actionButton %0,%2,*title_start,4
+if(%0==3 && %1<2) actionButton %0,%2,*title_load
+if(%0==4 && %1<2) actionButton %0,%2,*title_config
+if(%0==5 && %1<2) actionButton %0,%2,*title_extra
+if(%0==6 && %1<2) actionButton %0,%2,*execute_exit0
+if(%0 == 261) goto "*execute_exit"+$(%2)
+if(%0 == 262) gosub *execute_aspect
+if(%0 == 256) draw2
+
+
+
+
+if(%1==0x01 && %2==3) sleep 1
+
+goto *title_loop
+
+*title_clear
+gosub *execute_aspect
+sp_dx 319,339,0
+return
+
+*title_enquete
+shellExecute "http://www.mirai-soft.net/","",%0
+goto *title_loop
+
+*title_continue
+
+
+
+existSave 999,1,%2
+if(!%2) goto *title_loop
+gosub *title_clear
+cal %1=999
+goto *execute_load
+
+*title_back3
+systemSe "se/sysse_03.ogg"
+gosub *title_clear
+systemEffect 500
+goto *title
+
+*title_start
+
+
+
+
+cal %50=2000
+
+gosub *sound_clear
+gosub *title_clear
+systemEffect %50
+systemWait 1000
+cal %Title=0
+clearBtn:setBtnNow -1
+setPosition 0
+gosub *flag_format
+pushSave 0,*start
+goto *start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*title_load
+
+
+
+
+
+
+
+
+
+
+saveFunc 0, %0
+if(%0==1) gosub *execute_exit2
+elseif(%0==2) gosub *execute_title2
+elseif(%0==3) gosub *saveload_end
+
+goto *title2
+
+*title_config
+
+
+
+
+
+
+
+
+configFunc %0
+if(%0==1) gosub *execute_exit2
+elseif(%0==2) gosub *execute_title2
+elseif(%0==3) gosub *saveload_end
+
+goto *title2
+
+*title_extra
+clearBtn
+for %0,319,325:sp_l %0,0:sp_ae %0:sp_c %0,0,0:sp_a %0,0:next
+for %0,326,329:sp_a %0,255:next
+systemEffect 250
+
+*title3
+
+
+setBtn 1,326,0x1
+setBtn 2,327,0x1
+setBtn 3,328,0x1
+setBtn 4,329,0x1
+cal $50="*title_loop2",$51="*title3"
+
+*title_loop2
+eventWait %0,%1,%2
+if((%1==0x02 || %1==0x08 || %1==0x1B) && %2==3) goto *title_back2
+if(%0==0 && %1<2) actionButton %0,%2,*title_enquete
+if(%0==1 && %1<2) actionButton %0,%2,*title_cgmode
+if(%0==2 && %1<2) actionButton %0,%2,*title_rpmode
+if(%0==3 && %1<2) actionButton %0,%2,*title_sdmode
+if(%0==4 && %1<2) actionButton %0,%2,*title_back
+if(%0 == 261) goto "*execute_exit"+$(%2)
+if(%0 == 262) gosub *execute_aspect
+if(%0 == 256) draw2
+
+
+
+
+if(%1==0x01 && %2==3) sleep 1
+
+goto *title_loop2
+
+*title_return
+BGM $title_bgm
+goto *title3
+
+*title_cgmode
+
+
+
+BGM , 1000
+goto *cgmode
+
+*title_rpmode
+
+
+
+BGM , 1000
+goto *rpmode
+
+*title_sdmode
+
+
+
+BGM , 1000
+goto *sdmode
+
+*title_back2
+systemSe "se/sysse_03.ogg"
+*title_back
+clearBtn
+for %0,0,3:sp_al 319,%0,99,0,%0!=0:next
+for %0,319,325:sp_a %0,255:next
+sp_a 320,127+128*%Continue
+for %0,326,329:sp_a %0,0:sp_l %0,0:sp_ae %0:sp_c %0,0,0:next
+systemEffect 250
+goto *title2
+
+
+
+*execute_exit3
+cal %Terminate=1
+return
+
+
+
+*saveload_voice2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+return
+
+
+
+*config_voicetest
+cal %VoiceTest=%0,%1=%VoiceNum+%0
+cal $2="vo/"+$%1+"/S"+$%1+$sysVoStr+"04.ogg",$3="s_v"+$%1,$4="s_m"+$%1
+existFile $2,%3
+if(%3 || !%debug) sd 20,$2,0,0,%$3*%$4,0,1,0
+goto *config_loop
+
+

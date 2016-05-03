@@ -1,0 +1,202 @@
+
+
+*flag_format
+cal %g_flag1_01=0,%g_flag2_01=0,%g_flag3_01=0,%g_flag4_01=0,%g_flag5_01=0,%g_flag6_01=0,%g_flag7_01=0,%g_flagX_01=0
+return
+
+
+*flag_boot
+int Width=960, Height=540, Width2=1920, DBD=1
+
+int WidthH=%Width>>1, HeightH=%Height>>1
+string BlandName="HARUKAZE"
+string GameName="ノラと皇女と野良猫ハート"
+string TrialName=" 体験版", Version="1.02"
+return
+
+
+*flag_setting
+
+int g_flag1_01,g_flag2_01,g_flag3_01,g_flag4_01,g_flag5_01,g_flag6_01,g_flag7_01,g_flagX_01
+int g_chap
+string g_time
+int BATTLE=0
+
+
+variableExist %0,%s_v001
+for %1,%0,0
+cal %FontShadow=0,%FontStyle=28
+setFontStyle %FontStyle,%FontStyle
+int s_ex, s_ey, s_tutorial=0
+int s_SimpleWindow=0, s_boot=0
+
+cal %s_SimpleWindow=1
+
+int s_sysvo=0, s_clear=0
+int s_v001=100, s_m001=1
+int s_v002=100, s_m002=1
+int s_v003=100, s_m003=1
+int s_v004=100, s_m004=1
+int s_v005=100, s_m005=1
+int s_v006=100, s_m006=1
+int s_v007=100, s_m007=1
+int s_v008=100, s_m008=1
+int s_v009=100, s_m009=1
+int s_v010=100, s_m010=1
+int s_v401=100, s_m401=1
+int s_v701=100, s_m701=1
+
+cal $CursorFile="sys/cursor0"+$ext:setCursor $CursorFile
+cal $WallPaperFile="sys/wall0"+$ext:setWallPaper $WallPaperFile
+
+
+
+
+
+
+
+next
+cal %s_boot+=1
+
+
+int VoiceChara=-1,VoiceMobu1=20,VoiceNum=180
+cal %0=02,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=01,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=03,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=04,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=07,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=06,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=05,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=08,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=09,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %0=10,%VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2=$(%0)3:int "g_em"+$(%VoiceChara)=-1,"st"+$(%0)=%VoiceChara
+cal %50=%VoiceChara
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int VoiceMobu2=%VoiceNum+%VoiceChara
+cal %VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2="401"
+cal %VoiceChara+=1,%2=%VoiceNum+%VoiceChara,$%2="701"
+string sysVoStr="_SYS_00"
+
+
+int CharaNum=%50, StW=1024, StH=768, StY=%Height-%StH/2+100
+
+
+
+
+
+
+
+
+string S002_1AA1AA
+string S002_1AA1BA
+string S002_1BA1AA
+string S002_1BA1BA
+string S002_1BA1BA
+string S002_1CA1AA
+string S002_1CA1AA
+string S002_1CA1AA
+string S002_1CA1BA
+string S002_1CA1BA
+string S002_1DA1AA
+string S002_1DA1AA
+string S002_1DA1BA
+string S002_1EA1AA
+string S002_1EA1AA
+string S002_1EA1AA
+string S002_1EA1BA
+string S002_1EA1BA
+string S002_1FA1AA
+string S002_1FA1AA
+string S002_1FA1BA
+string S002_1FA1BA
+
+string S007_1AA1AA
+string S007_1BA1AA
+
+int S005_1AA1AAy=130
+string S005_1AA1AA
+int S005_1AA1BAy=130
+string S005_1AA1BA
+int S005_1BA1AAy=130
+string S005_1BA1AA
+int S005_1BA1BAy=130
+string S005_1BA1BA
+int S005_1CA1AAy=130
+string S005_1CA1AA
+int S005_1CA1BAy=130
+string S005_1CA1BA
+int S005_1EA1AAy=130
+string S005_1EA1AA
+int S005_1EA1BAy=130
+string S005_1EA1BA
+int S005_1FA1AAy=130
+string S005_1FA1AA
+int S005_1FA1BAy=130
+string S005_1FA1BA
+
+
+int Another0	=0xFFFFFF
+int Another1	=0xFFFFFF
+int Another2	=0xFFFFFF
+int 黒木	=0xff3f3f
+int パトリシア	=0xFFD851
+int 明日原	=0xff4800
+int シャチ	=0x91E6FF
+int 井田	=0x80FF80
+int ノラの母	=0x949494
+int ルーシア	=0xD438CE
+int 田中ちゃん	=0x23b17a
+int ノブチナ	=0x00C0FF
+int ユウラシア	=0x2AC552
+int 冥界の母	=0xADB0B0
+
+
+string g_tc
+int g_tc1, tc1_, tc1_00, tc1_01, tc1_02=7, tc1_03, tc1_04=4, tc1_05, tc1_06=4, tc1_07=4, tc1_08, tc1_09=4, tc1_10=4
+int g_tc2, tc2_, tc2_00, tc2_01, tc2_02=0x0C0500, tc2_03, tc2_04=0xD2DEFF, tc2_05, tc2_06=0xEFFFFF, tc2_07=0xEFFFFF, tc2_08, tc2_09=0xA5BEFF, tc2_10=0xA5BEFF
+int tc1_11, tc2_11
+
+
+
+
+int emS=38,emM=72,emL=100
+
+int S001S1x=0, S001S1y=0, S001M1x= 000, S001M1y=-120, S001L1x= 000, S001L1y=-120, S0011=1
+
+int 閃き1x=-060, 閃き1y=-060
+int 音符1x=-070, 音符1y= 000
+int 驚き1x=-050, 驚き1y=-070
+int 驚き2x=-045, 驚き2y=-065
+int 驚き3x=-200, 驚き3y=-000
+int 睡眠1x=-050, 睡眠1y=-030
+int 溜息1x=-020, 溜息1y= 030
+int 溜息2x=-060, 溜息2y= 110
+int 汗1x=-110, 汗1y= 050
+int 汗2x=-000, 汗2y=-010
+int 怒り1x=-100, 怒り1y=-025
+int 怒り2x=-000, 怒り2y=-025
+int 好き1x=-000, 好き1y=-000
+int 星1x=-000, 星1y=-025
+int 花1x=-000, 花1y= 050
+int 凹む1x= 000, 凹む1y= 000
+int 三線1x=-060, 三線1y=-070
+int 三線2x=-060, 三線2y=-000
+int ！1x=-040, ！1y=-050
+int ！2x=-040, ！2y=-050
+int ！3x=-040, ！3y=-050
+int ？1x=-040, ？1y=-050
+return
+

@@ -1,0 +1,2693 @@
+
+
+
+
+
+*DAY
+getParam %g_year,%g_mon,%g_day,%n
+if(%g_mon) getWeek %g_year,%g_mon,%g_day,%2:cal $0=$(%2),$1="wk"+$0,$g_wk=$$1
+getSaveText $1
+split $1,"",$1,$2
+gosub *CS2
+if(%n) return
+
+sc_qx 0,0,0,0,0,0,0:sc_qy 0,0,0,0,0,0,0
+sd_stop 10,500,0
+cal %50=500:gosub *sound_clear
+gosub *mode_stop2
+setWindowVisible 0:draw
+
+gosub *DAY_load
+systemEffect 1000*(%LoadFlag^1)
+systemWait 1000
+
+getMode %mode
+if(!%LoadFlag && !%Replay && !(%mode&8)) gosub *AS
+
+
+if(%mode & 3) cal %mode&=3,%mode-=1:sp_a %spMode+%mode,255:sp_a %spMode+1-%mode,0
+
+
+
+
+sp_dx 900,919,0
+sp 998,"bg/BLACK"+$ext,0,0
+systemEffect 1000
+lookahead
+return
+
+
+
+*MW.TP
+getParam %0
+setMessWH 648/%0,72/%0,%0,%0,0,%0>>1
+cal %g_TextSize=1
+return
+
+*MW.TS
+getParam %0
+setMessSpeed %0,-1
+cal %g_TextSpeed=1
+return
+
+*MW.SK
+getParam %v,$1,$2,%cnt=1
+split $1,"@",%t=100,%wt,%es=2
+split $2,"@",%x,%y
+cal %n=2
+goto "*SC.SK"+$(%v&3)
+
+*MW.SP
+getParam %0=1
+if(!%0 && %g_Window) cal %g_Window=0:gosub *Name0:return
+if(%0 && !%g_Window) cal %g_Window=1:if(%s_SimpleWindow) gosub *Name1
+return
+
+*MW.MD
+getParam %0
+goto "*MW.MD"+$(%0)
+
+*MW.MD0
+setMessLine %strMes0N0,%strMes0N1
+setMessIndent %strMes0I0,%strMes0I1
+setMessXY %strMes0X,%strMes0Y
+setMessWH %strMes0WN,%strMes0HN,%strMes0WH,%strMes0WH,%strMes0IW,%strMes0IH
+cal %g_Visible=3
+return
+
+*MW.MD1
+setMessLine %strMes1N0,%strMes1N1
+setMessIndent %strMes1I0,%strMes1I1
+setMessXY %strMes1X,%strMes1Y
+setMessWH %strMes1WN,%strMes1HN,%strMes1WH,%strMes1WH,%strMes1IW,%strMes1IH
+cal %g_Visible=2
+return
+
+*MW.BT
+getParam %0,%1
+cal %Replay=%1
+goto "*MW.BT"+$(%0)
+
+*MW.BT0
+if(%1&16) sp_a %spMenuS+02,128:sp_a %spMenuS+03,128:sp_a %spMenuS+06,128
+if(%1) sp_a %spMenuS+07,128:sp_a %spMenuS+08,128:sp_a %spMenuS+09,128:sp_a %spMenuS+10,128
+return
+
+*MW.BT1
+if(%1&16) sp_a %spMenuS+02,255:sp_a %spMenuS+03,255:sp_a %spMenuS+06,255
+if(%1) sp_a %spMenuS+07,255:sp_a %spMenuS+08,255:sp_a %spMenuS+09,255:sp_a %spMenuS+10,255
+return
+
+
+
+*Window0
+
+sp_a %spWin,0:sp_a %spWin+1,0
+cal %spWin=%spWin0
+sp_a %spWin,255:sp_a %spWin+1,255*%WindowAlpha/100
+existFile2 "sys/window/bar"+$ext,%0:if(!%0) return
+sp %spMenuS+16,"sys/window/bar"+$ext,13,0
+sp_a %spMenuS+16,255
+
+return
+
+*Name0
+
+gosub *Window0
+
+
+sp_a %spName,0:sp_a %spName+1,0
+sp_ref %spName:sp_ref %spName+1
+cal %spName=%spName0
+sp_a %spName,255:sp_a %spName+1,255*%WindowAlpha/100
+sp_ref %spName:sp_ref %spName+1
+
+return
+
+*Window1
+
+sp_a %spWin,0:sp_a %spWin+1,0
+cal %spWin=%spWin1
+sp_a %spWin,255:sp_a %spWin+1,255*%WindowAlpha/100
+existFile2 "sys/window/bar2"+$ext,%0:if(!%0) return
+sp %spMenuS+16,"sys/window/bar2"+$ext,13,0
+sp_a %spMenuS+16,255*%WindowAlpha/100
+
+return
+
+*Name1
+
+gosub *Window1
+
+
+sp_a %spName,0:sp_a %spName+1,0
+sp_ref %spName:sp_ref %spName+1
+cal %spName=%spName1
+sp_a %spName,255:sp_a %spName+1,255*%WindowAlpha/100
+sp_ref %spName:sp_ref %spName+1
+
+return
+
+
+
+*BG.F
+getParam $g_tc
+cal $6="tc1_"+$g_tc,%8=%g_tc1,%g_tc1=%$6,$6="tc2_"+$g_tc,%g_tc2=%$6
+*BG.F2
+for %0,910,910+%CharaNum
+sp_exist %0,%1:if(%1) sp_c %0,%g_tc1,%g_tc2
+next
+sp_c %spFace,%g_tc1,%g_tc2
+return
+
+*BG_3
+sp_d 997,0
+sp_rot 998,%s2&3
+sp 998,$0,(%s2&28)<<2,0
+sp_xy 998,%x,%y
+sp_o 998,16
+return
+
+*BG_4
+sp_xy 998,%x+%3,%y+%4
+sp_ref 998
+if(%t2==-1) cal %t2=%t
+sp_axy 998,%x,%y,%t2,%es,0x110
+sp_rot 998,%s2&3
+sp 998,$0,(%s2&28)<<2,0
+sp_o 998,16
+return
+
+*BG
+
+if(%g_Window) cal %g_Window=0:gosub *Name0
+
+getParam $0,$1,$2,$3,$4
+split $0,"@",$0,%s2
+split $0,"_",$5,$5,$g_tc
+cal %9=$0=="BLACK"||$0=="WHITE",$0="bg/"+$0+$ext,$6="tc1_"+$g_tc,%8=%g_tc1,%g_tc1=%$6,$6="tc2_"+$g_tc,%g_tc2=%$6,%v=0,%g_Event=0
+if(%Replay&16) cal %9=0
+*BG_2
+
+
+
+split $1,"@",%t=1000,%s1,%es
+split $3,"@",%x=%WidthH,%y=%HeightH,%a=255
+split $4,"@",%3,%4,%t2=-1
+if(!%s1) sp_dx %EmoSp,%EndSp,0:for %0,0,%CharaNum:cal $9="g_em"+$(%0),%$9=-1:next
+elseif(%8!=%g_tc1) gosub *BG.F2
+sp_ae 998
+if(!%t) gosub *BG_3:return
+getSkip %1:if(%1) cal %9=0,%t=1,%t2=1,%es=0
+elseif(%EffectSkip&1) cal %t=1,%t2=1,%es=0
+gosub "*BG_"+$(3+($4!=""))
+cal %s2=1
+goto *SC.FD_3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*EV
+getParam $0,$1,$2,$3,$4
+*EV_X
+
+if(!%g_Window) cal %g_Window=1:if(%s_SimpleWindow) gosub *Name1
+
+split $0,"@",$0,%s2
+int "s_"+$0
+cal %9=0,$0="ev/"+$0+$ext,$g_tc="",%g_tc1=0,%g_tc2=0,%v=1,%g_Event=0
+goto *BG_2
+
+*EV.C
+getParam $0,%t=250,%9
+*EV_X.C
+cal $1=$0,$0="ev/"+$0+$ext
+
+
+
+if(!%9) int "s_"+$1
+sp_ae 998:sp_exist 997,%1:if(%1) sp_ae 997
+cal %1=998-%g_Event,%g_Event^=1,%2=998-%g_Event,%t*=!(%EffectSkip&1)
+sp %2,$0,(%s2&28)<<2,0
+sp_o %2,16
+sp_gxy %1,1,1,%3,%4
+sp_xy %2,%3,%4
+sp_gwh %1,%5,%6
+sp_wh %2,%5,%6
+goto "*EV.C"+$(%g_Event)
+
+*EV.C0
+sp_aa 997,0,%t,0,0x120
+return
+
+*EV.C1
+sp_a 997,0:sp_ref 997
+sp_aa 997,255,%t,0,0x110
+return
+
+*EV3.S
+getParam %0,$0
+if(%0) int "s_"+$0
+return
+
+*EV.S
+getParam $0
+int "s_"+$0
+return
+
+*BG.C
+getParam $1,%c,%mode
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+cal %n=0,%9=998
+goto *SP_C
+
+*BG.XY
+*EV.XY
+getParam $1,%x=%WidthH,%y=%HeightH
+cal %n=0,%9=998
+goto *SP_XY
+
+*BG.WH
+*EV.WH
+getParam $1,%w=100,%h=100
+cal %n=0,%9=998
+goto *SP_WH
+
+*BG.RXYZ
+*EV.RXYZ
+getParam $1,%x=0,%y=0,%z=0
+cal %n=0,%9=998
+goto *SP_RXYZ
+
+*BG.SK
+*EV.SK
+getParam %v=0,$1,$2,%cnt=1
+cal %n=0,%9=998
+goto *SP_SK
+
+*BG.DF
+*EV.DF
+getParam %v,$0,$1,$2
+cal %n=0,%9=998
+goto *SP_DF
+
+*BG.CF
+*EV.CF
+getParam %v,%s1=0,$1,$2
+cal %n=0,%9=998
+goto *SP_CF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ST.EMD
+for %2,%$9,%$9+3
+sp_exist %2,%1:if(!%1) continue
+if(%t) sp_aa %2,0,%t,0,0x120
+else sp_d %2,1
+next
+cal %$9=-1
+return
+
+*ST.DD1
+for %10,910,%EndSp
+sp_exist %10,%11:if(%11<2 || %9==%10) continue
+sp_gxy %10,1,1,%12,%13
+if(%x!=%12 || %StY+%y!=%13) continue
+sp_aa %10,0,%t,0,0x120
+cal $9="g_em"+$(%10-910)
+if(-1<%$9) gosub *ST.EMD
+break
+next
+return
+
+*ST.DD0
+for %10,910,%EndSp
+sp_exist %10,%11:if(%11<2 || %9==%10) continue
+sp_gxy %10,1,1,%12,%13
+if(%x!=%12 || %StY+%y!=%13) continue
+sp_d %10,0
+cal $9="g_em"+$(%10-910)
+if(-1<%$9) sp_dx %$9,%$9+2,0
+break
+next
+return
+
+
+
+*MW.FC
+getParam $0
+if($0=="") cal $g_FaceXY="",$g_FaceName="":return
+split $0,"_",$4,$6,$7,$5
+
+
+
+
+mid $10,$6,3,1:mid $11,$7,0,3
+cal $g_FaceXY=$4+"_"+$6,$4=$4+1,$10+="_"+$11,$7="000"+($7+3),$g_FaceName="st/"+$4+"S/"+$10+$ext2+"?"+$g_FaceXY+"_"+$7+"_S"+$ext2,%g_FaceE=1
+
+
+
+
+
+
+
+return
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ST0
+getParam %n,$0,$1,$2,$3,$4
+split $4,"@",%w=%StW,%h=%StH
+split $0,"@",$0,%s2,%c=1
+split $0,"_",$4,$6,$7,$5
+
+mid $10,$6,3,1:mid $11,$7,0,3
+cal $g_FaceXY=$4+"_"+$6,$4=$4+1,$9="st"+$(%n),%9=910+%$9,$9="g_em"+$(%$9),$10+="_"+$11,$7="000"+($7+3),$g_FaceName="st/"+$4+"S/"+$10+$ext2+"?"+$g_FaceXY+"_"+$7+"_S"+$ext2
+
+
+
+
+
+
+split $1,"@",%t=250,%s1,%es=2
+sp_exist %9,%0
+goto "*ST_"+$(1<%0)
+
+*ST
+getParam $0,$1,$2,$3,$4
+split $4,"@",%w=%StW,%h=%StH
+split $0,"@",$0,%s2,%c=1
+split $0,"_",$4,$6,$7,$5
+
+mid $10,$6,3,1:mid $11,$7,0,3
+cal $g_FaceXY=$4+"_"+$6,$4=$4+1,%n=%($4),$9="st"+$(%n),%9=910+%$9,$9="g_em"+$(%$9),$10+="_"+$11,$7="000"+($7+3),$g_FaceName="st/"+$4+"S/"+$10+$ext2+"?"+$g_FaceXY+"_"+$7+"_S"+$ext2
+
+
+
+
+
+
+split $1,"@",%t=250,%s1,%es=2
+sp_exist %9,%0
+goto "*ST_"+$(1<%0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*ST_1
+split $2,"@",%x=-999,%y=-999,%a=-1,%odr=99
+split $3,"@",%7,%8,%t2=-1
+*ST_1_2
+getSkip %1:if((%1 || (%EffectSkip&1)) && %t) cal %t=1,%t2=1,%es=0
+if(-1<%$9) gosub *ST.EMD
+
+
+
+
+
+
+
+
+
+
+sp_rot %9,%s2&3
+sp_st %9,"st/"+$4+$5+"/"+$10+$ext2+"?"+$g_FaceXY+"_"+$7+"_"+$5+$ext2,(%s2&28)<<2,%w,%h,%t,%s1
+
+
+
+
+sp_b %9,%c
+if(%odr!=99) sp_o %9,%odr
+gosub "*ST.DD"+$(%t!=0)
+
+
+
+if(%t) goto *ST_2
+
+
+
+if(%x!=-999) sp_x %9,%x
+if(%y!=-999) sp_y %9,%StY+%y
+if(%a!=-1) sp_a %9,%a
+return
+*ST_2
+
+if(%t2==-1) cal %t2=%t
+if(%x!=-999) sp_ax %9,%x,%t2,%es,0x110
+if(%y!=-999) sp_ay %9,%StY+%y,%t2,%es,0x110
+if(%a!=-1) sp_aa %9,%a,%t2,0,0x110
+return
+
+*ST_0
+split $2,"@",%x=%WidthH,%y,%a=255,%odr=5
+split $3,"@",%7,%8,%t2=-1
+*ST_0_2
+getSkip %1:if((%1 || (%EffectSkip&1)) && %t) cal %t=1,%t2=1,%es=0
+if(-1<%$9) gosub *ST.EMD
+
+
+
+
+
+
+
+
+
+
+
+
+
+sp_rot %9,%s2&3
+sp_st %9,"st/"+$4+$5+"/"+$10+$ext2+"?"+$g_FaceXY+"_"+$7+"_"+$5+$ext2,(%s2&28)<<2,%w,%h,0,%s1
+
+
+
+
+sp_b %9,%c
+sp_c %9,%g_tc1,%g_tc2
+sp_o %9,%odr
+gosub "*ST.DD"+$(%t!=0)
+
+
+
+
+
+
+
+
+
+if(!%t) sp_xy %9,%x,%StY+%y:sp_a %9,%a:return
+
+
+sp_xy %9,%x+%7,%StY+%y+%8
+sp_a %9,0
+sp_ref %9
+sp_aa %9,%a,%t,0,0x110
+
+if(%t2==-1) cal %t2=%t
+if(%7 || %8) sp_axy %9,%x,%StY+%y,%t2,%es,0x110
+return
+
+*ST.DEL2
+
+
+
+getSkip %1:if((%1 || (%EffectSkip&1)) && %t) cal %t=1,%es=0,%s1&=14
+for %n,0,%CharaNum
+cal %9=910+%n,$9="g_em"+$(%n)
+sp_exist %9,%0:if(!%0) continue
+if(-1<%$9) gosub *ST.EMD
+if(!%t) sp_d %9,1:continue
+if(%7 || %8) sp_gxy %9,1,1,%x,%y:sp_axy %9,%x+%7,%y+%8,%t,%es,0x120|%s1
+sp_aa %9,%a,%t,0,0x120|%s1
+next
+return
+
+*FC.DEL
+*ST.DEL
+getParam %n=99,$1,$2
+split $2,"@",%7,%8,%a
+*ST_DEL
+
+
+
+split $1,"@",%t=250,%s1,%es=-2
+if(%n==99) goto *ST.DEL2
+cal $9="st"+$(%n),%9=910+%$9,$9="g_em"+$(%$9)
+if(-1<%$9) gosub *ST.EMD
+
+
+
+
+if(!%t) sp_d %9,0:return
+sp_exist %9,%0:if(!%0) return
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14
+
+if(%7 || %8) sp_gxy %9,1,1,%x,%y:sp_axy %9,%x+%7,%y+%8,%t,%es,0x120|%s1
+sp_aa %9,%a,%t,0,0x120|%s1
+return
+
+
+
+*ST.C
+getParam %n,$1,%c,%mode
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+cal $9="st"+$(%n),%9=910+%n
+*SP_C
+
+
+
+if(!%t) sp_c %9,%mode,%c:sp_ref %9:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_ac %9,%c,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.O
+getParam %n,%v=-1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_O
+
+
+
+if(%v!=-1) sp_o %9,%v
+return
+
+*ST.X
+getParam %n,$1,%x=%WidthH
+cal $9="st"+$(%n),%9=910+%$9
+*SP_X
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_x %9,%x:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_ax %9,%x,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.Y
+getParam %n,$1,%y=0
+cal $9="st"+$(%n),%9=910+%$9,%y+=%StY
+*SP_Y
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_y %9,%y:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_ay %9,%y,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.XY
+getParam %n,$1,%x=%WidthH,%y=0
+cal $9="st"+$(%n),%9=910+%$9,%y+=%StY
+*SP_XY
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_xy %9,%x,%y:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_axy %9,%x,%y,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.A
+getParam %n,$1,%a=0
+cal $9="st"+$(%n),%9=910+%$9
+*SP_A
+split $1,"@",%t=500,%s1,%es=0,%s2=1,%s3=1
+
+
+
+
+
+if(!%t) sp_a %9,%a:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_aa %9,%a,%t,0,%s3<<8|%s2<<4|%s1
+return
+
+*ST.XYA
+getParam %n,$1,%x=%WidthH,%y=0,%a=0
+cal $9="st"+$(%n),%9=910+%$9,%y+=%StY
+*SP_XYA
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+
+if(!%t) sp_xy %9,%x,%y:sp_a %9,%a:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_axya %9,%x,%y,%a,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.W
+getParam %n,$1,%w=100
+cal $9="st"+$(%n),%9=910+%$9
+*SP_W
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_w %9,%w:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_aw %9,%w,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.H
+getParam %n,$1,%h=100
+cal $9="st"+$(%n),%9=910+%$9
+*SP_H
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_h %9,%h:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_ah %9,%h,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.WH
+getParam %n,$1,%w=100,%h=100
+cal $9="st"+$(%n),%9=910+%$9
+*SP_WH
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+
+
+
+if(!%t) sp_wh %9,%w,%h:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_awh %9,%w,%h,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.RX
+getParam %n,$1,%x=0
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RX
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_rx %9,%x:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_arx %9,%x,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.RY
+getParam %n,$1,%y=0
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RY
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_ry %9,%y:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_ary %9,%y,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.RZ
+getParam %n,$1,%z=0
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RZ
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_rz %9,%z:return
+getSkip %1:if((%1 && %s3) || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14,%s3=1
+sp_arz %9,%z,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*ST.RXYZ
+getParam %n,$1,%x=0,%y=0,%z=0
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RXYZ
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+
+
+
+
+if(!%t) sp_rxyz %9,%x,%y,%z:return
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14
+sp_arxyz %9,%x,%y,%z,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+
+*ST.DU
+getParam %n,$1,%v=25,%cnt=1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_DU
+split $1,"@",%t=500,%s1,%es=2
+
+
+
+if(%s1) goto *SP_DU2
+sp_qy %9,%v,%t,%cnt,%es,0,0
+return
+*SP_DU2
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1
+cal %t>>=1
+sp_gxy %9,1,1,%x,%y
+sp_ay %9,%y+%v,%t,%es,%cnt<<8|(%s1&0x3)
+sp_ay %9,%y,%t,-%es,%cnt<<8|0x1
+return
+
+*ST.DUD
+getParam %n,$1,%v=25,%cnt=1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_DUD
+split $1,"@",%t=500,%s1,%es=1
+
+
+
+if(%s1) goto *SP_DUD2
+sp_qy %9,%v,%t,%cnt,%es,1,0
+return
+*SP_DUD2
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1
+cal %t>>=2
+sp_gxy %9,1,1,%x,%y
+sp_ay %9,%y+%v,%t,%es,%cnt<<8|(%s1&0x3)
+sp_ay %9,%y,%t,-%es,%cnt<<8|0x1
+sp_ay %9,%y-%v,%t,%es,%cnt<<8|0x1
+sp_ay %9,%y,%t,-%es,%cnt<<8|0x1
+return
+
+*ST.RL
+getParam %n,$1,%v=25,%cnt=1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RL
+split $1,"@",%t=500,%s1,%es=2
+
+
+
+if(%s1) goto *SP_RL2
+sp_qx %9,%v,%t,%cnt,%es,0,0
+return
+*SP_RL2
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1
+cal %t>>=1
+sp_gxy %9,1,1,%x,%y
+sp_ax %9,%x+%v,%t,%es,%cnt<<8|(%s1&0x3)
+sp_ax %9,%x,%t,-%es,%cnt<<8|0x1
+return
+
+*ST.RLR
+getParam %n,$1,%v=25,%cnt=1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_RLR
+split $1,"@",%t=500,%s1,%es=1
+
+
+
+if(%s1) goto *SP_RLR2
+sp_qx %9,%v,%t,%cnt,%es,1,0
+return
+*SP_RLR2
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1
+cal %t>>=1
+sp_gxy %9,1,1,%x,%y
+sp_ax %9,%x+%v,%t,%es,%cnt<<8|(%s1&0x3)
+sp_ax %9,%x,%t,-%es,%cnt<<8|0x1
+sp_ax %9,%x-%v,%t,%es,%cnt<<8|0x1
+sp_ax %9,%x,%t,-%es,%cnt<<8|0x1
+return
+
+
+*ST.SK
+getParam %n,%v=0,$1,$2,%cnt=1
+cal $9="st"+$(%n),%9=910+%$9
+*SP_SK
+split $1,"@",%t=100,%wt,%es=2
+split $2,"@",%x,%y
+
+
+
+goto "*SP_SK"+$(%v&7)
+
+*SP_SK0
+sp_qx %9,%x,%t,%cnt,%es,1,%wt
+sp_qy %9,%y,%t>>1,%cnt<<1,%es,1,%wt:return
+*SP_SK1
+sp_qx %9,%x,%t>>1,%cnt<<1,%es,1,%wt
+sp_qy %9,%y,%t,%cnt,%es,1,%wt:return
+*SP_SK2
+sp_qx %9,%x,%t,%cnt,%es,1,%wt
+sp_qy %9,%y,%t,%cnt,%es,1,%wt:return
+*SP_SK3
+sp_qx %9,%x,%t,%cnt,%es,0,%wt
+sp_qy %9,%y,%t,%cnt,%es,0,%wt:return
+*SP_SK4
+sp_qx %9,%x,%t,%cnt,%es,1,%wt
+sp_qy %9,%y,%t>>1,%cnt<<1,-%es,0,%wt:return
+
+
+*ST.DF
+getParam %n,%v,$0,$1,$2
+cal $9="st"+$(%n),%9=910+%$9
+*SP_DF
+split $0,"@",%s1,%s2
+sp_exist %9,%8
+gosub "*ST.DF"+$(%v&7)
+if(%8==2) sp_reload %9
+if($1!="") goto *SC.FD_2
+return
+
+*ST.DF0
+cal %s2*=%s1,%1=%s2>>16,%2=%s2>>8&0xFF,%3=%s2&0xFF
+sp_gray %9,%s1:sp_color %9,%1,%2,%3:return
+*ST.DF1
+sp_gray %9,%s1:return
+*ST.DF2
+sp_neg %9,%s1:return
+*ST.DF3
+sp_blur %9,%s1,%s2:return
+*ST.DF4
+sp_mosaic %9,%s1,%s2:return
+*ST.DF5
+sp_hsl %9,%s1,0,0:return
+
+
+*ST.CF
+getParam %n,%v,%s1=0,$1,$2
+cal $9="st"+$(%n),%9=910+%$9
+
+
+
+gosub "*SP_CF"+$(%v&3)
+if($1!="") goto *SC.FD_2
+return
+
+*SP_CF0
+sp_c %9,0,0:return
+*SP_CF1
+
+
+
+sp_c %9,7,%s1:return
+*SP_CF2
+
+
+
+sp_c %9,4,%s1:return
+
+
+*ST.WA
+getParam %n=-1,%1=1,%v=1
+if(%1) setWindowVisible 0
+if(%n==-1) cal %8=910,%9=%EndSp:goto *ST.WA2
+cal $9="st"+$(%n),%9=910+%$9,%8=%9
+
+
+
+*ST.WA2
+cal $50="*STWA_loop",$51="*ST.WA2"
+*STWA_loop
+eventWaitPT %0,%1,%2
+if(%v && (((%1==0x01 || %1==0x0D) && %2==3) || %2==4 || ((%1==0x20 || %1==0x22) && %2==2))) draw:return
+if(%0 == 257) cal %stop=%1,%mode=%2:goto *text_lb_mode
+getSkip %7:if(%7) return
+sp_alv %8,%9,%7:if(!%7) draw:return
+if(%0 == 261) goto "*execute_exit"+$(%2)
+if(%0 == 262) gosub *execute_aspect
+if(%0 == 256) draw
+goto *STWA_loop
+return
+
+
+
+*ST.EM0
+if($5=="S") cal %w=%emS
+elseif($5=="M") cal %w=%emM
+elseif($5=="L") cal %w=%emL
+return
+
+*ST.EM1
+split $0,"_",$6,$7
+len %0,$5:if(%0&2) cal $5="l",%y=45
+cal $1=$2+$5+$4+"x",%x=%$1,$1=$2+$5+$4+"y",%y+=%$1,$2=$6+"x",$3=$6+"y"
+if($5=="S") cal %x+=%$2*%rz*%emS/100,%y+=%$3*%emS/100,%w=%emS
+elseif($5=="M") cal %x+=%$2*%rz*%emM/100,%y+=%$3*%emM/100,%w=%emM
+elseif($5=="L") cal %x+=%$2*%rz*%emL/100,%y+=%$3*%emL/100,%w=%emL
+return
+
+*ST.EM
+getParam %n,$0,$1,$2
+split $1,"@",%wt,%rz
+split $2,"@",%x,%y
+cal $9="st"+$(%n),%9=910+%$9
+
+
+
+getSkip %1:if(%1 || (%EffectSkip&1)) return
+
+sp_gn %9,$1
+getBaseName $1,$1
+split $1,"_",$2,$3,$4,$5
+mid $4,$3,3,1
+cal $1=$2+$4
+variableExist %0,%$1
+if(!%rz && %0) cal %rz=%$1
+cal %rz*=-1,%ry=180*((%rz-1)>>1)
+gosub "*ST.EM"+$(!%x && !%y && %0)
+
+cal %n=%EmoSp+%$9*4,$9="g_em"+$(%$9),%wt|=1
+if(-1<%$9) sp_dx %n,%n+2,0:draw3
+else cal %$9=%n
+sp_gxy %9,1,1,%0,%1
+sp_go %9,%odr
+cal %x+=%0,%y+=%1
+goto "*"+$0
+return
+
+
+*‘M‚«1_1
+sp %n,"em/‘M‚«1"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_aa %n,255,100,0,0x111
+sp_aa %n,1,1,0,0x111
+sp_aa %n,255,100,0,0x111
+sp_aa %n,1,1,0,0x111
+sp_aa %n,255,100,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*‰¹•„1_1
+sp %n,"em/‰¹•„1"+$ext,0,0
+sp_xy %n,%x+20*%w/100*%rz,%y+30*%w/100
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,0,-15*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x+20*%w/100*%rz,%y+30*%w/100,0,%wt,0,0x110
+sp_arz %n,-15*%rz,%wt+250,0,0x110
+sp_axya %n,%x,%y,255,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y+20*%w/100,255,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+10*%w/100*%rz,%y-10*%w/100,255,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+20*%w/100*%rz,%y+10*%w/100,255,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x,%y-20*%w/100,255,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y,0,250,0,0x121
+sp_arz %n,15*%rz,250,0,0x121
+return
+
+*‰¹•„1_2
+sp %n,"em/‰¹•„1"+$ext,0,0
+sp_xy %n,%x+20*%w/100*%rz,%y+30*%w/100
+sp_a %n,0
+sp_wh %n,40*%w/100,40*%w/100
+sp_rxyz %n,0,0,-15*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x+20*%w/100*%rz,%y+30*%w/100,0,%wt,0,0x110
+sp_awh %n,40*%w/100,40*%w/100,%wt,0,0x110
+sp_arz %n,-15*%rz,%wt+250,0,0x110
+sp_axya %n,%x,%y,255,250,0,0x111
+sp_awh %n,50*%w/100,50*%w/100,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y+20*%w/100,255,250,0,0x111
+sp_awh %n,60*%w/100,60*%w/100,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+10*%w/100*%rz,%y-10*%w/100,255,250,0,0x111
+sp_awh %n,70*%w/100,70*%w/100,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+20*%w/100*%rz,%y+10*%w/100,255,250,0,0x111
+sp_awh %n,80*%w/100,80*%w/100,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x,%y-20*%w/100,255,250,0,0x111
+sp_awh %n,90*%w/100,90*%w/100,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y,0,250,0,0x121
+sp_awh %n,100*%w/100,100*%w/100,250,0,0x121
+sp_arz %n,15*%rz,250,0,0x121
+return
+
+*‰¹•„1_3
+sp %n,"em/‰¹•„1"+$ext,0,0
+sp_xy %n,%x+20*%w/100*%rz,%y+30*%w/100
+sp_a %n,0
+sp_wh %n,100*%w/100,100*%w/100
+sp_rxyz %n,0,0,-15*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x+20*%w/100*%rz,%y+30*%w/100,0,%wt,0,0x110
+sp_awh %n,100*%w/100,100*%w/100,%wt,0,0x110
+sp_arz %n,-15*%rz,%wt+250,0,0x110
+sp_axya %n,%x,%y,255,250,0,0x111
+sp_awh %n,90*%w/100,90*%w/100,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y+20*%w/100,255,250,0,0x111
+sp_awh %n,80*%w/100,80*%w/100,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+10*%w/100*%rz,%y-10*%w/100,255,250,0,0x111
+sp_awh %n,70*%w/100,70*%w/100,250,0,0x111
+sp_arz %n,15*%rz,250,0,0x111
+sp_axya %n,%x+20*%w/100*%rz,%y+10*%w/100,255,250,0,0x111
+sp_awh %n,60*%w/100,60*%w/100,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x,%y-20*%w/100,255,250,0,0x111
+sp_awh %n,50*%w/100,50*%w/100,250,0,0x111
+sp_arz %n,-15*%rz,250,0,0x111
+sp_axya %n,%x-10*%w/100*%rz,%y,0,250,0,0x121
+sp_awh %n,40*%w/100,40*%w/100,250,0,0x121
+sp_arz %n,15*%rz,250,0,0x121
+return
+
+*‹Á‚«3_1
+sp %n,"em/‹Á‚«3"+$ext,0,0
+goto *‹Á‚«X_1
+
+*‹Á‚«2_1
+sp %n,"em/‹Á‚«2"+$ext,0,0
+goto *‹Á‚«X_1
+
+*‹Á‚«1_1
+sp %n,"em/‹Á‚«1"+$ext,0,0
+*‹Á‚«X_1
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_aa %n,255,100,0,0x111
+sp_aa %n,1,1,0,0x111
+sp_aa %n,255,100,0,0x111
+sp_aa %n,1,1,0,0x111
+sp_aa %n,255,100,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*‹Á‚«3_2
+sp %n,"em/‹Á‚«3"+$ext,0,0
+goto *‹Á‚«X_2
+
+*‹Á‚«2_2
+sp %n,"em/‹Á‚«2"+$ext,0,0
+goto *‹Á‚«X_2
+
+*‹Á‚«1_2
+sp %n,"em/‹Á‚«1"+$ext,0,0
+*‹Á‚«X_2
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y,0,%wt,0,0x110
+sp_axya %n,%x-25*%w/100*%rz,%y-25*%w/100,128,25,0,0x111
+sp_axya %n,%x,%y,255,25,0,0x111
+sp_axya %n,%x-25*%w/100*%rz,%y-25*%w/100,255,25,0,0x111
+sp_axya %n,%x,%y,255,25,0,0x111
+sp_axya %n,%x-25*%w/100*%rz,%y-25*%w/100,255,25,0,0x111
+sp_axya %n,%x,%y,255,25,0,0x111
+sp_axya %n,%x,%y,255,250,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*‹Á‚«3_3
+sp %n,"em/‹Á‚«3_1"+$ext,0,0
+sp_rxyz %n,0,%ry,-70
+goto *‹Á‚«X_3
+
+*‹Á‚«2_3
+sp %n,"em/‹Á‚«2_1"+$ext,0,0
+sp_rxyz %n,0,%ry,-60
+goto *‹Á‚«X_3
+
+*‹Á‚«1_3
+sp %n,"em/‹Á‚«1_2"+$ext,0,0
+sp_rxyz %n,0,%ry,-45
+*‹Á‚«X_3
+sp_wh %n,10*%w/100,10*%w/100
+sp_o %n,%odr
+sp_ref %n
+sp_axy %n,%x+25*%w/100*%rz,%y+25*%w/100,%wt,0,0x110
+sp_awh %n,0,0,%wt,0,0x110
+sp_aa %n,255,%wt+450,0,0x110
+sp_axy %n,%x-25*%w/100*%rz,%y-25*%w/100,100,0,0x111
+sp_awh %n,60*%w/100,120*%w/100,100,0,0x111
+sp_axy %n,%x,%y,100,0,0x111
+sp_awh %n,%w,%w,100,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*‡–°1_1
+sp %n,"em/‡–°1"+$ext,0,0
+sp %n+1,"em/‡–°1"+$ext,0,0
+sp %n+2,"em/‡–°1"+$ext,0,0
+
+*‡–°1
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,20*%w/100,20*%w/100
+sp_o %n,%odr
+sp_ref %n
+
+sp_xy %n+1,%x,%y
+sp_a %n+1,0
+sp_wh %n+1,20*%w/100,20*%w/100
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp_xy %n+2,%x,%y
+sp_a %n+2,0
+sp_wh %n+2,20*%w/100,20*%w/100
+sp_o %n+2,%odr
+sp_ref %n+2
+
+sp_axya %n,%x,%y,0,%wt,0,0x110
+sp_awh %n,20*%w/100,20*%w/100,%wt,0,0x110
+sp_axy %n,%x-25*%w/100*%rz,%y-25*%w/100,500,0,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,499,0,0x111
+sp_awh %n,60*%w/100,60*%w/100,500,0,0x111
+sp_axya %n,%x-50*%w/100*%rz,%y-50*%w/100,0,500,0,0x121
+sp_awh %n,100*%w/100,100*%w/100,500,0,0x121
+
+sp_axya %n+1,%x,%y,0,250+%wt,0,0x110
+sp_awh %n+1,20*%w/100,20*%w/100,250+%wt,0,0x110
+sp_axy %n+1,%x-25*%w/100*%rz,%y-25*%w/100,500,0,0x111
+sp_aa %n+1,255,1,0,0x111
+sp_aa %n+1,255,499,0,0x111
+sp_awh %n+1,60*%w/100,60*%w/100,500,0,0x111
+sp_axya %n+1,%x-50*%w/100*%rz,%y-50*%w/100,0,500,0,0x121
+sp_awh %n+1,100*%w/100,100*%w/100,500,0,0x121
+
+sp_axya %n+2,%x,%y,0,500+%wt,0,0x110
+sp_awh %n+2,20*%w/100,20*%w/100,500+%wt,0,0x110
+sp_axy %n+2,%x-25*%w/100*%rz,%y-25*%w/100,500,0,0x111
+sp_aa %n+2,255,1,0,0x111
+sp_aa %n+2,255,499,0,0x111
+sp_awh %n+2,60*%w/100,60*%w/100,500,0,0x111
+sp_axya %n+2,%x-50*%w/100*%rz,%y-50*%w/100,0,500,0,0x121
+sp_awh %n+2,100*%w/100,100*%w/100,500,0,0x121
+return
+
+*‡–°1_2
+sp %n,"em/‡–°1"+$ext,0,0
+sp %n+1,"em/‡–°1"+$ext,0,0
+sp %n+2,"em/‡–°1"+$ext,0,0
+sp_rxyz %n,0,0,-45*%rz
+sp_rxyz %n+1,0,0,-45*%rz
+sp_rxyz %n+2,0,0,-45*%rz
+goto *‡–°1
+
+*‡–°1_3
+sp %n,"em/‡–°1"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,20*%w/100,20*%w/100
+sp_rxyz %n,0,0,-45*%rz
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/‡–°1"+$ext,0,0
+sp_xy %n+1,%x,%y
+sp_a %n+1,0
+sp_wh %n+1,20*%w/100,20*%w/100
+sp_rxyz %n+1,0,0,-45*%rz
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp %n+2,"em/‡–°1"+$ext,0,0
+sp_xy %n+2,%x,%y
+sp_a %n+2,0
+sp_wh %n+2,20*%w/100,20*%w/100
+sp_rxyz %n+2,0,0,-45*%rz
+sp_o %n+1,%odr
+sp_ref %n+2
+
+sp_axya %n,%x,%y,0,%wt,0,0x110
+sp_awh %n,20*%w/100,20*%w/100,%wt,0,0x110
+sp_arz %n,-45*%rz,%wt,0,0x110
+sp_ax %n,%x-25*%rz,500,2,0x111
+sp_ay %n,%y-30,500,-2,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,499,0,0x111
+sp_awh %n,60*%w/100,60*%w/100,500,0,0x111
+sp_arz %n,0,500,0,0x111
+sp_ax %n,%x-50*%rz,500,-2,0x121
+sp_ay %n,%y-60,500,2,0x121
+sp_aa %n,0,500,0,0x121
+sp_awh %n,100*%w/100,100*%w/100,500,0,0x121
+sp_arz %n,-45*%rz,500,0,0x121
+
+sp_axya %n+1,%x,%y,0,250+%wt,0,0x110
+sp_awh %n+1,20*%w/100,20*%w/100,250+%wt,0,0x110
+sp_arz %n+1,-45*%rz,250+%wt,0,0x110
+sp_ax %n+1,%x-25*%rz,500,2,0x111
+sp_ay %n+1,%y-30,500,-2,0x111
+sp_aa %n+1,255,1,0,0x111
+sp_aa %n+1,255,499,0,0x111
+sp_awh %n+1,60*%w/100,60*%w/100,500,0,0x111
+sp_arz %n+1,0,500,0,0x111
+sp_ax %n+1,%x-50*%rz,500,-2,0x121
+sp_ay %n+1,%y-60,500,2,0x121
+sp_aa %n+1,0,500,0,0x121
+sp_awh %n+1,100*%w/100,100*%w/100,500,0,0x121
+sp_arz %n+1,-45*%rz,500,0,0x121
+
+sp_axya %n+2,%x,%y,0,500+%wt,0,0x110
+sp_awh %n+2,20*%w/100,20*%w/100,500+%wt,0,0x110
+sp_arz %n+2,-45*%rz,500+%wt,0,0x110
+sp_ax %n+2,%x-25*%rz,500,2,0x111
+sp_ay %n+2,%y-30,500,-2,0x111
+sp_aa %n+2,255,1,0,0x111
+sp_aa %n+2,255,499,0,0x111
+sp_awh %n+2,60*%w/100,60*%w/100,500,0,0x111
+sp_arz %n+2,0,500,0,0x111
+sp_ax %n+2,%x-50*%rz,500,-2,0x121
+sp_ay %n+2,%y-60,500,2,0x121
+sp_aa %n+2,0,500,0,0x121
+sp_awh %n+2,100*%w/100,100*%w/100,500,0,0x121
+sp_arz %n+2,-45*%rz,500,0,0x121
+return
+
+*—­‘§1_1
+sp %n,"em/—­‘§1"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,50*%w/100,50*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y,0,%wt,0,0x110
+sp_awh %n,50*%w/100,50*%w/100,%wt,0,0x110
+sp_axya %n,%x-40*%w/100*%rz,%y+40*%w/100,255,500,1,0x111
+sp_awh %n,90*%w/100,90*%w/100,500,0,0x111
+sp_axya %n,%x-50*%rz*%w/100,%y+50*%w/100,0,500,-1,0x121
+sp_awh %n,100*%w/100,100*%w/100,500,0,0x121
+return
+
+*—­‘§1_2
+sp %n,"em/—­‘§1"+$ext,0,0
+sp_xy %n,%x,%y+20*%w/100
+sp_a %n,0
+sp_wh %n,50*%w/100,50*%w/100
+sp_rxyz %n,0,%ry,-30
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y+20*%w/100,0,%wt,0,0x110
+sp_awh %n,50*%w/100,50*%w/100,%wt,0,0x110
+sp_arz %n,-30,%wt,0,0x110
+sp_axya %n,%x-40*%w/100*%rz,%y+40*%w/100,255,500,1,0x111
+sp_awh %n,90*%w/100,90*%w/100,500,0,0x111
+sp_arz %n,0,500,1,0x111
+sp_axya %n,%x-50*%w/100*%rz,%y+50*%w/100,0,500,-1,0x121
+sp_awh %n,100*%w/100,100*%w/100,500,0,0x121
+sp_arz %n,5,500,0,0x121
+return
+
+*—­‘§2_1
+sp %n,"em/—­‘§2"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,50*%w/100,50*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y,0,%wt,0,0x110
+sp_awh %n,50*%w/100,50*%w/100,%wt,0,0x110
+sp_ax %n,%x-100*%w/100*%rz,800,7,0x111
+sp_aa %n,255,400,7,0x111
+sp_awh %n,100*%w/100,100*%w/100,400,7,0x111
+sp_aa %n,0,400,-2,0x121
+return
+
+*—­‘§2_2
+sp %n,"em/—­‘§2"+$ext,0,0
+sp_xy %n,%x,%y+20
+sp_a %n,0
+sp_wh %n,50*%w/100,50*%w/100
+sp_rxyz %n,0,%ry,-40
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y+20*%w/100,0,%wt,0,0x110
+sp_awh %n,50*%w/100,50*%w/100,%wt,0,0x110
+sp_arz %n,-40,%wt,0,0x110
+sp_axya %n,%x-40*%w/100*%rz,%y+60*%w/100,255,500,0,0x111
+sp_awh %n,90*%w/100,90*%w/100,500,0,0x111
+sp_arz %n,-30,500,0,0x111
+sp_axya %n,%x-50*%w/100*%rz,%y+70*%w/100,0,500,0,0x121
+sp_awh %n,100*%w/100,100*%w/100,500,0,0x121
+sp_arz %n,-25,500,0,0x121
+return
+
+*Š¾1_1
+sp %n,"em/Š¾1"+$ext,0,0
+sp_xy %n,%x,%y-50*%w/100
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_o %n,%odr
+sp_ref %n
+sp_axya %n,%x,%y-50*%w/100,0,%wt,0,0x110
+sp_axya %n,%x,%y,255,1000,2,0x111
+sp_aa %n,0,500,0,0x121
+return
+
+*Š¾1_2
+sp %n,"em/Š¾1_3"+$ext,0,0
+sp_xy %n,%x+260*%w/100*%rz,%y-25*%w/100
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/Š¾1_2"+$ext,0,0
+sp_xy %n+1,%x-70*%w/100*%rz,%y-125*%w/100
+sp_a %n+1,0
+sp_wh %n+1,%w,%w
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp %n+2,"em/Š¾1"+$ext,0,0
+sp_xy %n+2,%x-70*%w/100*%rz,%y+25*%w/100
+sp_a %n+2,0
+sp_wh %n+2,%w,%w
+sp_o %n+2,%odr
+sp_ref %n+2
+
+sp_ay %n,%y-25*%w/100,%wt,0,0x110
+sp_aa %n,0,%wt,0,0x110
+sp_ay %n,%y+25*%w/100,1000,2,0x111
+sp_aa %n,255,1000,2,0x111
+sp_aa %n,0,500,0,0x121
+
+sp_ay %n+1,%y-125*%w/100,%wt,0,0x110
+sp_aa %n+1,0,%wt,0,0x110
+sp_ay %n+1,%y-75*%w/100,1000,2,0x111
+sp_aa %n+1,255,1000,2,0x111
+sp_aa %n+1,0,500,0,0x121
+
+sp_ay %n+2,%y+25*%w/100,%wt,0,0x110
+sp_aa %n+2,0,%wt,0,0x110
+sp_ay %n+2,%y+75*%w/100,1000,2,0x111
+sp_aa %n+2,255,1000,2,0x111
+sp_aa %n+2,0,500,0,0x121
+return
+
+*Š¾2_1
+sp %n,"em/Š¾2"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_arz %n,0,%wt,0,0xA10
+sp_aa %n,255,1,0,0x111
+sp_arz %n,180,1,0,0xA21
+sp_arz %n,180,50,0,0xA21
+sp_arz %n,0,1,0,0xA21
+sp_arz %n,0,50,0,0xA21
+return
+
+*“{‚è1_1
+sp %n,"em/“{‚è1"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,125*%w/100,125*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_awh %n,125*%w/100,125*%w/100,%wt,0,0x110
+sp_aa %n,255,250,0,0x111
+sp_awh %n,75*%w/100,75*%w/100,250,2,0x111
+sp_aa %n,255,875,0,0x111
+sp_awh %n,100,100,125,-2,0x111
+sp_awh %n,75*%w/100,75*%w/100,125,2,0x111
+sp_awh %n,100*%w/100,100*%w/100,125,-2,0x111
+sp_awh %n,75*%w/100,75*%w/100,125,2,0x111
+sp_awh %n,100*%w/100,100*%w/100,125,-2,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*“{‚è2_1
+sp %n,"em/“{‚è2_1"+$ext,0,0
+sp_xy %n,%x-200*%w/100*%rz,%y
+sp_a %n,0
+sp_wh %n,100*%w/100,100*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/“{‚è2_2"+$ext,0,0
+sp_xy %n+1,%x+200*%w/100*%rz,%y+50
+sp_a %n+1,0
+sp_wh %n+1,100*%w/100,100*%w/100
+sp_rxyz %n+1,0,%ry,0
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp %n+2,"em/“{‚è2_3"+$ext,0,0
+sp_xy %n+2,%x+150*%w/100*%rz,%y-25
+sp_a %n+2,0
+sp_wh %n+2,100*%w/100,100*%w/100
+sp_rxyz %n+2,0,%ry,0
+sp_o %n+2,%odr
+sp_ref %n+2
+
+sp_axya %n,%x-200*%w/100*%rz,%y,0,%wt,0,0x110
+sp_awh %n,100*%w/100,100*%w/100,%wt,0,0x110
+sp_axya %n,%x-240*%w/100*%rz,%y-50,255,125,2,0x111
+sp_awh %n,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n,%x-200*%w/100*%rz,%y,255,125,-2,0x111
+sp_awh %n,100*%w/100,100*%w/100,125,-2,0x111
+sp_axya %n,%x-240*%w/100*%rz,%y-50,255,125,2,0x111
+sp_awh %n,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n,%x-200*%w/100*%rz,%y,255,125,-2,0x111
+sp_awh %n,100*%w/100,100*%w/100,125,-2,0x111
+sp_aa %n,0,250,0,0x121
+
+sp_axya %n+1,%x+200*%w/100*%rz,%y+50,0,%wt,0,0x110
+sp_axya %n+1,%x+240*%w/100*%rz,%y,255,125,2,0x111
+sp_awh %n+1,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n+1,%x+200*%w/100*%rz,%y+50,255,125,-2,0x111
+sp_awh %n+1,100*%w/100,100*%w/100,125,-2,0x111
+sp_axya %n+1,%x+240*%w/100*%rz,%y,255,125,2,0x111
+sp_awh %n+1,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n+1,%x+200*%w/100*%rz,%y+50,255,125,-2,0x111
+sp_awh %n+1,100*%w/100,100*%w/100,125,-2,0x111
+sp_aa %n+1,0,250,0,0x121
+
+sp_axya %n+2,%x+150*%w/100*%rz,%y-25,0,%wt,0,0x110
+sp_axya %n+2,%x+190*%w/100*%rz,%y-75,255,125,2,0x111
+sp_awh %n+2,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n+2,%x+150*%w/100*%rz,%y-25,255,125,-2,0x111
+sp_awh %n+2,100*%w/100,100*%w/100,125,-2,0x111
+sp_axya %n+2,%x+190*%w/100*%rz,%y-75,255,125,2,0x111
+sp_awh %n+2,200*%w/100,200*%w/100,125,2,0x111
+sp_axya %n+2,%x+150*%w/100*%rz,%y-25,255,125,-2,0x111
+sp_awh %n+2,100*%w/100,100*%w/100,125,-2,0x111
+sp_aa %n+2,0,250,0,0x121
+return
+
+*¯1_1
+sp %n,"em/¯1_1"+$ext,0,0
+sp_xy %n,%x-200*%w/100*%rz,%y+200*%w/100
+sp_a %n,0
+sp_wh %n,100*%w/100,100*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/¯1_2"+$ext,0,0
+sp_xy %n+1,%x+200*%w/100*%rz,%y+250*%w/100
+sp_a %n+1,0
+sp_wh %n+1,100*%w/100,100*%w/100
+sp_rxyz %n+1,0,%ry,0
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp %n+2,"em/¯1_3"+$ext,0,0
+sp_xy %n+2,%x+250*%w/100*%rz,%y+150*%w/100
+sp_a %n+2,0
+sp_wh %n+2,100*%w/100,100*%w/100
+sp_rxyz %n+2,0,%ry,0
+sp_o %n+2,%odr
+sp_ref %n+2
+
+sp %n+3,"em/¯1_4"+$ext,0,0
+sp_xy %n+3,%x+200*%w/100*%rz,%y
+sp_a %n+3,0
+sp_wh %n+3,100*%w/100,100*%w/100
+sp_rxyz %n+3,0,%ry,0
+sp_o %n+3,%odr
+sp_ref %n+3
+
+sp_axya %n,%x-200*%w/100*%rz,%y+200*%w/100,2,%wt,0,0x110
+sp_arz %n,0,%wt,0,0x110
+sp_qy %n,-150,750,1,3,0,%wt
+sp_axy %n,%x-300*%w/100*%rz,%y+450*%w/100,750,-2,0x111
+sp_aa %n,255,250,2,0x111
+sp_arz %n,-630,750,0,0x111
+sp_aa %n,0,500,-2,0x121
+
+sp_axya %n+1,%x+200*%w/100*%rz,%y+250*%w/100,2,%wt,0,0x110
+sp_arz %n+1,0,%wt,0,0x110
+sp_qy %n+1,-100,750,1,3,0,%wt
+sp_axy %n+1,%x+300*%w/100*%rz,%y+500*%w/100,750,-2,0x111
+sp_aa %n+1,255,250,2,0x111
+sp_arz %n+1,630,750,0,0x111
+sp_aa %n+1,0,500,-2,0x121
+
+sp_axya %n+2,%x+250*%w/100*%rz,%y+150*%w/100,2,%wt,0,0x110
+sp_arz %n+2,0,%wt,0,0x110
+sp_qy %n+2,-150,750,1,3,0,%wt
+sp_axy %n+2,%x+350*%w/100*%rz,%y+400*%w/100,750,-2,0x111
+sp_aa %n+2,255,250,2,0x111
+sp_arz %n+2,630,750,0,0x111
+sp_aa %n+2,0,500,-2,0x121
+
+sp_axya %n+3,%x+200*%w/100*%rz,%y,0,%wt,2,0x110
+sp_arz %n+3,0,%wt,0,0x110
+sp_qy %n+3,-150,750,1,3,0,%wt
+sp_axy %n+3,%x+300*%w/100*%rz,%y+250*%w/100,750,-2,0x111
+sp_aa %n+3,255,250,2,0x111
+sp_arz %n+3,630,750,0,0x111
+sp_aa %n+3,0,500,-2,0x121
+return
+
+*ŽOü2_1
+sp %n,"em/ŽOü2"+$ext,0,0
+goto *ŽOüX_1
+
+*ŽOü1_1
+sp %n,"em/ŽOü1"+$ext,0,0
+*ŽOüX_1
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,150,0,0x111
+sp_aa %n,0,1,0,0x111
+sp_aa %n,0,100,0,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,150,0,0x111
+sp_aa %n,0,1,0,0x111
+sp_aa %n,0,100,0,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*I3_1
+sp %n,"em/IH"+$ext,0,0
+goto *IX_1
+
+*I2_1
+sp %n,"em/II"+$ext,0,0
+goto *IX_1
+
+*I1_1
+sp %n,"em/I"+$ext,0,0
+*IX_1
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,200*%w/100,200*%w/100
+sp_rxyz %n,0,0,-10*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_awh %n,200*%w/100,200*%w/100,%wt,0,0x110
+sp_aa %n,255,150,0,0x111
+sp_awh %n,75*%w/100,75*%w/100,150,-2,0x111
+sp_aa %n,255,400,0,0x111
+sp_awh %n,100*%w/100,100*%w/100,150,2,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*I3_2
+sp %n,"em/IH"+$ext,0,0
+goto *IX_2
+
+*I2_2
+sp %n,"em/II"+$ext,0,0
+goto *IX_2
+
+*I1_2
+sp %n,"em/I"+$ext,0,0
+*IX_2
+sp_cxy %n,1,2
+sp_xy %n,%x,%y+32*%w/100
+sp_a %n,0
+sp_wh %n,%w,0
+sp_rxyz %n,0,0,-10*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_ah %n,0,%wt,0,0x110
+sp_aa %n,255,150,0,0x111
+sp_ah %n,150,150,-2,0x111
+sp_aa %n,255,400,0,0x111
+sp_ah %n,100,150,2,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*H1_1
+sp %n,"em/H"+$ext,0,0
+sp_xy %n,%x,%y
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_rxyz %n,0,0,-10*%w/100*%rz
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,1,0,0x111
+sp_aa %n,0,100,0,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,1,0,0x111
+sp_aa %n,0,100,0,0x111
+sp_aa %n,255,1,0,0x111
+sp_aa %n,255,250,0,0x111
+sp_aa %n,0,250,0,0x121
+return
+
+*H1_2
+sp %n,"em/H"+$ext,0,0
+sp_cxy %n,1,2
+sp_xy %n,%x,%y+32*%w/100
+sp_a %n,0
+sp_wh %n,%w,%w
+sp_o %n,%odr
+sp_ref %n
+sp_aa %n,0,%wt,0,0x110
+sp_arz %n,0,%wt,0,0x110
+sp_aa %n,255,250,0,0x111
+sp_arz %n,-45,250,2,0x111
+sp_aa %n,255,1250,0,0x111
+sp_arz %n,0,250,-2,0x111
+sp_arz %n,45,250,2,0x111
+sp_arz %n,0,250,-2,0x111
+sp_arz %n,-45,250,2,0x111
+sp_arz %n,0,250,-2,0x111
+sp_arz %n,45,250,2,0x121
+sp_aa %n,0,250,0,0x121
+return
+
+
+*D‚«1_1
+sp %n,"em/D‚«1_1"+$ext,0,0
+sp_xy %n,%x-200*%w/100*%rz,%y+150*%w/100
+sp_a %n,0
+sp_wh %n,100*%w/100,100*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/D‚«1_2"+$ext,0,0
+sp_xy %n+1,%x-150*%w/100*%rz,%y+200*%w/100
+sp_a %n+1,0
+sp_wh %n+1,100*%w/100,100*%w/100
+sp_rxyz %n+1,0,%ry,0
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp_qy %n,20*%w/100,600,2,-2,0,%wt
+sp_aa %n,0,%wt,0,0x110
+sp_awh %n,100*%w/100,100*%w/100,%wt,0,0x110
+sp_aa %n,255,200,0,0x111
+sp_axy %n,%x-250*%w/100*%rz,%y+130*%w/100,1200,0,0x111
+sp_awh %n,100*%w/100,80*%w/100,300,0,0x111
+sp_awh %n,100*%w/100,100*%w/100,300,0,0x111
+sp_awh %n,100*%w/100,80*%w/100,300,0,0x111
+sp_awh %n,100*%w/100,100*%w/100,300,0,0x111
+sp_aa %n,255,1000,0,0x111
+sp_aa %n,0,200,0,0x121
+
+sp_qy %n+1,20*%w/100,600,2,0,0,%wt+100
+sp_aa %n+1,0,%wt+100,0,0x110
+sp_awh %n+1,100*%w/100,100*%w/100,%wt+100,0,0x110
+sp_aa %n+1,255,200,0,0x111
+sp_axy %n+1,%x-200*%w/100*%rz,%y+180*%w/100,1200,0,0x111
+sp_awh %n+1,100*%w/100,80*%w/100,300,0,0x111
+sp_awh %n+1,100*%w/100,100*%w/100,300,0,0x111
+sp_awh %n+1,100*%w/100,80*%w/100,300,0,0x111
+sp_awh %n+1,100*%w/100,100*%w/100,300,0,0x111
+sp_aa %n+1,255,1000,0,0x111
+sp_aa %n+1,0,200,0,0x121
+return
+
+*‰Ô1_1
+sp %n,"em/‰Ô1_1"+$ext,0,0
+sp_xy %n,%x-0*%w/100*%rz,%y+0*%w/100
+sp_a %n,0
+sp_wh %n,95*%w/100,95*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+
+sp %n+1,"em/‰Ô1_2"+$ext,0,0
+sp_xy %n+1,%x-0*%w/100*%rz,%y+0*%w/100
+sp_a %n+1,0
+sp_wh %n+1,95*%w/100,95*%w/100
+sp_rxyz %n+1,0,%ry,0
+sp_o %n+1,%odr
+sp_ref %n+1
+
+sp %n+2,"em/‰Ô1_3"+$ext,0,0
+sp_xy %n+2,%x-0*%w/100*%rz,%y+0*%w/100
+sp_a %n+2,0
+sp_wh %n+2,95*%w/100,95*%w/100
+sp_rxyz %n+2,0,%ry,0
+sp_o %n+2,%odr
+sp_ref %n+2
+
+sp_aa %n,0,%wt,0,0x110
+sp_awh %n,95*%w/100,95*%w/100,%wt,0,0x110
+sp_aa %n,255,250,0,0x111
+sp_awh %n,105*%w/100,105*%w/100,300,2,0x111
+sp_aa %n,255,500,0,0x111
+sp_awh %n,100*%w/100,100*%w/100,200,-1,0x111
+sp_aa %n,0,250,0,0x121
+
+sp_aa %n+1,0,%wt+250,0,0x110
+sp_awh %n+1,95*%w/100,95*%w/100,%wt+250,0,0x110
+sp_aa %n+1,255,250,0,0x111
+sp_awh %n+1,105*%w/100,105*%w/100,300,2,0x111
+sp_aa %n+1,255,500,0,0x111
+sp_awh %n+1,100*%w/100,100*%w/100,200,-1,0x111
+sp_aa %n+1,0,250,0,0x121
+
+sp_aa %n+2,0,%wt+500,0,0x110
+sp_awh %n+2,95*%w/100,95*%w/100,%wt+500,0,0x110
+sp_aa %n+2,255,250,0,0x111
+sp_awh %n+2,105*%w/100,105*%w/100,300,2,0x111
+sp_aa %n+2,255,500,0,0x111
+sp_awh %n+2,100*%w/100,100*%w/100,200,-1,0x111
+sp_aa %n+2,0,250,0,0x121
+return
+
+*‰š‚Þ1_1
+sp %n,"em/‰š‚Þ1"+$ext,0,0
+sp_xy %n,%x-0*%w/100*%rz,%y+0*%w/100
+sp_a %n,0
+sp_wh %n,100*%w/100,100*%w/100
+sp_rxyz %n,0,%ry,0
+sp_o %n,%odr
+sp_ref %n
+
+sp_qx %n,2,60,30,0,1,%wt
+sp_aa %n,0,%wt,0,0x110
+sp_ay %n,%y+0*%w/100,%wt,0,0x110
+sp_aa %n,255,200,0,0x111
+sp_aa %n,255,1000,0,0x111
+sp_ay %n,%y+30*%w/100,1500,0,0x111
+sp_aa %n,0,200,0,0x121
+return
+
+
+
+
+
+
+
+
+
+
+
+
+*CGG
+getParam %n,$0,$1,$2,$3,$4
+split $0,"@",%w,%h,%c=1
+split $1,"@",%t=500,%s1,%es=2
+split $2,"@",%x=%WidthH,%y=%HeightH,%a=255,%odr=5
+split $3,"@",%7,%8,%t2=-1
+split $4,"@",%rx=1,%ry=1
+cal %9=900+%n
+
+
+
+sp_exist %9,%0
+if(%0==2 && %t) cal %t=1
+spg %9,%w,%h,4
+goto *CG_2
+
+*CG.G
+getParam %n,%0
+cal %9=900+%n,%8=900+%0
+
+
+
+
+sp_g %9,%8
+return
+
+*ST.G
+getParam %n,%0
+cal $9="st"+$(%n),%9=910+%$9,%8=900+%0
+
+
+
+
+sp_g %9,%8
+return
+
+
+*CG_C
+split $4,"@",%1,%2,%3,%4
+
+
+
+
+if($1=="st") sp_cut %9,$0+$ext2,(%s2&28)<<2,0,%1,%2,%3,%4
+else sp_cut %9,$0+$ext,(%s2&28)<<2,0,%1,%2,%3,%4
+return *CG_2
+
+*CG
+getParam %n,$0,$1,$2,$3,$4,$5
+*CG_X
+split $0,"@",$0,%s2,%c=1
+split $1,"@",%t=500,%s1,%es=2
+split $2,"@",%x=%WidthH,%y=%HeightH,%a=255,%odr=5
+split $3,"@",%7,%8,%t2=-1
+split $5,"@",%rx=1,%ry=1
+
+cal %9=900+%n
+split $0,"/",$1,$2:if($1=="st" || $2=="st") cal $1="st"
+
+
+
+
+
+sp_exist %9,%0
+if(%0==2 && %t) cal %t=1
+sp_rot %9,%s2&3
+if($4!="") gosub *CG_C
+if($1=="st") sp %9,$0+$ext2,(%s2&28)<<2,0
+else sp %9,$0+$ext,(%s2&28)<<2,0
+*CG_2
+sp_o %9,%odr
+sp_cxy %9,%rx,%ry
+
+
+
+if(!%t) sp_xy %9,%x,%y:sp_b %9,%c:sp_a %9,%a:return
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%t2=1,%es=0,%s1&=14
+if(%t==1) sp_xy %9,%x,%y:sp_b %9,%c:sp_a %9,%a:sp_ref %9:return
+if(1<%0) goto *CG_3
+
+sp_xy %9,%x+%7,%y+%8
+sp_b %9,%c:sp_a %9,0:sp_ref %9
+*CG_3
+if(%t2==-1) cal %t2=%t
+sp_axy %9,%x,%y,%t2,%es,0x110|%s1
+sp_aa %9,%a,%t,0,0x110|%s1
+return
+
+
+*CGC
+getParam %n,$0,$1,$2,$3,$4,$5
+split $0,"@",$0,%s2,%c=1
+split $1,"@",%7,%8
+split $2,"@",%x=%WidthH,%y=%HeightH,%a=255,%odr=5
+cal %9=900+%n
+
+
+
+
+
+sp_exist %9,%0
+sp_rot %9,%s2&3
+sp %9,$0+$ext,(%s2&28)<<2,%7<<4|%8
+sp_o %9,%odr
+sp_xy %9,%x,%y:sp_b %9,%c:sp_a %9,%a
+return
+
+*CG.CL
+getParam %n,$0,$1
+split $0,"@",%t=16,%wt
+split $1,"@",%7,%8
+cal %9=900+%n
+
+
+
+sp_gcl %9,%1:cal %1>>=4
+sp_al %9,0,%wt,0,0x110
+for %0,%7-1,%8-1
+sp_al %9,(%0%%1<<4)|(%0\%1),%t,0,0x111
+next
+return
+
+
+*CG.DEL2
+
+
+
+if(!%t) sp_dx %w,%h,0:return
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14
+for %n,%w,%h
+sp_exist %n,%0:if(!%0) continue
+if(%7 || %8) sp_gxy %n,1,1,%x,%y:sp_axy %n,%x+%7,%y+%8,%t,%es,0x120|%s1
+sp_aa %n,%a,%t,0,0x120|%s1
+next
+return
+
+*CG.DEL
+getParam %n=99,$1,$2
+cal %9=900+%n,%w=900,%h=909
+split $1,"@",%t=250,%s1,%es=-2
+split $2,"@",%7,%8,%a
+
+
+
+if(%n==99) goto *CG.DEL2
+
+
+
+
+if(!%t) sp_d %9,0:return
+sp_exist %9,%0:if(!%0) return
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14
+
+if(%7 || %8) sp_gxy %9,1,1,%x,%y:sp_axy %9,%x+%7,%y+%8,%t,%es,0x120|%s1
+sp_aa %9,%a,%t,0,0x120|%s1
+return
+
+
+
+*CG.MK
+getParam %n,$1,$2,$3
+split $2,"@",%v=0,%c=256,%p=256
+split $3,"@",%x=0,%y=0
+cal %9=900+%n
+
+
+
+sp_mask %9,$1+$ext,%v,%c,%p,%x,%y
+return
+
+*CG.M
+getParam %n,$1,$2
+split $1,"@",%t=500,%s1,%es=0,%s2=1,%s3=1
+split $2,"@",%v=0,%c=256
+cal %9=900+%n
+
+
+
+getSkip %1:if(%1 || (%EffectSkip&1)) cal %t=1,%es=0,%s1&=14
+sp_am %9,%v,%c,%t,%es,%s3<<8|%s2<<4|%s1
+return
+
+*CG.B
+getParam %n,%v=1
+cal %9=900+%n
+
+
+
+sp_b %9,%v
+return
+
+*CG.C
+getParam %n,$1,%c,%mode
+split $1,"@",%t=500,%s1,%es=2,%s2=1,%s3=1
+cal %9=900+%n
+goto *SP_C
+
+*CG.O
+getParam %n,%v=-1
+cal %9=900+%n
+goto *SP_O
+
+*CG.X
+getParam %n,$1,%x=%WidthH
+cal %9=900+%n
+goto *SP_X
+
+*CG.Y
+getParam %n,$1,%y=%HeightH
+cal %9=900+%n
+goto *SP_Y
+
+*CG.XY
+getParam %n,$1,%x=%WidthH,%y=%HeightH
+cal %9=900+%n
+goto *SP_XY
+
+*CG.A
+getParam %n,$1,%a=0
+cal %9=900+%n
+goto *SP_A
+
+*CG.XYA
+getParam %n,$1,%x=%WidthH,%y=%HeightH
+cal %9=900+%n
+goto *SP_XYA
+
+*CG.W
+getParam %n,$1,%w=100
+cal %9=900+%n
+goto *SP_W
+
+*CG.H
+getParam %n,$1,%h=100
+cal %9=900+%n
+goto *SP_H
+
+*CG.WH
+getParam %n,$1,%w=100,%h=100
+cal %9=900+%n
+goto *SP_WH
+
+*CG.RX
+getParam %n,$1,%x=0
+cal %9=900+%n
+goto *SP_RX
+
+*CG.RY
+getParam %n,$1,%y=0
+cal %9=900+%n
+goto *SP_RY
+
+*CG.RZ
+getParam %n,$1,%z=0
+cal %9=900+%n
+goto *SP_RZ
+
+*CG.RXYZ
+getParam %n,$1,%x=0,%y=0,%z=0
+cal %9=900+%n
+goto *SP_RXYZ
+
+
+*CG.DU
+getParam %n,$1,%v=25,%cnt=1
+cal %9=900+%n
+goto *SP_DU
+
+*CG.DUD
+getParam %n,$1,%v=25,%cnt=1
+cal %9=900+%n
+goto *SP_DUD
+
+*CG.RL
+getParam %n,$1,%v=25,%cnt=1
+cal %9=900+%n
+goto *SP_RL
+
+*CG.RLR
+getParam %n,$1,%v=25,%cnt=1
+cal %9=900+%n
+goto *SP_RLR
+
+
+*CG.SK
+getParam %n,%v=0,$1,$2,%cnt=1
+cal %9=900+%n
+goto *SP_SK
+
+
+*CG.DF
+getParam %n,%v,$0,$1,$2
+cal %9=900+%n
+goto *SP_DF
+
+
+*CG.CF
+getParam %n,%v,%s1=0,$1,$2
+cal %9=900+%n
+
+
+
+*SP_CF
+gosub "*SP_CF"+$(%v&3)
+if($1!="") goto *SC.FD_2
+return
+
+
+*CG.WA
+getParam %n=-1,%1=1,%v=1
+if(%1) setWindowVisible 0
+if(%n==-1) cal %8=900,%9=909:goto *ST.WA2
+cal %8=900+%n,%9=%8
+
+
+
+goto *ST.WA2
+
+
+*CG.AN
+getParam %n,$0,$1,$2,%cnt=1,$3
+split $0,"@",$0,%s2,%v=1
+split $1,"@",%t=1,%wt,%es
+split $2,"@",%x=%WidthH,%y=%HeightH,%a=255,%odr=5
+split $3,"@",%rx=1,%ry=1
+cal %9=900+%n,$0="an/"+$0+".avi"
+
+
+
+
+
+
+sp_rot %9,%s2&3
+
+
+
+sp_ani %9,$0,0,%cnt,%cnt==1,%es,%wt
+
+sp_o %9,%odr
+sp_cxy %9,%rx,%ry
+sp_b %9,%v
+sp_xy %9,%x,%y
+sp_a %9,%a
+if(!%t) return
+sp_a %9,0:sp_ref %9
+if(%wt) sp_aa %9,0,%wt,0,0x110
+sp_aa %9,%a,%t,0,%wt!=0|0x110
+return
+
+*CG.MV
+getParam %n,$0,$1,$2,%cnt=1,$3
+split $0,"@",$0,%s2,%v=1
+split $1,"@",%t=1,%wt,%es
+split $2,"@",%x=%WidthH,%y=%HeightH,%a=255,%odr=5
+split $3,"@",%rx=1,%ry=1
+cal %9=900+%n,$0="an/"+$0+".dat"
+
+
+
+
+
+
+sp_rot %9,%s2&3
+sp_ani %9,$0,0,%cnt,2,%es,%wt
+sp_o %9,%odr
+sp_cxy %9,%rx,%ry
+sp_b %9,%v
+sp_xy %9,%x,%y
+sp_a %9,%a
+if(!%t) return
+sp_a %9,0:sp_ref %9
+if(%wt) sp_aa %9,0,%wt,0,0x110
+sp_aa %9,%a,%t,0,%wt!=0|0x110
+return
+
+
+
+*SC.X
+getParam $0,%g_sx
+split $0,"@",%t,%wt,%es=2
+sc_x %g_sx,%t,%es,%wt
+return
+
+*SC.Y
+getParam $0,%g_sy
+split $0,"@",%t,%wt,%es=2
+sc_y %g_sy,%t,%es,%wt
+return
+
+*SC.XY
+getParam $0,%g_sx,%g_sy
+split $0,"@",%t,%wt,%es=2
+sc_xy %g_sx,%g_sy,%t,%es,%wt
+return
+
+*SC.W
+getParam $0,%g_sw=100
+split $0,"@",%t,%wt,%es=2
+sc_w %g_sw,%t,%es,%wt
+return
+
+*SC.H
+getParam $0,%g_sh=100
+split $0,"@",%t,%wt,%es=2
+sc_h %g_sh,%t,%es,%wt
+return
+
+*SC.WH
+getParam $0,%g_sw=100,%g_sh=100
+split $0,"@",%t,%wt,%es
+sc_wh %g_sw,%g_sh,%t,%es,%wt
+return
+
+*SC.FL
+getParam $0,$1,%cnt=1
+split $0,"@",%v=1,%c=0xFFFFFF
+split $1,"@",%t,%wt,%es=2
+cal $0="fl"+$(%v&3),%mode=4,%t>>=1,%wt|=1
+getMode %9
+if(!%t || (%EffectSkip&1 && %cnt) || (%9&48)) sp_ae %spFlash:return
+if(%v == 3) cal %mode=0
+sp_a %spFlash,0:sp_b %spFlash,%$0:sp_c %spFlash,%mode,%c:sp_ref %spFlash
+sp_aa %spFlash,0,%wt,0,0x10|%cnt<<8
+sp_aa %spFlash,255,%t,%es,1
+sp_aa %spFlash,0,%t,-%es,1
+return
+
+
+*SC.SK
+getParam %v=0,$1,$2,%cnt=1
+split $1,"@",%t=100,%wt,%es=2
+split $2,"@",%x=0,%y=0
+cal %n=1
+goto "*SC.SK"+$(%v&3)
+
+*SC.SK0
+cal %9=%t/8+0.5,%t=%9*8
+sc_qx %n,%x,%t,%cnt,%es,1,%wt
+sc_qy %n,%y,%t>>1,%cnt<<1,%es,1,%wt:return
+*SC.SK1
+cal %9=%t/8+0.5,%t=%9*8
+sc_qx %n,%x,%t>>1,%cnt<<1,%es,1,%wt
+sc_qy %n,%y,%t,%cnt,%es,1,%wt:return
+*SC.SK2
+sc_qx %n,%x,%t,%cnt,%es,1,%wt
+sc_qy %n,%y,%t,%cnt,%es,1,%wt:return
+*SC.SK3
+sc_qx %n,%x,%t,%cnt,%es,0,%wt
+sc_qy %n,%y,%t,%cnt,%es,0,%wt:return
+
+
+*SC.DF
+getParam %v,$0,$1,$2
+split $0,"@",%s1,%s2
+gosub "*SC.DF"+$(%v&7)
+for %0,900,%EndSp:sp_reload %0:next
+sp_reload 998:sp_reload %spFace
+if($1!="") goto *SC.FD_2
+return
+
+*SC.DF0
+cal %s2*=%s1,%1=%s2>>16,%2=%s2>>8&0xFF,%3=%s2&0xFF
+for %0,900,%EndSp:sp_gray %0,%s1:sp_color %0,%1,%2,%3:next:sp_gray 998,%s1:sp_color 998,%1,%2,%3
+sp_gray %spFace,%s1:sp_color %spFace,%1,%2,%3:return
+*SC.DF1
+for %0,900,%EndSp:sp_gray %0,%s1:next:sp_gray 998,%s1:sp_gray %spFace,%s1:return
+*SC.DF2
+for %0,900,%EndSp:sp_neg %0,%s1:next:sp_neg 998,%s1:sp_neg %spFace,%s1:return
+*SC.DF3
+for %0,900,%EndSp:sp_blur %0,%s1,%s2:next:sp_blur 998,%s1,%s2:sp_blur %spFace,%s1,%s2:return
+*SC.DF4
+for %0,900,%EndSp:sp_mosaic %0,%s1,%s2:next:sp_mosaic 998,%s1,%s2:sp_mosaic %spFace,%s1,%s2:return
+*SC.DF5
+for %0,900,%EndSp:sp_hsl %0,%s1,0,0:next:sp_hsl 998,%s1,0,0:sp_hsl %spFace,%s1,0,0:return
+
+
+*SC.CF
+getParam %v,%s1=0,$1,$2
+gosub "*SC.CF"+$(%v&3)
+for %0,900,%EndSp
+sp_exist %0,%1:if(%1) sp_c %0,%g_tc1,%g_tc2
+next
+sp_c %spFace,%g_tc1,%g_tc2
+if($1!="") goto *SC.FD_2
+return
+
+*SC.CF0
+cal $6="tc1_"+$g_tc,%g_tc1=%$6,$6="tc2_"+$g_tc,%g_tc2=%$6:sp_c 998,0,0:return
+*SC.CF1
+cal %g_tc1=7,%g_tc2=%s1:sp_c 998,%g_tc1,%g_tc2:return
+*SC.CF2
+cal %g_tc1=4,%g_tc2=%s1:sp_c 998,%g_tc1,%g_tc2:return
+
+*SC.FD
+getParam $1,$2,%s2=1
+*SC.FD_2
+split $1,"@",%t=1000,%s1,%es
+
+
+
+
+
+if(!%t) return
+getSkip %1:if(%1 || (%EffectSkip&1) || %t==1) draw:return
+
+cal %9=0
+*SC.FD_3
+
+
+
+if($2=="") cal %1=1,%2=0:goto *SC.FD_5
+split $2,"@",$2,$3
+existStretch $2,%0
+if(%0) cal %1=2,%2=0:goto *SC.FD_5
+if($2=="Mosaic") cal %1=4,%2=79:goto *SC.FD_4
+cal %1=3,%2=128,$2="mask/"+$2+".png"
+
+
+
+*SC.FD_4
+if($3!="") cal %2=%($3)
+*SC.FD_5
+sp_a %spFace,0:sp_ref %spFace
+if(200<%t && %s2) setWindowVisible 0
+effect %1,%t,%es,$2,%2,%9
+return
+
+
+
+*nofile
+cal %11=1
+if(0<=%v) sd_volume %12,%v,%t:cal %11=0
+if(%p!=999) sd_panpot %12,%p,%t:cal %11=0
+if(%11) sd_stop %12,%t,%wt:if(%12<3) cal %g_BgmCross^=1
+return
+
+*BGM
+getParam $0="",$1,$2,%cnt=0
+split $1,"@",%t,%wt
+split $2,"@",%v=-1,%p=999
+if($0=="") cal %12=1+%g_BgmCross:goto *nofile
+
+
+
+string "s_"+$0
+cal $0="bgm/"+$0+".ogg"
+sd_status 1+%g_BgmCross,%4
+if(%v<0) cal %v=100
+if(%p==999) cal %p=0
+if(%4) sd 1+%g_BgmCross,$0,%t,%wt,%v,%p,%cnt,0:return
+sd_getFile 1+%g_BgmCross,$1
+if($0==$1) return
+sd_stop 1+%g_BgmCross,%t,%wt
+cal %g_BgmCross^=1
+sd 1+%g_BgmCross,$0,%t,%wt,%v,%p,%cnt,0
+return
+
+*BGM.S
+getParam $0
+string "s_"+$0
+return
+
+*MV.NW
+getParam %t,%t2,%n
+sd_status 0,%9:if(%9) cal %%n=0:return
+sd_nowTime 0,%9:if((%t+%t2)<%9) cal %%n=0:return
+cal %%n=%t2-(%9-%t)
+return
+
+*MV.ST
+getParam $0
+getMode %0:if(((%0&4) && !(%0&16)) || (%0&8)) draw:return $0
+gosub *FS
+return
+
+*MV.WA
+getParam %t,$s
+cal %n=0
+*MV.WA2
+cal $50="*MVWA_loop",$51="*MV.WA2"
+*MVWA_loop
+eventWait %0,%1,%2
+if((%1==0x02 || %1==0x08 || %1==0x1B) && %2==3) return $s
+sd_status %n,%9:if(%9) return
+if(%t) sd_nowTime %n,%9:if(%t<%9) return
+if(%0 == 261) goto "*execute_exit"+$(%2)
+if(%0 == 262) gosub *execute_aspect
+if(%0 == 256) draw
+goto *MVWA_loop
+return
+
+*BGM.WA
+getParam %t,%v=1,%c
+cal %n=1+%g_BgmCross
+goto *soundWait2
+
+*BGM.LT
+getParam %0,%1,%2
+sd_status 1+%g_BgmCross,%4
+if(!%4) sd_loopTime 1+%g_BgmCross,%0,%1,%2
+return
+
+*BGM.LS
+getParam %0,%1,%2
+sd_status 1+%g_BgmCross,%4
+if(!%4) sd_loopSample 1+%g_BgmCross,%0,%1,%2
+return
+
+*SE2
+cal %n=5
+goto *SE
+*SE1
+cal %n=4
+goto *SE
+*SE0
+cal %n=3
+*SE
+getParam $0="",$1,$2,%cnt=1
+split $1,"@",%t,%wt
+split $2,"@",%v=-1,%p=999
+if($0=="") cal %12=%n:goto *nofile
+
+
+
+cal $0="se/"+$0+".ogg"
+if(%v<0) cal %v=100
+if(%p==999) cal %p=0
+sd %n,$0,%t,%wt,%v,%p,%cnt,0
+return
+
+*SE0.WA
+cal %n=3
+goto *SE.WA
+*SE1.WA
+cal %n=4
+*SE.WA
+getTimer %8
+getParam %t,%9=1,%v=1,%c
+if(%9) setWindowVisible 0:for %0,%spMenuS,%spMenuE:sp_l %0,0:sp_ae %0:sp_c %0,0,0:next:draw
+goto *soundWait2
+
+
+
+*systemWait
+cal %0=2
+goto *WA1
+
+*WA
+cal %0=1
+
+*WA1
+getTimer %7
+getParam %t,%9=1,%v=1,%wt=1
+getSkip %1:if(%1 || (%wt && (%EffectSkip&%0))) return
+if(%9) setWindowVisible 0:for %0,%spMenuS,%spMenuE:sp_l %0,0:sp_ae %0:sp_c %0,0,0:next:draw
+*WA2
+cal $50="*WA_loop",$51="*WA2"
+*WA_loop
+eventWaitPT %0,%1,%2
+if(%v && (((%1==0x01 || %1==0x0D) && %2==3) || %2==4 || ((%1==0x20 || %1==0x22) && %2==2))) draw:return
+if(%0 == 257) cal %stop=%1,%mode=%2:goto *text_lb_mode
+getMode %9:if(%9&6) return
+if(%t) getTimer %8:if(%t<=(%8-%7) && (!(%v&2) || %9&1)) draw:return
+if(%0 == 261) goto "*execute_exit"+$(%2)
+if(%0 == 262) gosub *execute_aspect
+if(%0 == 256) draw2
+if(%0 == 260) draw:return
+goto *WA_loop
+return
+
+*MV
+getParam $0,%wt
+getMode %0:if(((%0&4) && !(%0&16)) || (%0&8)) draw:return
+gosub *FS
+getScreenRate %0:if(100<%0) existFile "mv/"+$0+"_L.dat",%0:if(%0) cal $0+="_L"
+existFile "mv/"+$0+".dat",%0:if(!%0) error $0+" ‚ª‘¶Ý‚µ‚Ü‚¹‚ñ":return
+sp_ani 791,"mv/"+$0+".dat",10,1,2,0,%wt
+sd_volume 0,50,0
+sp_exist 791,%1:if(!%1) return
+sp_gsz 791,%0,%1
+if(%Width!=%0) sp_wh 791,100*%Width/%0,100*%Width/%0
+MV.WA
+sd_stop 0,0,0
+sp_d 791,0
+
+return
+
+*FS
+setWindowVisible 0
+cal %50=500:gosub *sound_clear
+gosub *mode_stop
+draw
+return
+
+*CL
+getParam %50=1000
+if(%9) setWindowVisible 0
+gosub *sound_clear
+gosub *execute_clear3
+return
+
+*TL
+gosub *mode_stop
+sp_dx 0,9,0
+cal %50=500:gosub *sound_clear
+if(%Replay) cal %Replay=0:sp_a %spMenuS+7,255:sp_a %spMenuS+8,255:sp_a %spMenuS+9,255:sp_a %spMenuS+10,255
+for %0,%spMenuS,%spMenuE:sp_l %0,0:sp_ae %0:sp_c %0,0,0:next
+goto *execute_title2
+
+*ED
+sp 998,"bg/WHITE"+$ext,0,0
+goto *execute_exit2
+
+*RD
+getParam %0,%1
+getTimer %2
+cal %%0=%2%%1
+return
+
+
+*CS
+getParam $2
+if(%Replay) return
+len %0,$2
+for %1,1,(%SaveComM-%0)>>1:cal $2=""+$2:next
+*CS2
+
+if(%g_mon) regexp_trans "y"+$(%g_mon)2+"ŒŽ"+$(%g_day)2+"“ú "+$g_wk+"—j“úz","tr/0-9/‚O-‚X/kg",$1
+else cal $1="y‚w‚wŒŽ‚w‚w“ú ‚w—j“úz"
+for %1,1,(%SaveComM-23)>>1:cal $1=""+$1:next
+setSaveText $1+""+$2
+
+
+
+return
+
+
+*RM.S
+if(%Replay&2) return
+sp_exist 997,%1:if(%1) sp_ae 997
+getParam %0
+makeSave:saveSave 800+%0,1:clearSave
+return
+
+
+*RM.E
+if(%Replay&2) return *rpmode_view3
+
+getParam %0
+existSave 800+%0,1,%1
+if(%1) string "s_rp"+$(%0)
+
+
+
+
+
+
+return
+
+*XM.E
+if(%Replay&4) return *rpmode_view3
+getParam %0
+cal $0="s_ex"+$(%0/32)
+int $0
+cal %$0|=1<<(%0%32)
+return
+
+*ZM.E
+if(%Replay&8) return *rpmode_view3
+getParam %0
+cal $0="s_ez"+$(%0/32)
+int $0
+cal %$0|=1<<(%0%32)
+return
+
+*ZM.D
+if(%Replay&8) return *rpmode_view3
+return
+

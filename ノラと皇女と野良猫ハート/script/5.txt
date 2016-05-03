@@ -1,0 +1,157 @@
+
+
+defsub AS
+defsub SELECT
+defsub RM.S
+defsub RM.E
+
+defsub XM.E
+
+defsub ZM.E
+defsub ZM.D
+defsub CS
+
+defsub MW.TP
+defsub MW.TS
+defsub MW.SK
+defsub MW.SP
+defsub MW.MD
+defsub MW.FC
+defsub MW.BT
+
+defsub BG.F
+defsub BG
+defsub EV
+defsub EV.C
+defsub EV.S
+defsub BG.C
+defsub BG.XY
+defsub EV.XY
+defsub BG.WH
+defsub EV.WH
+defsub BG.RXYZ
+defsub EV.RXYZ
+defsub BG.SK
+defsub EV.SK
+defsub BG.DF
+defsub BG.CF
+defsub EV.DF
+defsub EV.CF
+
+defsub ST0
+defsub ST
+defsub ST.DEL
+defsub ST.C
+defsub ST.O
+defsub ST.X
+defsub ST.Y
+defsub ST.XY
+defsub ST.A
+defsub ST.XYA
+defsub ST.W
+defsub ST.H
+defsub ST.WH
+defsub ST.RX
+defsub ST.RY
+defsub ST.RZ
+defsub ST.RXYZ
+defsub ST.DU
+defsub ST.DUD
+defsub ST.RL
+defsub ST.RLR
+defsub ST.SK
+defsub ST.WA
+defsub ST.DF
+defsub ST.CF
+defsub ST.EM
+
+
+
+
+
+
+
+
+
+
+
+
+defsub CGG
+defsub CG.G
+defsub ST.G
+
+defsub CGC
+defsub CG.CL
+
+defsub CG
+defsub CG.DEL
+defsub CG.MK
+defsub CG.M
+defsub CG.B
+defsub CG.C
+defsub CG.O
+defsub CG.X
+defsub CG.Y
+defsub CG.XY
+defsub CG.A
+defsub CG.XYA
+defsub CG.W
+defsub CG.H
+defsub CG.WH
+defsub CG.RX
+defsub CG.RY
+defsub CG.RZ
+defsub CG.RXYZ
+defsub CG.DU
+defsub CG.DUD
+defsub CG.RL
+defsub CG.RLR
+defsub CG.SK
+defsub CG.WA
+defsub CG.DF
+defsub CG.CF
+defsub CG.AN
+defsub CG.MV
+
+defsub SC.X
+defsub SC.Y
+defsub SC.XY
+defsub SC.W
+defsub SC.H
+defsub SC.WH
+defsub SC.FL
+defsub SC.SK
+defsub SC.DF
+defsub SC.CF
+defsub SC.FD
+
+defsub MV.NW
+defsub MV.ST
+defsub MV.WA
+defsub BGM
+defsub BGM.S
+defsub BGM.LT
+defsub BGM.WA
+defsub BGM.LS
+defsub SE0
+defsub SE1
+defsub SE2
+defsub SE0.WA
+defsub SE1.WA
+defsub VO
+
+defsub WA
+defsub MV
+defsub FS
+defsub CL
+defsub TL
+defsub ED
+defsub RD
+
+defsub DAY
+
+
+
+funcSqu saveFunc, 1
+funcSqu configFunc, 1
+
