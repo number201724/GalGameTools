@@ -1,0 +1,3 @@
+1.注意setlocate的japanese改成chs
+修改几个CreateFont到中文GBK和0x86
+Hook CreateFontInXXX

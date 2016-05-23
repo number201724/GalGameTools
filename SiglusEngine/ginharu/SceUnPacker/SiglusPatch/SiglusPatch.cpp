@@ -19,7 +19,7 @@ HFONT WINAPI newCreateFontIndirectW(LOGFONTW *lplf)
 	memcpy(&lf,lplf,sizeof(LOGFONTW));
 	if(lf.lfCharSet == SHIFTJIS_CHARSET)
 	{
-		lf.lfCharSet = DEFAULT_CHARSET;
+		lf.lfCharSet = GB2312_CHARSET;
 
 		wcscpy(lf.lfFaceName,L"ºÚÌå");
 	}
@@ -490,44 +490,44 @@ void BeginDetour()
 	DetourTransactionBegin();
 	DetourAttach((void**)&pCreateFontIndirectW,newCreateFontIndirectW);
 	DetourTransactionCommit();
-
-
-	pg00_enter_reader = (void (__cdecl *)(void))0x0055F150;
-	pg00_leave_reader = (void (__cdecl *)(void))0x0055F3B4;
-	pg00_open_file = (void (__cdecl *)(void))0x0058F2C0;
-
-	pg00_record_buffer = (void (__cdecl *)(void))0x0058F4D0;
-	pg00_analysis_file = (void (__cdecl *)(void))0x0055F221;
-	pg00_set_indexes = (void (__cdecl *)(void))0x0055F352;
-	
-
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_enter_reader,g00_enter_reader);
-	DetourTransactionCommit();
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_leave_reader,g00_leave_reader);
-	DetourTransactionCommit();
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_open_file,g00_open_file);
-	DetourTransactionCommit();
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_record_buffer,g00_record_buffer);
-	DetourTransactionCommit();
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_analysis_file,g00_analysis_file);
-	DetourTransactionCommit();
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_set_indexes,g00_set_indexes);
-	DetourTransactionCommit();
-
-	DetourTransactionBegin();
-	DetourAttach((void**)&pg00_copy_rect,g00_copy_rect);
-	DetourTransactionCommit();
+//
+//
+//	pg00_enter_reader = (void (__cdecl *)(void))0x0055F150;
+//	pg00_leave_reader = (void (__cdecl *)(void))0x0055F3B4;
+//	pg00_open_file = (void (__cdecl *)(void))0x0058F2C0;
+//
+//	pg00_record_buffer = (void (__cdecl *)(void))0x0058F4D0;
+//	pg00_analysis_file = (void (__cdecl *)(void))0x0055F221;
+//	pg00_set_indexes = (void (__cdecl *)(void))0x0055F352;
+//	
+//
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_enter_reader,g00_enter_reader);
+//	DetourTransactionCommit();
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_leave_reader,g00_leave_reader);
+//	DetourTransactionCommit();
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_open_file,g00_open_file);
+//	DetourTransactionCommit();
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_record_buffer,g00_record_buffer);
+//	DetourTransactionCommit();
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_analysis_file,g00_analysis_file);
+//	DetourTransactionCommit();
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_set_indexes,g00_set_indexes);
+//	DetourTransactionCommit();
+//
+//	DetourTransactionBegin();
+//	DetourAttach((void**)&pg00_copy_rect,g00_copy_rect);
+//	DetourTransactionCommit();
 
 	//
 }

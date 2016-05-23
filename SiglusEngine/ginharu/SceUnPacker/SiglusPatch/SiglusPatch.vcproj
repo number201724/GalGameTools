@@ -132,7 +132,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="H:\Iris\ないしょのないしょ��\$(ProjectName).dll"
 				LinkIncremental="1"
 				ModuleDefinitionFile="SiglusPatch.def"
 				GenerateDebugInformation="true"
