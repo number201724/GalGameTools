@@ -1,3 +1,14 @@
-1.注意setlocate的japanese改成chs
-修改几个CreateFont到中文GBK和0x86
-Hook CreateFontInXXX
+汉化SiglusEngine的几个注意事项
+
+1.首先找到2个key使用程序拆出ss文件
+2.使用stringdump拆出程序内的文本
+3.使用stringpacker打包文本
+4.使用ScePacker将文件打包
+
+
+
+如何修复文本间距问题：
+修改setlocate的Japanese到chs即可
+
+修改CreateFontW的字体和字符集编码到黑体和0x86
+修改GDI32.CreateFontIndirectW的字体和字符集编码到黑体和0x86
