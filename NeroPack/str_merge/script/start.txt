@@ -1,0 +1,30 @@
+;――――――――――――――――――――――――――――――――――――――
+;
+;	セットアップ
+;
+;――――――――――――――――――――――――――――――――――――――
+.def 有効 1
+.def 無効 0
+
+.def ウルル 0
+.def 紅 1
+
+.def ヴェル 0
+.def ノート 1
+
+.var G900 プロローグ エンディング クリア
+.var L200 ウルル紅選択 ヴェルノート選択
+
+.system gui.nut
+.system macro.nut
+.system system.nut
+.system config.nut
+.system saveload.nut
+.system shortcut.nut
+.system select.nut
+.system message.nut
+.system dialog.nut
+.system x_rooms.nut
+.system staff_roll.nut
+
+.load titlelogo

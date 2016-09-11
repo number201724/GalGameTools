@@ -1,0 +1,53 @@
+;――――――――――――――――――――――――――――――――――――――
+;
+;	タイトル画面
+;
+;――――――――――――――――――――――――――――――――――――――
+.route
+.se
+.img
+.env
+.bgm BGM023
+
+.map title fade
+	start
+	load
+	config
+	graphic	クリア
+	scene	クリア
+	music	クリア
+	sg	クリア
+	end
+	デバッグ
+	@BASE	クリア
+.case 1
+	; はじめから
+	.load story
+.case 2
+	; つづきから
+	.sysload
+.case 3
+	; 環境設定
+	.config
+.case 4
+	; 絵画鑑賞
+	.room cg
+.case 5
+	; 場面鑑賞
+	.room scene
+.case 6
+	; 音楽鑑賞
+	.room music
+.case 7
+	; 立ち絵鑑賞
+	.room actor
+.case 8
+	; ゲーム終了
+	.quit
+.case 9
+	; デバッグ実行
+	.img
+	.page
+	.load @test
+.end
+.load title

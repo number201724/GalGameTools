@@ -1,0 +1,21 @@
+;――――――――――――――――――――――――――――――――――――――
+;
+;	タイトルロゴ表示
+;
+;――――――――――――――――――――――――――――――――――――――
+.img white
+.wait 0
+.img rosebleu
+.fade 1
+.se ROSEBLEU
+.wait 1
+.img white
+.fade 1
+
+.img attention
+.fade 1
+.wait 20
+.img white
+.fade 2
+
+.load title

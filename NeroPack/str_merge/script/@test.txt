@@ -1,0 +1,25 @@
+.loop
+.img
+.bgm
+.select
+	クリアフラグON
+	クリアフラグOFF
+	スタッフロール
+	CGコンプリート
+	シーンコンプリート
+.case 1
+	? クリア = 1
+	.load title
+.case 2
+	? クリア = 0
+	.load title
+.case 3
+	.staffroll
+.case 4
+	.CompleteCG
+	.load title
+.case 5
+	.CompleteScene
+	.load title
+.end
+.end

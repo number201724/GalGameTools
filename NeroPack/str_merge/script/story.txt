@@ -1,0 +1,196 @@
+;――――――――――――――――――――――――――――――――――――――
+;
+;	ストーリーライン
+;
+;――――――――――――――――――――――――――――――――――――――
+.route 　
+
+.call 010100
+.call 010101
+.call 010102
+.call 010103
+.call 010104
+.call 010105
+.call 010106
+.call 010201
+.call 010202
+.call 010203
+.call 010204
+.call 010205
+.call 010206
+.call 010207
+.call 010301
+.call 010302
+.call 010303
+.call 010304
+.call 010305
+.call 010306
+.call 010307
+.call 010308
+.call 010309
+.call 010401
+.call 010402
+
+.movie op.mpg
+? プロローグ = 1
+
+.call 020401
+.call 020402
+.call 020403
+.call 020404
+.call 020501
+.call 020502
+.call 020503
+.call 020504
+.call 020505
+.call 020601
+.call 020602
+.call 020603
+.call 020701
+.call 020702
+.call 020801
+.call 020802
+.call 020803
+.call 020804
+.call 020901
+.call 020902
+.call 020903
+.call 021001
+.call 021002
+.call 021003
+
+.switch ウルル紅選択
+.case ウルル
+	.call 021004a
+	.call 021005ah
+	?_021005ah = 1
+	.call 021006a
+.case 紅
+	.call 021004b
+	.call 021005bh
+	?_021005bh = 1
+	.call 021006b
+.end
+
+.call 021007
+.call 021101
+.call 021102
+.call 021103
+.call 021104
+.call 021201
+.call 021202
+.call 021203
+.call 021301
+.call 021302
+.call 021303
+.call 021401
+.call 021402
+.call 021501
+.call 021502
+.call 021601
+.call 021602
+.call 021701
+.call 021702
+.call 021703
+.call 021704
+.call 021705h
+?_021705h = 1
+.call 021802
+.call 021901
+.call 021902
+.call 021903
+.call 021904
+.call 021905h
+?_021905h = 1
+.call 022001
+.call 021801
+.call 022002
+.call 022101
+.call 022102
+.call 022201
+.call 022202
+.call 022203h
+?_022203h = 1
+.call 022204
+.call 022205
+.call 030000
+.call 030001
+.call 030100
+.call 030101
+.call 030102
+.call 030103
+.call 030104
+.call 030105
+.call 030201
+.call 030202
+.call 030203
+.call 030301
+.call 030302
+.call 030303
+.call 030304
+.call 030401
+.call 030402
+.call 030403
+.call 030501
+.call 030502
+.call 030503
+.call 030504
+.call 030505
+.call 030506
+.call 030507
+.call 030508
+.call 030509
+
+.switch ヴェルノート選択
+.case ヴェル
+	.call 030510a
+	.call 030511a
+	.call 030512ah
+	?_030512ah = 1
+.case ノート
+	.call 030510b
+	.call 030511b
+	.call 030512bh
+	?_030512bh = 1
+.end
+
+.call 030600
+.call 031500
+.call 031600
+.call 031601
+.call 031602
+.call 031603
+.call 031604
+.call 031605
+.call 031700
+.call 031701
+.call 031702
+.call 031800
+.call 031801
+.call 031802
+.call 031803h
+?_031803h = 1
+.call 031804
+.call 031805
+.call 031900
+.call 031901
+.call 040000
+.call 040001
+.call 040002
+.call 040003
+.call 040004
+.call 040005
+.call 040006
+.call 040007
+.call 040008h
+?_040008h = 1
+.call 040100
+
+.staffroll
+
+.call 050000
+.call 050001
+
+? クリア = 1
+
+.load title

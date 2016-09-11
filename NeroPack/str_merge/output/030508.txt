@@ -1,0 +1,448 @@
+	; 030508
+	; 俛俧丒摤媄応丒拫
+	.bgm BGM008
+	.img0 摤媄応仐梉
+	.filter 梉
+	@ 僶儕傾儕乕僼 愴摤暈 搟傝俀
+	.fade 2
+
+:僶儕傾儕乕僼:BA_030508_0000:BA
+「那么，下面就开始贝露=赛因和诺特=露姆的特别对决！」
+
+	.se SE_034
+
+　老师在竞技场的中央说完后，整个竞技场内被爆发出的欢呼声笼罩了。
+
+
+:昉::
+「虽说会猜到这样，这也忒激动了」
+
+	@ 僶儕傾儕乕僼
+	@ 峠 愴摤暈 徫婄侾
+
+:峠:KO_030508_0000:KO
+「现在这两位，毕竟是如同魔族和神族代表那样的存在啊，没办法啊」
+
+	@ 峠 嵍侾
+	@ 傾儈傾 愴摤暈仐僣僀儞僥 徫婄侾 塃侾
+
+:傾儈傾:AM_030508_0000:AM
+「嘛，虽说8L和7L都完全没有想争那个名号呢」
+
+	@ 僆儁儔 儊僀僪 徫婄俀 塃俁
+
+:僆儁儔:OP_030508_0000:OP
+「是呢，因为两个人的目的都是2K」
+
+	@ 僼僅儞 愴摤暈 徫婄侾 嵍俁
+
+:僼僅儞:FO_030508_0000:FO
+「老实说，要是能够得到2M的话，种族啊政治啊什么的怎么样都好啦」
+
+
+　被这么说虽然很不好意思，因为毕竟这是事实无法否认，这到底是悲还是喜呢。
+
+	@ 峠
+	@ 傾儈傾
+	@ 僆儁儔
+	@ 僼僅儞
+	@ 僨僀儖 愴摤暈 捠忢
+
+:僨僀儖:DE_030508_0000:DE
+「不过嘛啊，就算不提种族之间的事情，这是最棒的节目这一点是不会变的呢」
+
+	@ 僨僀儖 嵍侾
+	@ 僂儖儖 愴摤暈 徫婄俀 塃侾
+
+:僂儖儖:UR_030508_0000:UR
+「是呢，兀露露现在也很期待接下来的发展呢」
+
+	@ 僨僀儖
+	@ 僂儖儖
+	@ 儔乕儘儞 愴摤暈 捠忢
+
+:儔乕儘儞:RA_030508_0000:RA
+「一阶级的各位，牢牢地记住就好了。接下来要进行的比赛是字面意思上的不同次元的战斗」
+
+	@ 儔乕儘儞 嵍侾
+	@ 峜彈 愴摤暈 恀寱 塃侾
+
+:峜彈:MK_030508_0000:MK
+「是、是的！当然！」
+
+	@ 儔乕儘儞 嵍俀
+	@ 峜彈 拞
+	@ 儖儖僂 儊僀僪 徫婄俀 塃俀
+
+:儖儖僂:RR_030508_0000:RR
+「是啊，真的很期待呢」
+
+	@ 儔乕儘儞
+	@ 峜彈
+	@ 儖儖僂
+	@ 僯僐 愴摤暈 徫婄係
+
+:僯僐:NI_030508_0000:NI
+「你觉得谁会胜出呢？」
+
+	@ 僯僐 嵍侾
+	@ 儕儞僙 愴摤暈 徫婄俁 塃侾
+
+:儕儞僙:LI_030508_0000:LI
+「我用晚饭的甜点赌7C赢」
+
+	@ 僯僐 徫婄侾
+
+:僯僐:NI_030508_0001:NI
+「跟了，那么，妮可就赌8D」
+
+
+:昉::
+「喂喂，不要一本正经的在这开赌局啊」
+
+	.se SE_034
+
+	@ 儕儞僙
+	@ 僯僐
+	@ 償僃儖 愴摤暈 徫婄侾 塃俁
+	@ 僲乕僩 愴摤暈 捠忢 嵍俁
+
+　正在这时候，贝露和诺特进入了斗技场中央面对而站。
+
+
+　爆发出的呐喊加油声再次包围了整个会场，两人就这样视线丝毫不动的看着对方。
+
+
+:昉::
+（嘛，能够看到两个人尽全力战斗的机会还真是少呢。也许会有这样那样的乐趣呢）
+
+
+　我一边想着这种事一边苦笑着，阿弥亚从旁边捅了捅我。
+
+	@ 償僃儖
+	@ 僲乕僩
+	@ 傾儈傾 愴摤暈仐僣僀儞僥 捠忢
+
+:傾儈傾:AM_030508_0001:AM
+「话说，2L支持哪边呢？」
+
+
+:昉::
+「嗯？那个，不是支持哪边而是我都打算支持」
+
+	@ 傾儈傾 妝偟偄
+
+:傾儈傾:AM_030508_0002:AM
+「欸——，那样就没劲了啊。话说，2L支持哪边可是决定成败的重要因素哟？」
+
+
+:昉::
+「就算你这么说啊」
+
+
+　虽然就个人来说的话我不该偏袒任何一方的，其他人好像也在期待着什么一样。向我投来了视线。
+
+
+　那么该怎么办呢
+
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+	; 慖戰巿
+	; 丒償僃儖傪墳墖偡傞丅
+	; 丒僲乕僩傪墳墖偡傞丅
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+	.select
+		償僃儖傪墳墖偡傞丅
+		僲乕僩傪墳墖偡傞丅
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+	.case 1
+		; 埲壓償僃儖傪墳墖偟偨応崌
+		? 償僃儖僲乕僩慖戰 = 償僃儖
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+
+:昉::
+乽偆乣傫乧乧乿
+
+
+丂偦偆偄偊偽慜偵償僃儖偲偼擇恖偱僨乕僩偟偨帠偑偁偭偨側丅偁偺帪偼妋偐崱擔偺柪媨帋尡偺挷惍傪偑傫偽偭偨屻偩偭偨偐丅
+
+
+丂偁偺帪偼償僃儖傕柇偵愊嬌揑偩偭偨側丄側傫偨偭偰杍偵偮偄偨僋儕乕儉傪乧乧丅
+
+
+:昉::
+乽乧乧償僃儖乿
+
+	@ 傾儈傾
+	@ 僼僅儞 愴摤暈 捠忢
+
+:僼僅儞:FO_030508_0001:FO
+乽側傞傎偳丄償僃儖偝傑偱偡偐乿
+
+
+:昉::
+乽偼両乿
+
+
+丂挌搙償僃儖偺帠傪峫偊偰偄偨強偱柍堄幆偵惡偵偩偟偰偟傑偭偨傜偟偔丄偦傟傪僼僅儞偵暦偐傟偰偟傑偆丅
+
+
+:昉::
+乽偄丄偄傗堘偆偧両丂傗偭傁傝偳偭偪傕偪傖傫偲乧乧乿
+
+	@ 僼僅儞 摼堄
+
+:僼僅儞:FO_030508_0002:FO
+乽償僃儖偝傑乕両丂彑偭偨傜昉愭攜偑丄偁偺擔傒偨偄偵傌傠傌傠偟偰偔傟傞偦偆偱偡傛乕両乿
+
+	.se SE_035
+
+:昉::
+乽偓傖乕両丠乿
+
+
+丂壌偺尵梩傕暦偐偢丄娫敮擖傟偢偵嫨傫偩僼僅儞偵廃埻偑憶慠偲側傞丅
+
+
+丂僼僅儞偺尵梩傪暦偄偨償僃儖傕婄傪恀偭愒偵偟偰怳傝岦偒丄僲乕僩偼嬃偄偨傛偆偵屌傑偭偰偄偨丅
+
+	@ 僼僅儞
+	@ 傾儈傾 愴摤暈仐僣僀儞僥 嬃偒侾
+
+:傾儈傾:AM_030508_0003:AM
+乽傌傠傌傠両丠丂傌傠傌傠偭偰壗両丠乿
+
+	@ 傾儈傾
+	@ 僼僅儞 愴摤暈 徠傟侾
+
+:僼僅儞:FO_030508_0003:FO
+乽偦傟偼僼僅儞偺岥偐傜偼乧乧乿
+
+	.se SE_035
+
+丂傢偞偲尵梩傪戺偟偨僼僅儞偺戜帉偑丄廃埻傪峏偵偞傢偮偐偣傞丅
+
+
+:昉::
+乽側丄側傫乧乧乿
+
+	@ 僼僅儞 捠忢
+
+:僼僅儞:FO_030508_0004:FO
+乽偁丄側傫偱抦偭偰傞偐偼扨弮偵償僃儖偝傑偐傜捈愙暦偒傑偟偨丅偁偺擔偺償僃儖偝傑偑偁傑傝偵傕偔偹偔偹偵傗偵傗偲偟偰夦偟偐偭偨偺偱栤偄媗傔偨傜娙扨偵揻偒傑偟偨傛侓乿
+
+
+:昉::
+乽償僃儖乣乧乧乿
+
+
+丂揻偄偨傕壗傕丄崻杮揑偵娫堘偭偰偄傞傫偱偡偗傟偳傕乧乧偄偭偨偄丄偳偆偄偆屩挘傪壛偊偰愢柧偟偨傫偩償僃儖乧乧丅
+
+
+丂偦傕偦傕丄壌偵偮偄偨僋儕乕儉彟傔偨偺丄償僃儖偺曽偩傛側偁乧乧丅
+
+
+丂偦偺屻丄壌偑廃埻偺岆夝傪夝偔偺偵嬯楯偟偨偺偼尵偆傑偱傕側偄丅
+
+	@ 僼僅儞 徫婄俀
+
+:僼僅儞:FO_030508_0005:FO
+乽傆傆丄偙傟偱僲乕僩偝傫偼摦梙丄償僃儖偝傑偺傗傞婥偼儅僢僋僗丅僋儔僀儞僘億僢僩偺僷僼僃偼偄偨偩偒偱偡傛傾儈傾偝傫乿
+
+
+丂偔偭丄傾儈傾偑僲儕僲儕偱偳偭偪傪墳墖偡傞偐暦偄偰棃偨偺偼偦偺偣偄偐丅
+
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+	.case 2
+		; 埲壓僲乕僩傪墳墖偟偨応崌
+		? 償僃儖僲乕僩慖戰 = 僲乕僩
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+
+:昉::
+乽偆乣傫乧乧乿
+
+
+丂偦偆偄偊偽丄埲慜晽幾偱搢傟偨帪偵娕昦偟偰偔傟偨偺偼僲乕僩偩偭偨側丅偁偺帪偼杮摉偵彆偐偭偨丅
+
+
+丂傑偁丄偦偺屻偺堦審傕偁偭偰怓乆朰傟傜傟側偄弌棃帠偩偲偄偆偺傕偁傞傫偩偑丅
+
+
+:昉::
+乽乧乧僲乕僩乿
+
+	@ 傾儈傾 婐偟偄
+
+:傾儈傾:AM_030508_0004:AM
+乽傎傎乣偆丄傎偆傎偆傎偆乿
+
+
+:昉::
+乽偼偭両丠乿
+
+
+丂挌搙僲乕僩偺帠傪峫偊偰偄偨強偱柍堄幆偵惡偵偩偟偰偟傑偭偨傜偟偔丄偦傟傪傾儈傾偵暦偐傟偰偟傑偆丅
+
+
+:昉::
+乽偄丄偄傗堘偆偧両丂傗偭傁傝偳偭偪傕偪傖傫偲乧乧乿
+
+	@ 傾儈傾 徫婄俁
+
+:傾儈傾:AM_030508_0005:AM
+乽偑傫偽傟丄偍巓偪傖乕傫両丂偑傫偽傟偽丄搢傟偰傕崱搙偼偍孼偪傖傫偑娕昦偟偰偔傟傞偭偰両丂偁偺帪傒偨偄偵両丂偦偆丄偁偺帪傒偨偄偵乕両両乿
+
+	.se SE_035
+
+:昉::
+乽偓傖乕両丠乿
+
+
+丂壌偺尵梩傪柍帇偟偰戝惡偱嫨傫偩傾儈傾偵丄廃埻偑憶慠偲側傞丅
+
+
+丂傾儈傾偺惡墖偼摉慠僲乕僩偲償僃儖偵傕撏偒丄僲乕僩偑偁偺擔偺帠傪巚偄弌偟偰偐恀偭愒偵側偭偰偆偮傓偒丄償僃儖偑嬃偄偰偙偪傜傪尒偰偄傞丅
+
+	@ 傾儈傾 嵍侾
+	@ 僼僅儞 愴摤暈 搟傝侾 塃侾
+
+:僼僅儞:FO_030508_0006:FO
+乽偁偺帪偭偰丄偁偺擔丄娕昦拞偵側偵偐偁偭偨傫偱偡偐両丠乿
+
+	@ 傾儈傾 徠傟俀
+
+:傾儈傾:AM_030508_0006:AM
+乽偊丠丂偦傟偼偪傚偭偲傢偨偟偺岥偐傜偼尵偊側偄傛丄側傫偨偭偰挻夁寖偩偐傜偹乿
+
+	@ 僼僅儞 嵘傒
+
+:僼僅儞:FO_030508_0007:FO
+乽夁寖両丠乿
+
+
+:昉::
+乽岆夝傪彽偔尵偄曽偼傗傔偰偔傟両乿
+
+
+丂幚嵺憡摉偵夁寖側岝宨傪尒偣傜傟偨偺偼娫堘偄側偄偺偱丄偁側偑偪岆夝偱傕側偄傫偩偑丅偦傟偱傕丄偁偺帠幚傪偁傝偺傑傑榖偡側傫偰偱偒傞傢偗傕側偄丅
+
+	@ 傾儈傾 妝偟偄
+
+:傾儈傾:AM_030508_0007:AM
+乽偔偔偭乣丄偙傟偱偍巓偪傖傫偺傗傞婥偼慡奐偵側傞偟丄償僃儖偝傫偼摦梙丅偙偺搎偗彑偭偨傛僼僅儞偝傫両乿
+
+
+丂僲儕僲儕偱偳偭偪傪墳墖偡傞偐暦偄偰棃偨偺偼偦偆偄偆棟桼偐丅
+
+
+丂偦偺屻丄偦偺応偵偄傞儊儞僶乕偺岆夝傪夝偔偺偵丄偐側傝嬯楯傪偟偨偺偼尵偆傑偱傕側偄丅
+
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+	.end
+	; 暘婒偙偙傑偱
+;乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗乗
+
+	; 応柺曄峏墘弌
+	.img
+	.fade 2
+
+	.img0 摤媄応仐梉
+	.frame 僔僱僗僐
+	@ 僶儕傾儕乕僼 愴摤暈 捠忢
+	.fade 2
+
+:僶儕傾儕乕僼:BA_030508_0001:BA
+乽偝偰丄偦傠偦傠帪娫偱偡傢偹丄擇恖偲傕弨旛偼傛傠偟偄偱偡偐丠乿
+
+
+丂摤媄応偺拞墰偱岦偐偄崌偆僲乕僩偲償僃儖傪尒偰丄僶儕傾儕乕僼偑偦偆恞偹傞偲丄擇恖偼偟偭偐傝偲桴偄偨丅
+
+	@ 僶儕傾儕乕僼
+	@ 償僃儖 愴摤暈 徫婄俀 塃俁
+	@ 僲乕僩 愴摤暈 捠忢 嵍俁
+
+:償僃儖:VE_030508_0000:VE
+乽惉傝峴偒偱偙偆側偭偪傖偭偨偗偳丄傗傞埲忋偼晧偗側偄傢傛乿
+
+	@ 僲乕僩 徫婄侾
+
+:僲乕僩:NO_030508_0000:NO
+乽偼偄丄儃僋傕慡椡偱峴偒傑偡乿
+
+	@ 償僃儖
+	@ 僲乕僩
+	@ 僶儕傾儕乕僼 愴摤暈 徫婄侾
+
+:僶儕傾儕乕僼:BA_030508_0002:BA
+乽傆傆丄擇恖偲傕傗傞婥偼廩暘偱偡傢偹丅嫵巘偲偟偰傕堦屄恖偲偟偰傕丄偙偺彑晧偼拲栚偝偣偰傕傜偄傑偡傢乿
+
+
+丂偦偆尵偭偰彮偟偩偗徫偆偲丄僶儕傾儕乕僼偼堦曕壓偑傝嵞傃愰尵傪峴偭偨丅
+
+	@ 僶儕傾儕乕僼 捠忢
+
+:僶儕傾儕乕僼:BA_030508_0003:BA
+乽偱偼丄儖乕儖傪愢柧偟傑偡傢両乿
+
+	@ 僶儕傾儕乕僼 徫婄侾
+
+:僶儕傾儕乕僼:BA_030508_0004:BA
+乽儖乕儖偼妛墍岞擣偺柾媅愴儖乕儖偑揔梡偝傟傑偡傢丅憡庤傪崀嶲偝偣傞丄傕偟偔偼愴摤晄擻偲偟偨曽偑彑幰偲側傝傑偡乿
+
+
+丂枅搙偍側偠傒偺柾媅愴儖乕儖偱丄僟僂儞屻侾侽僇僂儞僩偺娫婲偒忋偑傟側偄偐丄堄幆偺憆幐丄傕偟偔偼怰敾偑愴摤懕峴晄擻偲敾抐偟偨応崌偵愴摤晄擻埖偄偲側傞丅
+
+	@ 僶儕傾儕乕僼 捠忢
+
+:僶儕傾儕乕僼:BA_030508_0005:BA
+乽帪娫偼柍惂尷偺堦杮彑晧偱偡丅偦傟偱偼椉幰丄峔偊両乿
+
+
+丂庤傪怳傝忋偘偨僶儕傾儕乕僼偵斀墳偟丄償僃儖偼垽梡偺姍傪丄僲乕僩偼杺椡寱傪峔偊傞丅
+
+	@ 僶儕傾儕乕僼
+	@ 償僃儖 愴摤暈 徫婄侾 塃俁
+	@ 僲乕僩 愴摤暈 捠忢 嵍俁
+
+:償僃儖:VE_030508_0001:VE
+乽偦傟偠傖偁丄妝偟傒傑偟傚偆僲乕僩両乿
+
+	@ 僲乕僩 恀寱
+
+:僲乕僩:NO_030508_0001:NO
+乽偼偄丄惛堦攖両乿
+
+
+丂擇恖偑晲婍傪峔偊偨帠傪妋擣偟丄僶儕傾儕乕僼偼庤傪惃偄傛偔怳傝壓傠偟偨丅
+
+	@ 償僃儖
+	@ 僲乕僩
+	@ 僶儕傾儕乕僼 愴摤暈 搟傝俀
+
+	.bgm BGM025
+
+:僶儕傾儕乕僼:BA_030508_0006:BA
+乽巒傔両乿
+
+	@ 僶儕傾儕乕僼
+	@ 償僃儖 愴摤暈 搟傝俀
+
+:償僃儖:VE_030508_0002:VE
+乽愭庤両丂昁彑傛両両乿
+
+	@ 償僃儖
+	@ 僲乕僩 愴摤暈 搟傝侾
+
+:僲乕僩:NO_030508_0002:NO
+乽両乿
+
+	.se SE_041
+	.img 敀
+	.wipe WIPE005 80
+
+丂捈屻丄廃埻傪敋壒偲慚岝偑曪傒崬傒丄愭掱傑偱忋偑偭偰偄偨娊惡偑斶柭傊偲曄傢偭偨丅
+
+	.img
+	.filter
+	.fade 2
+	.frame
+	; 030509仺
