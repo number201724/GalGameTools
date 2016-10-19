@@ -142,25 +142,63 @@ label2:
 	}
 }
 
-
-void decrypt_buffer(uint32_t decrypt_max_count,uint64_t xor_value,byte* decrypt_data,byte* undecrypt_data)
+void decrypt(int count,unsigned char *data, uint16_t key[4])
 {
-	for(uint32_t i=0;i<decrypt_max_count;i++)
-	{
-		((uint64_t*)decrypt_data)[i] = ((uint64_t*)undecrypt_data)[i] ^ xor_value;
-		uint16_t* xor_ptr = (uint16_t*)&xor_value;
-		uint16_t* dec_ptr = (uint16_t*)&((uint64_t*)decrypt_data)[i];
-		parity_node_t* node = (parity_node_t*)dec_ptr;
+	uint16_t ctx_key[4];
 
-		xor_ptr[0] += dec_ptr[0];
-		xor_ptr[1] += dec_ptr[1];
-		xor_ptr[2] += dec_ptr[2];
-		xor_ptr[3] += dec_ptr[3];
+	for (int i = 0; i < 4; i++) {
+		ctx_key[i] = key[i];
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		uint16_t *curr = (uint16_t *)&data[i * sizeof(parity_node_t)];
+
+		for (int j = 0; j < 4; j++) { 
+			curr[j] ^= ctx_key[j];
+			ctx_key[j] += curr[j];
+		}
 	}
 }
 
+void encrypt(int count, unsigned char *data, uint16_t key[4])
+{
+	uint16_t ctx_key[4];
+
+	for (int i = 0; i < 4; i++) {
+		ctx_key[i] = key[i];
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		uint16_t *curr = (uint16_t *)&data[i * sizeof(parity_node_t)];
+
+		for (int j = 0; j < 4; j++) {
+			uint16_t temp = curr[j];
+			curr[j] ^= ctx_key[j];
+			ctx_key[j] += temp;
+		}
+	}
+}
+
+//void decrypt_buffer(uint32_t decrypt_max_count,uint64_t xor_value,byte* decrypt_data,byte* undecrypt_data)
+//{
+//	for(uint32_t i=0;i<decrypt_max_count;i++)
+//	{
+//		((uint64_t*)decrypt_data)[i] = ((uint64_t*)undecrypt_data)[i] ^ xor_value;
+//		uint16_t* xor_ptr = (uint16_t*)&xor_value;
+//		uint16_t* dec_ptr = (uint16_t*)&((uint64_t*)decrypt_data)[i];
+//		parity_node_t* node = (parity_node_t*)dec_ptr;
+//
+//		xor_ptr[0] += dec_ptr[0];
+//		xor_ptr[1] += dec_ptr[1];
+//		xor_ptr[2] += dec_ptr[2];
+//		xor_ptr[3] += dec_ptr[3];
+//	}
+//}
+
 typedef uint32_t (*parity_check_func_t)(uint32_t parity_value,uint32_t size);
-typedef uint32_t (*parity_get_decrypt_xor_func_t)(uint64_t* parity_xor_value,uint32_t key);
+typedef uint32_t (*parity_get_decrypt_xor_func_t)(uint16_t* parity_xor_value,uint32_t key);
 typedef uint32_t (*hash_string_func_t)(uint32_t top_name,const char* hash_name);
 
 parity_check_func_t parity_check_func = (parity_check_func_t)&decrypt_value;
@@ -202,8 +240,8 @@ char* hash_get_system_name(uint32_t Name,uint32_t DataName)
 	"gui.nut","macro.nut","system.nut","config.nut","saveload.nut","shortcut.nut","select.nut","message.nut","dialog.nut","x_rooms.nut","staff_roll.nut",
 	"voicemap.txt","imagemap.txt","actor_map.txt","shortcut.mng","msgbox.mng","x_music.txt","x_cg_page1.txt","x_cg_page2.txt","x_cg_page3.txt","x_cg_page4.txt",
 	"x_cg_page6.txt","x_cg_page7.txt","x_cg_page8.txt","x_scene.txt","x_actor.txt","x_actor_bg.txt","title.mng","load.mng","config.mng","config_items.mng",
-	"config_shortcut.mng","dialog.mng","log.mng","chapter.mng","date.mng","shortcut.mng","staff_roll_text.mng","staff_roll.mng","x_music.mng","x_cg.mng",
-	"x_cg_icon.mng","x_scene.mng","x_scene_icon.mng","x_actor.mng"
+	"config_shortcut.mng","dialog.mng","log.mng","chapter.mng","date.mng","staff_roll_text.mng","staff_roll.mng","x_music.mng","x_cg.mng",
+	"x_cg_icon.mng","x_scene.mng","x_scene_icon.mng","x_actor.mng","save.mng","select.mng"
 	};
 
 	for(int i=0;i<ARRAYSIZE(name_array);i++)
@@ -302,16 +340,20 @@ void export_file_reader(FILE* f,magic_header_t* header,char* export_path)
 
 				uint32_t parity_value = parity_check_func(header->top.parity_name,reader_list[i].node.parity_length);
 
-				if(parity_value != node_info.parity_name)
-				{
-					continue;
-				}
+				//if(parity_value != node_info.parity_name)
+				//{
+				//	continue;
+				//}
 
-				uint64_t xor_value = 0;
+				uint16_t key[4];
 				uint32_t decrypt_max_count = allocate_length / sizeof(uint64_t);
 
-				patry_get_decrypt_xor_func(&xor_value,node_info.parity_name);
-				decrypt_buffer(decrypt_max_count,xor_value,decrypt_data,undecrypt_data);
+				patry_get_decrypt_xor_func(key,node_info.parity_name);
+
+				memcpy(decrypt_data, undecrypt_data, allocate_length);
+				decrypt(decrypt_max_count, decrypt_data, key);
+
+				//decrypt_buffer(decrypt_max_count,xor_value,decrypt_data,undecrypt_data);
 
 				load_named_set(decrypt_data,reader_list[i].node.parity_length);
 
@@ -343,11 +385,14 @@ void export_file_reader(FILE* f,magic_header_t* header,char* export_path)
 			continue;
 		}
 
-		uint64_t xor_value = 0;
+		uint16_t key[4];
+
 		uint32_t decrypt_max_count = allocate_length / sizeof(uint64_t);
 
-		patry_get_decrypt_xor_func(&xor_value,node_info.parity_name);
-		decrypt_buffer(decrypt_max_count,xor_value,decrypt_data,undecrypt_data);
+		patry_get_decrypt_xor_func(key,node_info.parity_name);
+		memcpy(decrypt_data, undecrypt_data, allocate_length);
+		decrypt(decrypt_max_count, decrypt_data, key);
+		//decrypt_buffer(decrypt_max_count,xor_value,decrypt_data,undecrypt_data);
 
 		char fileName[32];
 
@@ -389,9 +434,9 @@ void export_file_reader(FILE* f,magic_header_t* header,char* export_path)
 	}
 }
 //temp test
-#define DECRYPT_NAME "script"
+#define DECRYPT_NAME "system"
 
-int main(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	FILE* f;
 
@@ -399,7 +444,7 @@ int main(int argc, _TCHAR* argv[])
 
 	char export_file_path[260];
 
-	f = fopen("K:\\Endless Dungeon\\script.dat","rb");
+	f = fopen("system.dat","rb");
 
 	strcpy(res_name,DECRYPT_NAME);
 
@@ -419,13 +464,13 @@ int main(int argc, _TCHAR* argv[])
 		exit(0);
 	}
 
-	uint64_t xor_value = {0};
+	uint16_t key[4];
 
 	uint32_t allocate_length = ((header.table.parity_length + 0x3F) & 0xFFFFFFC0);
 	byte* undecrypt_data = new byte[allocate_length];
 	byte* decrypt_data = new byte[allocate_length];
 
-	patry_get_decrypt_xor_func(&xor_value,header.table.parity_name);
+	patry_get_decrypt_xor_func(key,header.table.parity_name);
 
 	if(header.table.parity_length % sizeof(uint64_t) != 0)
 	{
@@ -445,8 +490,21 @@ int main(int argc, _TCHAR* argv[])
 	reader_offset += header.top.parity_length;
 	reader_offset += header.table.parity_length;
 
+	memcpy(decrypt_data, undecrypt_data, allocate_length);
+	decrypt(decrypt_max_count, decrypt_data, key);
+	encrypt(decrypt_max_count, decrypt_data, key);
+	if (memcmp(decrypt_data, undecrypt_data, allocate_length)) {
+		printf("fail\n");
+		return 0;
 
-	decrypt_buffer(decrypt_max_count,xor_value,decrypt_data,undecrypt_data);
+	}
+	decrypt(decrypt_max_count, decrypt_data, key);
+	//decrypt(decrypt_max_count, decrypt_data, key);
+
+
+	//decrypt_buffer(decrypt_max_count, xor_value, decrypt_data, undecrypt_data);
+	//decrypt_buffer(decrypt_max_count, xor_value, decrypt_data, undecrypt_data);
+	//decrypt_buffer(decrypt_max_count, xor_value, decrypt_data, undecrypt_data);
 
 
 	for(uint32_t i=1;i<decrypt_max_count;i++)
@@ -473,9 +531,6 @@ int main(int argc, _TCHAR* argv[])
 
 	delete [] undecrypt_data;
 	delete [] decrypt_data;
-
-	getchar();
-
 
 
 	return 0;

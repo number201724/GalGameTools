@@ -54,6 +54,20 @@ void process_str(char *s)
 		getchar();
 		exit(0);
 	}
+
+	if (strstr(s, "."))
+	{
+		printf("´íÎóµÄ·­Òë£º%s ÔÚ£º%s\n", currentFile.c_str(), s);
+		getchar();
+		exit(0);
+	}
+
+	if (strstr(s, ":"))
+	{
+		printf("´íÎóµÄ·­Òë£º%s ÔÚ£º%s\n", currentFile.c_str(), s);
+		getchar();
+		exit(0);
+	}
 }
 void process_text(std::string texts)
 {
@@ -93,13 +107,14 @@ void process_text(std::string texts)
 
 		if (!strncmp(x, ".select",7)) {
 			isSelect = true;
-		}
-
-		if (!strncmp(x, ".end",7)) {
+		} else if (!strncmp(x, ".", 1)) {
 			isSelect = false;
 		}
+		/*if (!strncmp(x, ".end",7)) {
+			isSelect = false;
+		}*/
 		
-		if (!isSelect && *x && x[0] != '@' && x[0] != '.' && x[0] != ':' && x[0] != ';')
+		if (!isSelect && *x && x[0] != '@' && x[0] != '.' && x[0] != ':' && x[0] != ';' && x[0] != '?')
 		{
 			
 			fwrite(loadtext[index].c_str(), loadtext[index].length(), 1, foutput);

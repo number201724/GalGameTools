@@ -220,55 +220,58 @@ unsigned char *decrypt_file(neko_pack_header_t *hdr,int index, uint32_t& length)
 
 void load_file_list(neko_pack_header_t *hdr)
 {
-	uint32_t story_hash = hash_string(hdr->verify.hash,"story.txt");
-	unsigned char *story_data;
-	uint32_t story_length;
+	//uint32_t story_hash = hash_string(hdr->verify.hash,"story.txt");
+	//unsigned char *story_data;
+	//uint32_t story_length;
 
-	for (int i = 0; i < file_records.size(); i++)
-	{
-		if (file_records[i].hash == story_hash)
-		{
-			story_data = decrypt_file(hdr, i, story_length);
-			break;
-		}
-	}
+	//for (int i = 0; i < file_records.size(); i++)
+	//{
+	//	if (file_records[i].hash == story_hash)
+	//	{
+	//		story_data = decrypt_file(hdr, i, story_length);
+	//		break;
+	//	}
+	//}
 
-	if (story_data)
-	{
-		char *str_story = new char[story_length + 0x1];
-		memcpy(str_story, story_data, story_length);
-		str_story[story_length] = 0;
-		std::set<std::string> unique_set;
+	//if (story_data)
+	//{
+	//	char *str_story = new char[story_length + 0x1];
+	//	memcpy(str_story, story_data, story_length);
+	//	str_story[story_length] = 0;
+	//	std::set<std::string> unique_set;
 
-		char* pos = str_story;
-		while ((pos = (char*)strstr(pos, ".call ")) != NULL)
-		{
-			pos += (sizeof(".call ") - 1);
-			char* next_pos = strstr(pos, "\r\n");
-			if (!next_pos) break;
-			*next_pos = 0;
+	//	char* pos = str_story;
+	//	while ((pos = (char*)strstr(pos, ".call ")) != NULL)
+	//	{
+	//		pos += (sizeof(".call ") - 1);
+	//		char* next_pos = strstr(pos, "\r\n");
+	//		if (!next_pos) break;
+	//		*next_pos = 0;
 
-			std::string script_name = pos;
-			script_name.append(".txt");
+	//		std::string script_name = pos;
+	//		script_name.append(".txt");
 
-			if (unique_set.find(script_name) == unique_set.end())
-			{
-				unique_set.insert(script_name);
-				file_lists.push_back(script_name);
-			}
+	//		if (unique_set.find(script_name) == unique_set.end())
+	//		{
+	//			unique_set.insert(script_name);
+	//			file_lists.push_back(script_name);
+	//		}
 
-			pos = next_pos + (sizeof("\r\n") - 1);
-		}
+	//		pos = next_pos + (sizeof("\r\n") - 1);
+	//	}
 
-		delete[] str_story;
-		delete[] story_data;
-	}
+	//	delete[] str_story;
+	//	delete[] story_data;
+	//}
 
-	file_lists.push_back("story.txt");
-	file_lists.push_back("start.txt");
-	file_lists.push_back("titlelogo.txt");
-	file_lists.push_back("title.txt");
-	file_lists.push_back("@test.txt");
+	//file_lists.push_back("story.txt");
+	//file_lists.push_back("start.txt");
+	//file_lists.push_back("titlelogo.txt");
+	//file_lists.push_back("title.txt");
+	//file_lists.push_back("@test.txt");
+
+	file_lists.push_back("saveload.nut");
+	file_lists.push_back("system.nut");
 
 	for (int i = 0; i < file_lists.size(); i++)
 	{
@@ -276,6 +279,10 @@ void load_file_list(neko_pack_header_t *hdr)
 		hash_to_name_map[hash] = file_lists[i];
 		name_to_hash_map[file_lists[i]] = hash;
 	}
+
+
+
+	
 }
 
 void load_files(neko_pack_header_t *hdr, neko_pack_pair_t *files, int count)
@@ -303,21 +310,30 @@ void load_files(neko_pack_header_t *hdr, neko_pack_pair_t *files, int count)
 
 unsigned char *load_file(std::string file, uint32_t &length)
 {
-	std::streampos pos;
-	fstream script(file, ios::binary | ios::in);
-	if (!script.is_open()) {
-		return 0;
+	FILE *fp = fopen(file.c_str(),"rb");
+	if (!fp)
+	{
+		fprintf(stderr, "open file failed:%s\n", file.c_str());
+		getchar();
+		exit(1);
 	}
 
-	script.seekg(0, ios::end);
-	pos = script.tellg();
-	script.seekg(0, ios::beg);
 
-	unsigned char *data = new unsigned char[pos];
-	script.read((char*)data, pos);
-	length = pos;
+	fseek(fp, 0, SEEK_END);
+	length = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
 
-	script.close();
+	unsigned char *data = new unsigned char[length];
+
+	if (length != fread(data, 1, length, fp))
+	{
+		fprintf(stderr, "read file %s failed\n", file.c_str());
+		getchar();
+		exit(1);
+	}
+
+	fclose(fp);
+
 	return data;
 }
 
@@ -325,38 +341,44 @@ unsigned char *load_file(std::string file, uint32_t &length)
 void load_update_files(std::string dir)
 {
 	HANDLE hFind;
-	std::string sfind = dir + "/*.txt";
+	std::string sfind = dir + "/*";
 	WIN32_FIND_DATAA ffd;
 
 	hFind = FindFirstFileA(sfind.c_str(), &ffd);
 	if (hFind == INVALID_HANDLE_VALUE)
 	{
+		
 		cout << "invalid find" << endl;
-		exit(0);
+		return;
 	}
 
 	do
 	{
-		struct neko_pack_prepare prepare;
-		std::string file = dir + "/" + ffd.cFileName;
-		uint32_t length;
-		unsigned char *data = load_file(file, length);
 
-		if (prepare.data == NULL)
+		if (!(ffd.dwFileAttributes &FILE_ATTRIBUTE_DIRECTORY) /* && strstr(ffd.cFileName, ".txt")*/)
 		{
-			printf("prepare failed:%s\n", ffd.cFileName);
-			getchar();
-			exit(0);
+			struct neko_pack_prepare prepare;
+			std::string file = dir + "/" + ffd.cFileName;
+			uint32_t length;
+			unsigned char *data = load_file(file, length);
+
+			if (data == NULL)
+			{
+				printf("prepare failed:%s\n", ffd.cFileName);
+				getchar();
+				exit(0);
+			}
+
+			prepare.encrypt = NULL;
+			prepare.data = data;
+			prepare.file = ffd.cFileName;
+			prepare.length = length;
+			prepare_lists.push_back(prepare);
+
+
+			printf("prepare:%s\n", ffd.cFileName);
 		}
-
-		prepare.encrypt = NULL;
-		prepare.data = data;
-		prepare.file = ffd.cFileName;
-		prepare.length = length;
-		prepare_lists.push_back(prepare);
-
 		
-		printf("prepare:%s\n",ffd.cFileName);
 	} while (FindNextFileA(hFind, &ffd) != 0);
 
 	FindClose(hFind);
@@ -476,7 +498,7 @@ void create_package(neko_pack_header_t *hdr, neko_pack_pair_t *files)
 	get_key(key, hdr->files.hash);
 	encrypt(file_count, (unsigned char*)my_files, key);
 
-	FILE *gg = fopen("C:/data/games/Endless Dungeon/script.dat", "wb");
+	FILE *gg = fopen("chnsystem.dat", "wb");
 	fwrite(pack_buff, 1, offset, gg);
 	fclose(gg);
 
@@ -486,7 +508,7 @@ int main(int argc,char* argv[])
 	std::streampos pos;
 	std::vector<neko_pack_pair_t> pairs;
 
-	fstream script("script.dat", ios::binary | ios::in);
+	fstream script("system.dat", ios::binary | ios::in);
 	if (!script.is_open()) {
 		cout << "open script failed" << endl;
 		return 0;
@@ -526,7 +548,7 @@ int main(int argc,char* argv[])
 
 	load_files(hdr, files, count);
 	load_file_list(hdr);
-	load_update_files("C:/data/games/Endless Dungeon/str_merge/output");
+	load_update_files("output");
 	prepare_file(hdr);
 
 	create_package(hdr,files);
