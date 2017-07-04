@@ -1,0 +1,108 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+scn_sl
+#DEFINE
+CPLANE topmask
+CIMAGE bg_white
+IMAGE bg
+BUTTON btn
+BUTTON scn_btn[2]
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00000000 20000 1024,768 1
+#OBJECT COLOR PRI SIZE DISP PL
+bg_white 0xffffffff 1000 1024,768 0 pl[1]
+#OBJECT FILE ID.0 PRI
+bg scn_sl 0 10
+#OBJECT FILE ID.0 ID.1 PRI
+btn scn_sl 50 51 50
+#OBJECT FILE ID.0 ID.1 PRI
+scn_btn[0] scn_sl 100 110 100
+#OBJECT FILE ID.0 ID.1 ID.2 PRI
+scn_btn[1] scn_sl 200 210 220 200
+#OBJECT PL DISP TYPE
+bg pl[0] 1
+btn pl[0] 1 1
+scn_btn pl[0] 1 1
+#OBJECT BLEND DISP
+pl 0 1
+#START
+if ($999==0)
+scn_btn[1] enable 0
+scn_btn[1] setid 2
+endif
+pl fade 30 0 255
+wait
+next WAIT
+#WAIT
+if (_CLICK_R_!=0)
+next END
+endif
+if (_CLICK_L_==btn)
+next END
+endif
+#END
+call DISABLE_BUTTON
+wait 1
+topmask color 0x00ffffff
+topmask disp 1
+wait 1
+topmask fade 30 0 255
+wait 30
+baseimg bg_white
+exit -2
+next SLEEP
+#SELSCN
+pl fade 30 255 0
+wait
+bg delete
+btn delete
+scn_btn delete
+wait 1
+btn enable 0
+call FADEOUT
+exit 0
+next SLEEP
+#SLEEP
+#btn.FOCUS
+@ setid 1
+#btn.UNFOCUS
+@ setid 0
+#btn.PUSH_L
+@ setid 1
+#scn_btn.FOCUS
+@ setid 1
+#scn_btn.UNFOCUS
+@ setid 0
+#scn_btn.PUSH_L
+@ setid 1
+if (@==0)
+strvar 200 him01
+endif
+if (@==1)
+strvar 200 hrm01
+endif
+next SELSCN

@@ -1,0 +1,1043 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+SOUND se1
+SOUND se2
+SOUND voice
+#OBJECT GROUP STYPE
+se1 se 1
+se2 se 1
+voice pcm 2
+#SYSVOICE
+sysvoice 813
+debug $813
+if ($814==13)
+se1 load se803
+se1 play 1
+break
+endif
+if ($814==14)
+se2 load se804
+se2 play 1
+break
+endif
+if ($813<0)
+if ($814<=12)
+se2 load se804
+se2 play 1 0
+endif
+break
+endif
+voice blend 100
+if ($814==1)
+if ($813==0)
+voice load Asys_001
+endif
+if ($813==1)
+voice load Bsys_001
+endif
+if ($813==2)
+voice load Csys_001
+endif
+if ($813==3)
+voice load Dsys_001
+endif
+if ($813==4)
+voice load Esys_001
+endif
+voice play 1 0
+break
+endif
+if ($814==2)
+if ($813==0)
+voice load Asys_002
+endif
+if ($813==1)
+voice load Bsys_002
+endif
+if ($813==2)
+voice load Csys_002
+endif
+if ($813==3)
+voice load Dsys_002
+endif
+if ($813==4)
+voice load Esys_002
+endif
+voice play 1 0
+break
+endif
+if ($814==3)
+if ($813==0)
+voice load Asys_003
+endif
+if ($813==1)
+voice load Bsys_003
+endif
+if ($813==2)
+voice load Csys_003
+endif
+if ($813==3)
+voice load Dsys_003
+endif
+if ($813==4)
+voice load Esys_003
+endif
+voice play 1 0
+break
+endif
+if ($814==4)
+if ($813==0)
+voice load Asys_004
+endif
+if ($813==1)
+voice load Bsys_004
+endif
+if ($813==2)
+voice load Csys_004
+endif
+if ($813==3)
+voice load Dsys_004
+endif
+if ($813==4)
+voice load Esys_004
+endif
+voice play 1 0
+break
+endif
+if ($814==5)
+if ($813==0)
+voice load Asys_005
+endif
+if ($813==1)
+voice load Bsys_005
+endif
+if ($813==2)
+voice load Csys_005
+endif
+if ($813==3)
+voice load Dsys_005
+endif
+if ($813==4)
+voice load Esys_005
+endif
+voice play 1 0
+break
+endif
+if ($814==6)
+if ($813==0)
+voice load Asys_006
+endif
+if ($813==1)
+voice load Bsys_006
+endif
+if ($813==2)
+voice load Csys_006
+endif
+if ($813==3)
+voice load Dsys_006
+endif
+if ($813==4)
+voice load Esys_006
+endif
+voice play 1 0
+break
+endif
+if ($814==7)
+if ($813==0)
+voice load Asys_007
+endif
+if ($813==1)
+voice load Bsys_007
+endif
+if ($813==2)
+voice load Csys_007
+endif
+if ($813==3)
+voice load Dsys_007
+endif
+if ($813==4)
+voice load Esys_007
+endif
+voice play 1 0
+break
+endif
+if ($814==8)
+if ($813==0)
+voice load Asys_008
+endif
+if ($813==1)
+voice load Bsys_008
+endif
+if ($813==2)
+voice load Csys_008
+endif
+if ($813==3)
+voice load Dsys_008
+endif
+if ($813==4)
+voice load Esys_008
+endif
+voice play 1 0
+break
+endif
+if ($814==9)
+if ($813==0)
+voice load Asys_009
+endif
+if ($813==1)
+voice load Bsys_009
+endif
+if ($813==2)
+voice load Csys_009
+endif
+if ($813==3)
+voice load Dsys_009
+endif
+if ($813==4)
+voice load Esys_009
+endif
+voice play 1 0
+break
+endif
+if ($814==10)
+if ($813==0)
+voice load Asys_010
+endif
+if ($813==1)
+voice load Bsys_010
+endif
+if ($813==2)
+voice load Csys_010
+endif
+if ($813==3)
+voice load Dsys_010
+endif
+if ($813==4)
+voice load Esys_010
+endif
+voice play 1 0
+break
+endif
+if ($814==11)
+if ($813==0)
+voice load Asys_011
+endif
+if ($813==1)
+voice load Bsys_011
+endif
+if ($813==2)
+voice load Csys_011
+endif
+if ($813==3)
+voice load Dsys_011
+endif
+if ($813==4)
+voice load Esys_011
+endif
+voice play 1 0
+break
+endif
+if ($814==12)
+if ($813==0)
+voice load Asys_012
+endif
+if ($813==1)
+voice load Bsys_012
+endif
+if ($813==2)
+voice load Csys_012
+endif
+if ($813==3)
+voice load Dsys_012
+endif
+if ($813==4)
+voice load Esys_012
+endif
+voice play 1 0
+break
+endif
+if ($814==15)
+if ($813==0)
+voice load ASYSTEM_002
+endif
+if ($813==1)
+voice load BSYSTEM_002
+endif
+if ($813==2)
+voice load CSYSTEM_002
+endif
+if ($813==3)
+voice load DSYSTEM_002
+endif
+if ($813==4)
+voice load ESYSTEM_002
+endif
+voice play 1 0
+break
+endif
+if ($814==16)
+if ($813==0)
+voice load ASYSTEM_001
+endif
+if ($813==1)
+voice load BSYSTEM_001
+endif
+if ($813==2)
+voice load CSYSTEM_001
+endif
+if ($813==3)
+voice load DSYSTEM_001
+endif
+if ($813==4)
+voice load ESYSTEM_001
+endif
+voice play 1 0
+break
+endif
+#PRELOAD
+s_cnf_v
+s_cnf_mes_v
+s_cnf_num_v
+#DEFINE
+CPLANE topmask
+CIMAGE bg_white
+PLANE pl
+IMAGE bg[2]
+BUTTON vbtn[12]
+IMAGE vbtni1[12]
+IMAGE vbtni3[12]
+BUTTON svbtn[2]
+SLIDER vslider[5]
+IMAGE vnum1[3]
+IMAGE vnum2[3]
+IMAGE vnum3[3]
+IMAGE vnum4[3]
+IMAGE vnum5[3]
+IMAGE vmes
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00ffffff 20000 1024,768 0
+#OBJECT COLOR PRI SIZE DISP PL
+bg_white 0xffffffff 1000 1024,768 0 pl
+#OBJECT POS BASE PRI VRAM SIZE DISP
+pl 0,0 0,0 5000 0,0 1024,768 0
+#OBJECT FILE ID.0 PRI
+bg[0] s_cnf_v 0 55
+#OBJECT FILE pos2 PRI
+vmes s_cnf_mes_v s_cnf_v:500 60
+#OBJECT FILE ID.0 PRI
+vbtn[0] s_cnf_v 1400 100
+vbtn[1] s_cnf_v 1401 101
+vbtn[2] s_cnf_v 1402 102
+vbtn[3] s_cnf_v 1403 103
+vbtn[4] s_cnf_v 1404 104
+vbtn[5] s_cnf_v 1405 105
+vbtn[6] s_cnf_v 1406 106
+vbtn[7] s_cnf_v 1407 107
+vbtn[8] s_cnf_v 1408 108
+vbtn[9] s_cnf_v 1409 109
+vbtn[10] s_cnf_v 1410 110
+vbtn[11] s_cnf_v 1411 111
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI
+vbtni1[0] s_cnf_v 1000 1001 1002 1003 200
+vbtni1[1] s_cnf_v 1010 1011 1012 1013 201
+vbtni1[2] s_cnf_v 1020 1021 1022 1023 202
+vbtni1[3] s_cnf_v 1030 1031 1032 1033 203
+vbtni1[4] s_cnf_v 1040 1041 1042 1043 204
+vbtni1[5] s_cnf_v 1050 1051 1052 1053 205
+vbtni1[6] s_cnf_v 1060 1061 1062 1063 206
+vbtni1[7] s_cnf_v 1070 1071 1072 1073 207
+vbtni1[8] s_cnf_v 1080 1081 1082 1083 208
+vbtni1[9] s_cnf_v 1090 1091 1092 1093 209
+vbtni1[10] s_cnf_v 1100 1101 1102 1103 210
+vbtni1[11] s_cnf_v 1110 1111 1112 1113 211
+#OBJECT FILE ID.0 PRI
+vbtni3[0] s_cnf_v 1300 400
+vbtni3[1] s_cnf_v 1301 401
+vbtni3[2] s_cnf_v 1302 402
+vbtni3[3] s_cnf_v 1303 403
+vbtni3[4] s_cnf_v 1304 404
+vbtni3[5] s_cnf_v 1305 405
+vbtni3[6] s_cnf_v 1306 406
+vbtni3[7] s_cnf_v 1307 407
+vbtni3[8] s_cnf_v 1308 408
+vbtni3[9] s_cnf_v 1309 409
+vbtni3[10] s_cnf_v 1310 410
+vbtni3[11] s_cnf_v 1311 411
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 PRI
+svbtn[0] s_cnf_v 1200 1201 1202 1202 500
+svbtn[1] s_cnf_v 1210 1211 1212 1212 501
+#OBJECT FILE POS2 PRI
+vslider[0] s_cnf_gauge s_cnf_v:2000 700
+vslider[1] s_cnf_gauge s_cnf_v:2001 710
+vslider[2] s_cnf_gauge s_cnf_v:2002 720
+vslider[3] s_cnf_gauge s_cnf_v:2003 730
+vslider[4] s_cnf_gauge s_cnf_v:2004 740
+#OBJECT FILE ID.0 ID.1 ID.2 ID.3 ID.4 ID.5 ID.6 ID.7 ID.8 ID.9 ID.10
+vnum1 s_cnf_num_v 0 1 2 3 4 5 6 7 8 9 10
+vnum2 s_cnf_num_v 0 1 2 3 4 5 6 7 8 9 10
+vnum3 s_cnf_num_v 0 1 2 3 4 5 6 7 8 9 10
+vnum4 s_cnf_num_v 0 1 2 3 4 5 6 7 8 9 10
+vnum5 s_cnf_num_v 0 1 2 3 4 5 6 7 8 9 10
+#OBJECT POS2 PRI
+vnum1[0] s_cnf_v:400 800
+vnum1[1] s_cnf_v:401 801
+vnum1[2] s_cnf_v:402 802
+vnum2[0] s_cnf_v:410 803
+vnum2[1] s_cnf_v:411 804
+vnum2[2] s_cnf_v:412 805
+vnum3[0] s_cnf_v:420 806
+vnum3[1] s_cnf_v:421 807
+vnum3[2] s_cnf_v:422 808
+vnum4[0] s_cnf_v:430 809
+vnum4[1] s_cnf_v:431 810
+vnum4[2] s_cnf_v:432 811
+vnum5[0] s_cnf_v:440 812
+vnum5[1] s_cnf_v:441 813
+vnum5[2] s_cnf_v:442 814
+#OBJECT PL DISP
+bg pl 1
+vbtn pl 0
+vbtni1 pl 1
+vbtni3 pl 0
+svbtn pl 1
+vslider pl 1
+vnum1 pl 0
+vnum2 pl 0
+vnum3 pl 0
+vnum4 pl 0
+vnum5 pl 0
+vmes pl 0
+#START
+keyskip off
+call DISABLE_ALL_BUTTON
+wait 1
+vslider[0] page 0 100
+vslider[1] page 0 100
+vslider[2] page 0 100
+vslider[3] page 0 100
+vslider[4] page 0 100
+$900 = $670
+$901 = $671
+$902 = $672
+$903 = $673
+$904 = $674
+getconf 910 play 3 0
+getconf 911 play 3 1
+getconf 912 play 3 2
+getconf 913 play 3 3
+getconf 914 play 3 4
+$915 = 1
+$949 = 0
+call CALCNUM
+vnum1[0] disp $945>=0
+if ($945>=0)
+vnum1[0] setid $945
+endif
+vnum1[1] disp $946>=0
+if ($946>=0)
+vnum1[1] setid $946
+endif
+vnum1[2] disp $947>=0
+if ($947>=0)
+vnum1[2] setid $947
+endif
+$949 = 1
+call CALCNUM
+vnum2[0] disp $945>=0
+if ($945>=0)
+vnum2[0] setid $945
+endif
+vnum2[1] disp $946>=0
+if ($946>=0)
+vnum2[1] setid $946
+endif
+vnum2[2] disp $947>=0
+if ($947>=0)
+vnum2[2] setid $947
+endif
+$949 = 2
+call CALCNUM
+vnum3[0] disp $945>=0
+if ($945>=0)
+vnum3[0] setid $945
+endif
+vnum3[1] disp $946>=0
+if ($946>=0)
+vnum3[1] setid $946
+endif
+vnum3[2] disp $947>=0
+if ($947>=0)
+vnum3[2] setid $947
+endif
+$949 = 3
+call CALCNUM
+vnum4[0] disp $945>=0
+if ($945>=0)
+vnum4[0] setid $945
+endif
+vnum4[1] disp $946>=0
+if ($946>=0)
+vnum4[1] setid $946
+endif
+vnum4[2] disp $947>=0
+if ($947>=0)
+vnum4[2] setid $947
+endif
+$949 = 4
+call CALCNUM
+vnum5[0] disp $945>=0
+if ($945>=0)
+vnum5[0] setid $945
+endif
+vnum5[1] disp $946>=0
+if ($946>=0)
+vnum5[1] setid $946
+endif
+vnum5[2] disp $947>=0
+if ($947>=0)
+vnum5[2] setid $947
+endif
+call SETBUTTON
+$940 = -1
+wait 1
+pl disp 1
+rdraw
+$814 = 13
+call SYSVOICE
+wait
+str disp 1
+vbtn enable 1
+vslider enable 1
+svbtn enable 1
+next WAIT
+#WAIT
+if (_CLICK_R_!=0)
+next EXIT
+endif
+#EXIT
+call SYSVOICE
+call DISABLE_ALL_BTN
+str disp 0
+baseimg bg_white
+topmask fade 15 0 255
+topmask disp 1
+wait
+exit -2
+next SLEEP
+#SLEEP
+#vbtn.FOCUS
+vmes settbl 0 @
+vmes setid 0
+vmes disp 1
+if ($(920+@))
+vbtni1[@] setid 2
+endif
+#vbtn.UNFOCUS
+vmes disp 0
+if ($(920+@))
+vbtni1[@] setid 0
+endif
+#vbtn.PUSH_L
+if ($(920+@))
+$1001 = @
+call CHANGECHECKBOX
+call SETBUTTON
+call CHANGECONFIG
+$814 = 105
+call SYSVOICE
+endif
+#svbtn.FOCUS
+@ setid 2
+vmes settbl 0 200+@
+vmes setid 0
+vmes disp 1
+$940 = @
+#svbtn.UNFOCUS
+@ setid 0
+vmes disp 0
+$940 = -1
+#svbtn.PUSH_L
+if ($940!=-1)
+@ setid 0
+if (@==0)
+next CONFRESET
+endif
+if (@==1)
+next EXIT
+endif
+endif
+#vslider.FOCUS
+vmes settbl 0 100+@
+vmes setid 0
+vmes disp 1
+#vslider.UNFOCUS
+vmes disp 0
+#vslider.SCRL_P
+$814 = 108
+call SYSVOICE
+$949 = @
+if (@==0)
+vslider[@] getpos 900
+call CALCNUM
+vnum1[0] disp $945>=0
+if ($945>=0)
+vnum1[0] setid $945
+endif
+vnum1[1] disp $946>=0
+if ($946>=0)
+vnum1[1] setid $946
+endif
+vnum1[2] disp $947>=0
+if ($947>=0)
+vnum1[2] setid $947
+endif
+endif
+if (@==1)
+vslider[@] getpos 901
+call CALCNUM
+vnum2[0] disp $945>=0
+if ($945>=0)
+vnum2[0] setid $945
+endif
+vnum2[1] disp $946>=0
+if ($946>=0)
+vnum2[1] setid $946
+endif
+vnum2[2] disp $947>=0
+if ($947>=0)
+vnum2[2] setid $947
+endif
+endif
+if (@==2)
+vslider[@] getpos 902
+call CALCNUM
+vnum3[0] disp $945>=0
+if ($945>=0)
+vnum3[0] setid $945
+endif
+vnum3[1] disp $946>=0
+if ($946>=0)
+vnum3[1] setid $946
+endif
+vnum3[2] disp $947>=0
+if ($947>=0)
+vnum3[2] setid $947
+endif
+endif
+if (@==3)
+vslider[@] getpos 903
+call CALCNUM
+vnum4[0] disp $945>=0
+if ($945>=0)
+vnum4[0] setid $945
+endif
+vnum4[1] disp $946>=0
+if ($946>=0)
+vnum4[1] setid $946
+endif
+vnum4[2] disp $947>=0
+if ($947>=0)
+vnum4[2] setid $947
+endif
+endif
+if (@==4)
+vslider[@] getpos 904
+call CALCNUM
+vnum5[0] disp $945>=0
+if ($945>=0)
+vnum5[0] setid $945
+endif
+vnum5[1] disp $946>=0
+if ($946>=0)
+vnum5[1] setid $946
+endif
+vnum5[2] disp $947>=0
+if ($947>=0)
+vnum5[2] setid $947
+endif
+endif
+call CHANGECONFIG
+#CONFRESET
+$814 = 109
+svbtn setid 0
+$940 = -1
+call SYSVOICE
+call DISABLE_ALL_BTN
+$1020 = 30
+execfes conf
+wait 1
+next CONFRESET_WAIT
+#CONFRESET_WAIT
+if (_EXITCODE_==1)
+endfes
+call RESET
+vbtn enable 1
+vslider enable 1
+svbtn enable 1
+next WAIT
+endif
+if (_EXITCODE_==0)
+endfes
+vbtn enable 1
+vslider enable 1
+svbtn enable 1
+next WAIT
+endif
+#DISABLE_ALL_BTN
+vbtn enable 0
+vslider enable 0
+svbtn enable 0
+#INVISIBLE_ALL_BTN
+vslider disp 0
+svbtn disp 0
+vnum disp 0
+vmes disp 0
+#SETBUTTON
+vslider[0] page 0 100
+vslider[1] page 0 100
+vslider[2] page 0 100
+vslider[3] page 0 100
+vslider[4] page 0 100
+vslider[0] pos $900
+vslider[1] pos $901
+vslider[2] pos $902
+vslider[3] pos $903
+vslider[4] pos $904
+$920 = 1
+$921 = 1
+$922 = 1
+$923 = 1
+$924 = 1
+$925 = 1
+$926 = 1
+$927 = 1
+$928 = 1
+$929 = 1
+$930 = 1
+$931 = 1
+if ($910==1)
+vbtni1[0] setid 3
+vbtni3[0] disp 1
+vbtni1[1] setid 0
+vbtni3[1] disp 0
+$920 = 0
+$921 = 1
+else
+vbtni1[0] setid 0
+vbtni3[0] disp 0
+vbtni1[1] setid 3
+vbtni3[1] disp 1
+$920 = 1
+$921 = 0
+endif
+if ($911==1)
+vbtni1[2] setid 3
+vbtni3[2] disp 1
+vbtni1[3] setid 0
+vbtni3[3] disp 0
+$922 = 0
+$923 = 1
+else
+vbtni1[2] setid 0
+vbtni3[2] disp 0
+vbtni1[3] setid 3
+vbtni3[3] disp 1
+$922 = 1
+$923 = 0
+endif
+if ($912==1)
+vbtni1[4] setid 3
+vbtni3[4] disp 1
+vbtni1[5] setid 0
+vbtni3[5] disp 0
+$924 = 0
+else
+vbtni1[4] setid 0
+vbtni3[4] disp 0
+vbtni1[5] setid 3
+vbtni3[5] disp 1
+$925 = 0
+endif
+if ($913==1)
+vbtni1[6] setid 3
+vbtni3[6] disp 1
+vbtni1[7] setid 0
+vbtni3[7] disp 0
+$926 = 0
+else
+vbtni1[6] setid 0
+vbtni3[6] disp 0
+vbtni1[7] setid 3
+vbtni3[7] disp 1
+$927 = 0
+endif
+if ($914==1)
+vbtni1[8] setid 3
+vbtni3[8] disp 1
+vbtni1[9] setid 0
+vbtni3[9] disp 0
+$928 = 0
+else
+vbtni1[8] setid 0
+vbtni3[8] disp 0
+vbtni1[9] setid 3
+vbtni3[9] disp 1
+$929 = 0
+endif
+if ($915==1)
+vbtni1[10] setid 3
+vbtni3[10] disp 1
+vbtni1[11] setid 0
+vbtni3[11] disp 0
+vbtn[0] enable 1
+vbtn[1] enable 1
+vbtn[2] enable 1
+vbtn[3] enable 1
+vbtn[4] enable 1
+vbtn[5] enable 1
+vbtn[6] enable 1
+vbtn[7] enable 1
+vbtn[8] enable 1
+vbtn[9] enable 1
+$930 = 0
+else
+vbtni1[0] setid 1
+vbtni1[1] setid 1
+vbtni1[2] setid 1
+vbtni1[3] setid 1
+vbtni1[4] setid 1
+vbtni1[5] setid 1
+vbtni1[6] setid 1
+vbtni1[7] setid 1
+vbtni1[8] setid 1
+vbtni1[9] setid 1
+vbtni3[0] disp 0
+vbtni3[1] disp 0
+vbtni3[2] disp 0
+vbtni3[3] disp 0
+vbtni3[4] disp 0
+vbtni3[5] disp 0
+vbtni3[6] disp 0
+vbtni3[7] disp 0
+vbtni3[8] disp 0
+vbtni3[9] disp 0
+vbtn[0] enable 0
+vbtn[1] enable 0
+vbtn[2] enable 0
+vbtn[3] enable 0
+vbtn[4] enable 0
+vbtn[5] enable 0
+vbtn[6] enable 0
+vbtn[7] enable 0
+vbtn[8] enable 0
+vbtn[9] enable 0
+vbtni1[10] setid 0
+vbtni3[10] disp 0
+vbtni1[11] setid 3
+vbtni3[11] disp 1
+$931 = 0
+endif
+$949 = 0
+call CALCNUM
+vnum1[0] disp $945>=0
+if ($945>=0)
+vnum1[0] setid $945
+endif
+vnum1[1] disp $946>=0
+if ($946>=0)
+vnum1[1] setid $946
+endif
+vnum1[2] disp $947>=0
+if ($947>=0)
+vnum1[2] setid $947
+endif
+$949 = 1
+call CALCNUM
+vnum2[0] disp $945>=0
+if ($945>=0)
+vnum2[0] setid $945
+endif
+vnum2[1] disp $946>=0
+if ($946>=0)
+vnum2[1] setid $946
+endif
+vnum2[2] disp $947>=0
+if ($947>=0)
+vnum2[2] setid $947
+endif
+$949 = 2
+call CALCNUM
+vnum3[0] disp $945>=0
+if ($945>=0)
+vnum3[0] setid $945
+endif
+vnum3[1] disp $946>=0
+if ($946>=0)
+vnum3[1] setid $946
+endif
+vnum3[2] disp $947>=0
+if ($947>=0)
+vnum3[2] setid $947
+endif
+$949 = 3
+call CALCNUM
+vnum4[0] disp $945>=0
+if ($945>=0)
+vnum4[0] setid $945
+endif
+vnum4[1] disp $946>=0
+if ($946>=0)
+vnum4[1] setid $946
+endif
+vnum4[2] disp $947>=0
+if ($947>=0)
+vnum4[2] setid $947
+endif
+$949 = 4
+call CALCNUM
+vnum5[0] disp $945>=0
+if ($945>=0)
+vnum5[0] setid $945
+endif
+vnum5[1] disp $946>=0
+if ($946>=0)
+vnum5[1] setid $946
+endif
+vnum5[2] disp $947>=0
+if ($947>=0)
+vnum5[2] setid $947
+endif
+smpbg blend $855*255/100
+#CHANGECHECKBOX
+if ($1001==0)
+$910 = 1
+endif
+if ($1001==1)
+$910 = 0
+endif
+if ($1001==2)
+$911 = 1
+endif
+if ($1001==3)
+$911 = 0
+endif
+if ($1001==4)
+$912 = 1
+endif
+if ($1001==5)
+$912 = 0
+endif
+if ($1001==6)
+$913 = 1
+endif
+if ($1001==7)
+$913 = 0
+endif
+if ($1001==8)
+$914 = 1
+endif
+if ($1001==9)
+$914 = 0
+endif
+if ($1001==10)
+$910 = 1
+$911 = 1
+$912 = 1
+$913 = 1
+$914 = 1
+$915 = 1
+endif
+if (@==11)
+$910 = 0
+$911 = 0
+$912 = 0
+$913 = 0
+$914 = 0
+$915 = 0
+endif
+#CHANGECONFIG
+$670 = $900
+$671 = $901
+$672 = $902
+$673 = $903
+$674 = $904
+setconf $910 play 3 0
+setconf $911 play 3 1
+setconf $912 play 3 2
+setconf $913 play 3 3
+setconf $914 play 3 4
+#STRLAYOUT
+str reset
+str layout vdraw 1
+str layout size 16
+str layout margin 0 2 0 0
+#RESET
+$900 = 100
+$901 = 100
+$902 = 100
+$903 = 100
+$904 = 100
+$910 = 1
+$911 = 1
+$912 = 1
+$913 = 1
+$914 = 1
+$915 = 1
+$670 = $900
+$671 = $901
+$672 = $902
+$673 = $903
+$674 = $904
+setconf $910 play 3 0
+setconf $911 play 3 1
+setconf $912 play 3 2
+setconf $913 play 3 3
+setconf $914 play 3 4
+call SETBUTTON
+$814 = 106
+call SYSVOICE
+#CALCNUM
+if ($949==0)
+$948 = $900
+endif
+if ($949==1)
+$948 = $901
+endif
+if ($949==2)
+$948 = $902
+endif
+if ($949==3)
+$948 = $903
+endif
+if ($949==4)
+$948 = $904
+endif
+if ($948==100)
+$945 = -1
+$946 = -1
+$947 = 10
+break
+endif
+$947 = -1
+if ($948>=10)
+$946 = $948 / 10
+$945 = $948 % 10
+break
+endif
+$946 = -1
+$945 = $948

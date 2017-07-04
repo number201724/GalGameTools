@@ -1,0 +1,160 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+s_ccg
+#DEFINE
+IMAGE bg
+BUTTON cbtn[4]
+#OBJECT FILE DISP PL
+bg s_ccg 1 pl[0]
+cbtn s_ccg 0 pl[0]
+#OBJECT ID.0 PRI
+bg 1 1
+cbtn[0] 100 100
+cbtn[1] 101 101
+cbtn[2] 102 102
+cbtn[3] 103 103
+#OBJECT DISP BLEND
+pl 1 0
+#START
+next INIT
+#INIT
+cbtn disp 1
+pl[0] fade 30 0 255
+wait
+cbtn enable 1
+next WAIT
+#WAIT
+if (_CLICK_L_==cbtn[0])
+next MAIN1
+endif
+if (_CLICK_L_==cbtn[3])
+next MAIN2
+endif
+if (_CLICK_R_)
+next QUIT
+endif
+#MAIN1
+pl[0] disp 0
+wait 5
+pl[0] disp 1
+wait 5
+cbtn disp 0
+wait
+next WAIT1
+#MAIN2
+pl[0] disp 0
+wait 5
+pl[0] disp 1
+wait 5
+pl[0] disp 0
+wait 5
+pl[0] disp 1
+wait 5
+cbtn disp 0
+wait
+next WAIT2
+#WAIT1
+if (_PUSH_UP_)
+cbtn[0] disp 1
+wait
+next WAIT1A
+endif
+if (_PUSH_LEFT_)
+cbtn[1] disp 1
+wait
+next WAIT1A
+endif
+if (_PUSH_RIGHT_)
+cbtn[2] disp 1
+wait
+next WAIT1A
+endif
+if (_PUSH_DOWN_)
+cbtn[3] disp 1
+wait
+next WAIT1A
+endif
+if (_PAGE_U_)
+cbtn[0] disp 1
+cbtn[1] disp 1
+wait
+next WAIT1A
+endif
+if (_PAGE_D_)
+cbtn[2] disp 1
+cbtn[3] disp 1
+wait
+next WAIT1A
+endif
+if (_CLICK_R_)
+next INIT
+endif
+#WAIT2
+if (_CLICK_L_==cbtn[0])
+cbtn[0] disp 1
+wait
+next WAIT2A
+endif
+if (_CLICK_L_==cbtn[1])
+cbtn[1] disp 1
+wait
+next WAIT2A
+endif
+if (_CLICK_L_==cbtn[2])
+cbtn[2] disp 1
+wait
+next WAIT2A
+endif
+if (_CLICK_L_==cbtn[3])
+cbtn[3] disp 1
+wait
+next WAIT2A
+endif
+if (_CLICK_R_)
+next INIT
+endif
+#WAIT1A
+if (_CLICK_L_)
+next MAIN1
+endif
+if (_CLICK_R_)
+next INIT
+endif
+#WAIT2A
+if (_CLICK_L_)
+next MAIN2
+endif
+if (_CLICK_R_)
+next INIT
+endif
+#QUIT
+exit 0
+next SLEEP
+#SLEEP
+#cbtn.FOCUS
+#cbtn.UNFOCUS
+#cbtn.PUSH_L

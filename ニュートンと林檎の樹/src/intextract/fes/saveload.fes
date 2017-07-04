@@ -1,0 +1,528 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+sl_base
+sl_font_pnow
+sl_font_pmax
+sl_font_date
+sl_panel
+sl_font_gdate_ex
+sl_font_gdate_n
+sl_font_gdate_w
+userfont
+#DEFINE
+CPLANE topmask
+PLANE pl0
+CIMAGE bg_white
+IMAGE bg
+BUTTON pagebtn[9]
+BUTTON sysbtn[4]
+SAVEPANEL data[10]
+IMAGE data_bg[10]
+IMAGE cursor[10]
+BUTTON data_btn[10]
+IMAGE dfont1
+IMAGE dfont2
+IMAGE dfont3
+IMAGE dfont4
+#OBJECT COLOR PRI SIZE DISP
+topmask 0x00000000 20000 1024,768 1
+#OBJECT COLOR PRI SIZE DISP PL
+bg_white 0x00000000 900 1024,768 0 pl[2]
+#OBJECT SIZE DISP
+pl0 1024,768 1
+#OBJECT FILE DEFAULT
+bg sl_base
+pagebtn sl_base btndef
+sysbtn sl_base
+#OBJECT PL DISP
+bg pl0 1
+#OBJECT ID.0 ID.1 PRI
+bg 0 1 50
+#OBJECT ID.0 ID.1 PRI
+pagebtn[0] 200 210 60
+pagebtn[1] 201 211 61
+pagebtn[2] 202 212 62
+pagebtn[3] 203 213 63
+pagebtn[4] 204 214 64
+pagebtn[5] 205 215 65
+pagebtn[6] 206 216 66
+pagebtn[7] 207 217 67
+pagebtn[8] 208 218 68
+#OBJECT ID.0 ID.1 ID.2 PRI
+sysbtn[0] 100 110 120 70
+sysbtn[1] 101 111 121 71
+sysbtn[2] 102 112 122 72
+sysbtn[3] 103 113 123 73
+#OBJECT FILE
+dfont1 sl_font_gdate_n
+dfont2 sl_font_gdate_w
+dfont3 sl_font_gdate_ex
+dfont4 sl_font_date
+#OBJECT ID.0
+dfont4 10
+#OBJECT FILE
+data_bg sl_panel
+data sl_panel
+data_btn sl_base
+cursor sl_panel
+#OBJECT POS2 ID.0 ID.1 PRI
+data_bg[0] sl_base:1100 0 2 90
+data_bg[1] sl_base:1101 0 2 91
+data_bg[2] sl_base:1102 0 2 92
+data_bg[3] sl_base:1103 0 2 93
+data_bg[4] sl_base:1104 0 2 94
+data_bg[5] sl_base:1105 0 2 95
+data_bg[6] sl_base:1106 0 2 96
+data_bg[7] sl_base:1107 0 2 97
+data_bg[8] sl_base:1108 0 2 98
+data_bg[9] sl_base:1109 0 2 99
+#OBJECT POS2 ID.0 ID.1 PRI
+cursor[0] sl_base:1100 1 3 120
+cursor[1] sl_base:1101 1 3 121
+cursor[2] sl_base:1102 1 3 122
+cursor[3] sl_base:1103 1 3 123
+cursor[4] sl_base:1104 1 3 124
+cursor[5] sl_base:1105 1 3 125
+cursor[6] sl_base:1106 1 3 126
+cursor[7] sl_base:1107 1 3 127
+cursor[8] sl_base:1108 1 3 128
+cursor[9] sl_base:1109 1 3 129
+#OBJECT POS2 PRI
+data[0] sl_base:1100 150
+data[1] sl_base:1101 151
+data[2] sl_base:1102 152
+data[3] sl_base:1103 153
+data[4] sl_base:1104 154
+data[5] sl_base:1105 155
+data[6] sl_base:1106 156
+data[7] sl_base:1107 157
+data[8] sl_base:1108 158
+data[9] sl_base:1109 159
+#OBJECT ID.0 PRI
+data_btn[0] 1200 200
+data_btn[1] 1201 201
+data_btn[2] 1202 202
+data_btn[3] 1203 203
+data_btn[4] 1204 204
+data_btn[5] 1205 205
+data_btn[6] 1206 206
+data_btn[7] 1207 207
+data_btn[8] 1208 208
+data_btn[9] 1209 209
+#OBJECT PL DISP TYPE
+bg pl[1] 1
+bg_white pl[1] 1
+pagebtn pl[1] 1 1
+sysbtn pl[1] 1 1
+data_bg pl[1] 1
+data pl[1] 0
+data_btn pl[1] 0 1
+cursor pl[1] 0
+#KEYBLOCK 3
+0 2,5 1,2,-1,-1
+1 9,1 -1,0,0,-1
+2 4,1 0,-1,-1,-1
+#OBJECT KEYBLOCK
+data_btn[0] 0,0,0
+data_btn[1] 0,0,1
+data_btn[2] 0,0,2
+data_btn[3] 0,0,3
+data_btn[4] 0,0,4
+data_btn[5] 0,1,0
+data_btn[6] 0,1,1
+data_btn[7] 0,1,2
+data_btn[8] 0,1,3
+data_btn[9] 0,1,4
+pagebtn[0] 1,0,0
+pagebtn[1] 1,1,0
+pagebtn[2] 1,2,0
+pagebtn[3] 1,3,0
+pagebtn[4] 1,4,0
+pagebtn[5] 1,5,0
+pagebtn[6] 1,6,0
+pagebtn[7] 1,7,0
+pagebtn[8] 1,8,0
+sysbtn[0] 2,0,0
+sysbtn[1] 2,1,0
+sysbtn[2] 2,2,0
+sysbtn[3] 2,3,0
+#START
+\100 = 10
+\101 = 0
+$850 = 0
+\102 = 10
+\107 = 0
+\109 = -1
+$803 = 9
+if ($801!=2)
+$802=1
+endif
+keyskip off
+baseimg
+if ($805>=0)
+$802 = $805 / \100 + 1
+endif
+call DISABLE_ALLBTN
+next SETBG
+#SETBG
+if ($800==0)
+bg setid 0
+endif
+if ($800==1)
+bg setid 1
+endif
+pagebtn lock 1
+pagebtn disp 1
+sysbtn lock 1
+data_btn lock 1
+sysbtn keypos 1 15 15
+next INITPANEL
+#INITPANEL
+data ptype NORM 4
+data ptype NORM 13
+data ptype SIMAGE 6 0x100
+data ptype NORM 7
+data ptype NUM_O2 50 dfont1 FLAG.1
+data ptype NUM_O2 51 dfont1 FLAG.2
+data ptype NUM_O2 53 dfont3 \102
+data ptype SSTR 12 0x200 13 20 0xff000000 0 0xff404040 2 1
+data ptype NUM_O2 100 dfont4 DATE_Y:1000
+data ptype NUM_O2 101 dfont4 DATE_Y:100
+data ptype NUM_O2 102 dfont4 DATE_Y:10
+data ptype NUM_O2 103 dfont4 DATE_Y:1
+data ptype NUM_O2 110 dfont4 DATE_M:10
+data ptype NUM_O2 111 dfont4 DATE_M:1
+data ptype NUM_O2 120 dfont4 DATE_D:10
+data ptype NUM_O2 121 dfont4 DATE_D:1
+data ptype NUM_O2 130 dfont4 DATE_H:10
+data ptype NUM_O2 131 dfont4 DATE_H:1
+data ptype NUM_O2 140 dfont4 DATE_N:10
+data ptype NUM_O2 141 dfont4 DATE_N:1
+data_btn[0] noact 1
+data userfont 12 userfont 0x8740 1
+data userfont 12 userfont 0x8741 2
+data userfont 12 userfont 0x8742 3
+data userfont 12 userfont 0x8743 4
+data userfont 12 userfont 0x8744 5
+data userfont 12 userfont 0x8744 6
+data userfont 12 userfont 0x8744 7
+data userfont 12 userfont 0x8744 8
+data userfont 12 userfont 0x8744 9
+next SETDATA
+#SETDATA
+wait 1
+\108 = 0
+next SETDATA_2
+#SETDATA_2
+if (\108>=\100)
+next BTNINIT
+endif
+saveexist ($802-1)*\100+\108 810+\108
+if ($(810+\108)==0)
+call SETDATA_NODATA
+else
+call SETDATA_EXIST
+endif
+\108++
+#SETDATA_NODATA
+data_bg[\108] setid 0
+data[\108] disp 0
+cursor[\108] setid 0
+cursor disp 0
+#SETDATA_EXIST
+data[\108] setsave ($802-1)*\100+\108 0x03 0
+data[\108] dispid 1 5 6 10 12 [100-103] [110-111] [120-121] [130-131] [140-141]
+data[\108] dispid 0 7 8
+if ($802==10)
+$1000=($802-1)*\100+\108-90
+if ($806==$1000)
+data[$1000] dispid 1 7
+\109 = $1000
+endif
+endif
+if ($805==(($802-1)*\100+\108))
+data[\108] dispid 1 7
+\109 = \108
+endif
+data[\108] setsave ($802-1)*\100+\108 0x03 0
+data_bg[\108] setid 1
+data[\108] disp 1
+cursor[\108] setid 1
+cursor disp 0
+#BTNINIT
+pagebtn enable 1
+pagebtn setid 0
+sysbtn enable 1
+sysbtn setid 0
+data_btn enable 1
+if ($802==1)
+pagebtn[0] setid 1
+pagebtn[0] enable 0
+endif
+if ($802==2)
+pagebtn[1] setid 1
+pagebtn[1] enable 0
+endif
+if ($802==3)
+pagebtn[2] setid 1
+pagebtn[2] enable 0
+endif
+if ($802==4)
+pagebtn[3] setid 1
+pagebtn[3] enable 0
+endif
+if ($802==5)
+pagebtn[4] setid 1
+pagebtn[4] enable 0
+endif
+if ($802==6)
+pagebtn[5] setid 1
+pagebtn[5] enable 0
+endif
+if ($802==7)
+pagebtn[6] setid 1
+pagebtn[6] enable 0
+endif
+if ($802==8)
+pagebtn[7] setid 1
+pagebtn[7] enable 0
+endif
+if ($802==9)
+pagebtn[8] setid 1
+pagebtn[8] enable 0
+endif
+if ($802==10)
+pagebtn enable 0
+pagebtn disp 0
+sysbtn[1] setid 1
+sysbtn[1] enable 0
+endif
+if ($800==0)
+sysbtn[0] setid 1
+sysbtn[0] enable 0
+endif
+if ($800==1)
+sysbtn[2] setid 1
+sysbtn[2] enable 0
+endif
+if ($801==0)
+sysbtn[0] setid 1
+sysbtn[0] enable 0
+endif
+wait 1
+if (\107==0)
+pl[1] disp 1
+pl[1] blend 0
+pl[1] fade 30 0 255
+if (\109!=-1)
+automove date_btn[\109]
+endif
+endif
+\107 = 1
+next WAIT
+#WAIT
+if (_CLICK_R_!=0)
+next EXIT
+endif
+if (_CLICK_L_==sysbtn[3])
+next EXIT
+endif
+if (_CLICK_L_==sysbtn[0])
+next GOSAVE
+endif
+if (_CLICK_L_==sysbtn[1])
+next GOQLOAD
+endif
+if (_CLICK_L_==sysbtn[2])
+next GOLOAD
+endif
+if (_CLICK_L_==pagebtn[0])
+$802 = 1
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[1])
+$802 = 2
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[2])
+$802 = 3
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[3])
+$802 = 4
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[4])
+$802 = 5
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[5])
+$802 = 6
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[6])
+$802 = 7
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[7])
+$802 = 8
+next SETDATA
+endif
+if (_CLICK_L_==pagebtn[8])
+$802 = 9
+next SETDATA
+endif
+if ((_PAGE_U_!=0)&&($802>1)&&($802!=10))
+$802--
+next SETDATA
+endif
+if ((_PAGE_D_!=0)&&($802<$803))
+$802++
+next SETDATA
+endif
+#EXIT
+call DISABLE_ALLBTN
+if ($801==0)
+next EXIT2
+endif
+baseimg
+wait 1
+pl[1] fade 30 255 0
+wait
+exit -2
+next SLEEP
+#EXIT2
+wait 1
+pl[1] disp 1
+bg_black disp 1
+pl[1] draw 30
+wait
+baseimg bg_black
+exit -2
+next SLEEP
+#CONFIRM
+$850 = 1
+call DISABLE_ALLBTN
+execfes conf
+wait 1
+next CONFIRM_WAIT
+#CONFIRM_WAIT
+if (_EXITCODE_==1)
+endfes
+$850 = 0
+next SAVEDATA
+endif
+if (_EXITCODE_==0)
+endfes
+$850 = 0
+call ENABLE_ALLBTN
+next WAIT
+endif
+#CONFIRM_LOAD
+$850 = 2
+call DISABLE_ALLBTN
+execfes conf
+wait 1
+next CONFIRM_LOAD_WAIT
+#CONFIRM_LOAD_WAIT
+if (_EXITCODE_==1)
+endfes
+$850 = 0
+next LOADDATA
+endif
+if (_EXITCODE_==0)
+endfes
+$850 = 0
+call ENABLE_ALLBTN
+next WAIT
+endif
+#SAVEDATA
+datasave \110 _SAVEOBJ_
+$805 = \110
+next SETDATA
+#LOADDATA
+call DISABLE_ALLBTN
+pl[1] fade 30 255 0
+wait
+exit \110
+next SLEEP
+#GOSAVE
+$800 = 0
+\107=0
+pl[1] fade 30 255 0
+wait
+next START
+#GOLOAD
+$800 = 1
+\107=0
+pl[1] fade 30 255 0
+wait
+next START
+#GOQLOAD
+$800=2
+$802=10
+\107=0
+pl[1] fade 30 255 0
+wait
+next SETBG
+#SLEEP
+#btndef.FOCUS
+@ setid 1
+#btndef.UNFOCUS
+@ setid 0
+#btndef.PUSH_L
+@ setid 1
+#sysbtn.FOCUS
+@ setid 2
+#sysbtn.UNFOCUS
+@ setid 0
+#sysbtn.PUSH_L
+@ setid 2
+#data_btn.FOCUS
+cursor[@] disp 1
+#data_btn.UNFOCUS
+cursor[@] disp 0
+#data_btn.PUSH_L
+\110 = ($802-1)*\100+@
+if (($800==0)&&($(810+@)))
+next CONFIRM
+endif
+if (($800==0)&&($(810+@)==0))
+next SAVEDATA
+endif
+if ($(810+@))
+data_btn enable 0
+next CONFIRM_LOAD
+endif
+#DISABLE_ALLBTN
+pagebtn enable 0
+data_btn enable 0
+sysbtn enable 0
+#ENABLE_ALLBTN
+pagebtn enable 1
+data_btn enable 1
+sysbtn enable 1

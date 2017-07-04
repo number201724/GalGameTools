@@ -1,0 +1,16 @@
+#START
+strvar 500 opmovie.mpg
+execkcs movie
+wait 1
+next OPMOVIE_WAIT
+#OPMOVIE_WAIT
+if (_EXITCODE_!=-1)
+next OPMOVIE_END
+endif
+#OPMOVIE_END
+endkcs
+$510 = 0
+$711 = 1
+exit 0
+next SLEEP
+#SLEEP

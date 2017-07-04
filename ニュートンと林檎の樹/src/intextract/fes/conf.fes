@@ -1,0 +1,100 @@
+#SUBCOMMAND
+oneshot base pBase BX[0] BY[0] BZ[0] : [0] [1] [2]
+oneshot pri pDepth BZ[5000] : [0]
+oneshot vram pVram VX[0] VY[0] VZ[0] : [0] [1] [2]
+oneshot scale pScale SX[100%] SY[100%] SZ[100%] : [0] [1] [2]
+oneshot rot pRot RX[0] RY[0] RZ[0] : [0] [1] [2]
+oneshot move motMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mrot motRot p[30] rx[0] ry[0] rz[0] : [0] 0 0 0 [1] [2] [3]
+oneshot mscale motScale p[30] sx[100%] sy[100%] sz[100%] : [0] 0 0 0 [1] [2] [3]
+oneshot fade motFade p[30] p[0] p[255] : [0] [1] [2]
+oneshot fade2 motFade2 p[30] p[0] p[255] : [0] [1] [2]
+continue mcmove mcMove p[30] px[0] py[0] pz[0] : [0] 0 0 0 [1] [2] [3]
+continue mcrot mcRot p[0] p[0] p[0] : [0] [1] [2]
+continue mcscalecos mcScaleCos p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcscalesin mcScaleSin p[0] p[0] p[0] p[100%] p[100%] p[100%] p[100%] p[100%] p[100%] : [0] [1] [2] [3] [4] [5] [6] [7] [8]
+continue mcfade mcFade p[0] p[0] p[0] : [0] [1] [2]
+#DEFINE
+PLANE pl[4]
+#OBJECT BASE POS SIZE
+pl 0,0 0,0 1024,768
+#OBJECT PRI VRAM DISP
+pl[0] 5000 0,0 0
+pl[1] 6000 1024,0 0
+pl[2] 7000 0,768 0
+pl[3] 8000 1024,768 0
+#PRELOAD
+conf
+#DEFINE
+IMAGE bg
+IMAGE mes
+BUTTON btn[2]
+#OBJECT POS BASE PRI DISP BLEND
+pl[3] 0,0 0,0 10000 1 255
+#OBJECT FILE ID.0 PRI
+bg conf 0 1000
+mes conf 10 1001
+#OBJECT FILE ID.0 ID.1 PRI
+btn[0] conf 100 200 1010
+btn[1] conf 101 201 1011
+#OBJECT POS PL DISP
+bg 0,0 pl[3] 0
+mes 0,0 pl[3] 0
+btn 0,0 pl[3] 0
+#KEYBLOCK 1
+0 2,1 -1,-1,-1,-1
+#OBJECT KEYBLOCK
+btn[0] 0,0,0
+btn[1] 0,1,0
+#START
+basebtnpri 999
+bg disp 1
+mes settbl 0 $850+10
+mes setid 0
+mes disp 1
+btn disp 1
+pl[3] draw 5
+wait
+btn enable 1
+btn_bg enable 1
+btn lock 1
+btn[0] noact 1
+automove btn[0]
+next WAIT
+#WAIT
+if (_CLICK_L_==btn[0])
+next YES
+endif
+if (_CLICK_L_==btn[1])
+next NO
+endif
+if (_CLICK_R_!=0)
+next NO
+endif
+#YES
+bg disp 0
+mes disp 0
+btn disp 0
+btn enable 0
+btn_bg enable 0
+pl[3] draw 5
+wait
+exit 1
+next SLEEP
+#NO
+bg disp 0
+mes disp 0
+btn disp 0
+btn enable 0
+btn_bg enable 0
+pl[3] draw 5
+wait
+exit 0
+next SLEEP
+#SLEEP
+#btn.FOCUS
+@ setid 1
+#btn.UNFOCUS
+@ setid 0
+#btn.PUSH_L
+@ setid 1
